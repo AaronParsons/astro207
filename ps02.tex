@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 2 (part 1)}
+
+\section{Brightnesses, Magnitudes, and Photons}
+
+In the old days, astronomers classified the brightness of celestial
+objects using the magnitude system, which roughly corresponded to the
+sensitivity of the human eye. Today we continue to use this ancient system
+because\dots well, I don't know, but we do. The magnitude of
+an object in a given filter $i$ is 
+\begin{equation}
+m_i = −2.5 \log_{10}(F_i/F_{0,i}) + m_{0,i}
+\end{equation}
+where $F_i$ is the observed flux integrated over a given filter
+\begin{equation}
+F_i = \int_0^\infty{F_\nu(\nu)\phi(\nu)~d\nu}
+\end{equation}
+where $\phi(\nu)$ is the filter transmission function (a number
+between 0 and 1).  
+The magnitude system is calibrated by specifying $F_{0,i}$ and $m_{0,i}$ which 
+may be done in a number of ways. A common system is
+Vega-magnitudes, in which the star Vega is defined to have $m\approx0$ in all bands.
+
+\subsection{}
+Grab the filter transmission functions and the spectrum of Vega 
+(bessel\_V.dat and vega\_spectrum.dat in the github repository, noting that
+the Vega spectrum is given as $F_\lambda$, with units ergs s$^{-1}$ cm$^{-2}$ \AA$^{-1}$).
+numerically integrate the apparent V-band magnitude of Vega to determine how many
+photons the world's largest ground-based optical telescope (Keck, with a mirror diameter of 10m)
+would collect per second from Vega.  
+
+\subsection{}
+Use the fact that Vega is about 8 pc away, and has a diameter of approximately 2.5 $R_\odot$, to
+determine the specific intensity of Vega in cgs units, assuming Vega appears as a uniform disk on the sky.
+
+\subsection{}
+If we were twice as close to Vega (say, 4 pc), figure how many photons per second Keck would receive
+in V band, and re-determine the specific intensity of Vega.  Are the scalings of photons per second and
+specific intensity with distance consistent with one another?  How so?
+
+\subsection{}
+Just as Vega is one of the brightest things in the optical sky, Cygnus A, an incredibly bright
+pair of jets emanating from an active galactic nucleus, is
+one of the brightest in the radio sky. At 150 MHz, Cygnus A is approximately 10 kJy.
+How many photons would the world's largest radio telescope (Arecibo, with a diameter of 300m)
+collect per second from Cygnus A, integrating from 155 to 165 MHz.  Following the scaling of
+photons received by the biggest telescope on the planet from the brightest things on the sky as
+a function of frequency predicted from Arecibo observing Cygnus A and Keck observing Vega, at
+what frequency might you expect to worry about shot noise from individual photons for even observations
+of bright sources.  Which telescope might this correspond to?
+
+\section*{\centering Problem Set 2 (part 2)}
+
+\section{Make Like a Tree}
+
+If all the leaves of a tree fall to the ground, how thick is the layer of leaves on the ground?
+Give your answer in leaf thicknesses, to order-of-magnitude.
+
+What is the order-of-magnitude of the optical depth presented by the leafy tree to
+someone lying below the tree? Why does this answer make sense from the perspective
+of the vegetation? (Be the tree.)
+These are really flip sides of the same question. You can try the second
+paragraph before the first, or vice versa.
+
+\section{Dust Bowl}
+
+Dust particles are about 100 microns in diameter.  In the years of the Dust
+Bowl in the 1930s, it was not uncommon for dust clouds to completely obscure
+the Sun.  According to Wikipedia:
+\begin{quote}
+On April 14, 1935, known as ``Black Sunday", 20 of the worst ``black
+blizzards" occurred across the entire sweep of the Great Plains, from Canada
+south to Texas. The dust storms caused extensive damage and turned the day to
+night; witnesses reported they could not see five feet in front of them at
+certain points. 
+\end{quote}
+
+\subsection{}
+Using this observation, estimate the number density of dust particles in the air.
+We'll do a more sophisticated
+treatment of dust grains later in the class, but for now, assume these dust grains to be perfectly
+opaque, and large enough to be treated geometrically (without diffraction, etc.).  
+
+\subsection{}
+If these clouds extended half a mile into the air, how much topsoil was lost to each one of these clouds?
+
+
+\end{document}
