@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 3 (part 1)}
+
+\section{Blackbody Flux}
+
+Derive the blackbody flux formula
+\begin{equation}
+F=\sigma T^4
+\end{equation}
+from the Planck function for specific intensity,
+\begin{equation}
+B_\nu=\frac{2h\nu^3}{c^2}\frac{1}{e^\frac{h\nu}{kT} - 1}
+\end{equation}
+You may use the integral $\int_0^\infty{\frac{dx}{x^5(e^{1/x}-1)}}=\pi^4/15$.
+Those who know what they have to do can stop reading here. Those who need a bit of help should read on.
+
+Imagine a perfectly flat, blackbody patch at the center of a sphere of radius
+$R$. The patch has tiny surface area $dA$ and is lying flat at $r = 0$ in the $\theta=\pi/2$
+plane (in spherical coordinates, where $r$, $\theta$, $\phi$ are the radius, polar angle, and
+azimuth). Only one side of the patch is warm; the other side is at absolute
+zero. Assume that the warm side radiates as a perfect thermal blackbody.
+
+A thermal blackbody emits radiation isotropically --- i.e., with no preference for
+direction. In other words, imagine each point on the patch beaming out a tiny,
+uniform, hemispherical dome of rays (like an umbrella). It is a hemispherical
+dome and not a full sphere because only one side of the patch is warm. Note
+that the Planck blackbody function has no variable inside it that specifies
+direction of emission; the direction of emission doesn't matter for purely
+thermal emission. The only variables that need to be specified for the Planck
+function are $T$ and $\nu$.
+
+Despite the isotropic nature of the emission, because the patch is
+geometrically flat, has definite area, and emits only on one side of itself, a
+detector glued to the inside of the sphere at $r = R$ detects different amounts
+of radiation depending on where it is placed. For example, if the detector is
+glued on the half of the sphere that can’t see the bright side of the patch,
+the detector detects nothing. If the detector is glued to the sphere directly
+above the patch, the detector picks up the most number of photons, because it
+sees the full face-on area of the patch (namely, $dA$). If the detector is glued
+at an angle to the pole, then it sees less than area dA. If it is glued in the
+plane of the patch, it sees nothing but a infinitesimally thin line segment.
+
+This problem asks you to place detectors everywhere on the inside of the sphere
+and sum up the radiation collected; this operation is equivalent to
+``integrating the Planck function over all solid angles into which the radiation
+is beamed."
+
+Calculate the total luminosity (in units of energy/time) emitted by the patch
+of area dA. You must integrate the Planck function over the entire emitting
+area (which is maximally $dA$ but in general will be less, depending on the
+viewing geometry), over all solid angles into which the radiation is beamed,
+and over all frequencies. Think about placing tiny detectors all over the
+inside of the sphere and asking how much energy/time each of the detectors
+receives.
+
+Then divide the luminosity by $dA$ to calculate the total flux (in units of
+energy/time/area) emitted by the patch. You should recover the usual blackbody
+flux formula, $\sigma T^4$. By definition, $\sigma T^4$ is the total amount of
+energy radiated per time per unit area of a blackbody surface, radiated into
+all solid angles and over all frequencies.
+
+\section{Flat Disks}
+
+This problem forms the foundation for understanding the spectral energy distributions of
+circumstellar disks, e.g., those surrounding pre-main-sequence stars and AGN.
+
+Consider a perfectly flat, blackbody disk encircling a blackbody star. The star
+has radius $R_*$ and effective temperature $T_*$. The disk begins at a stellocentric
+radius far from the star, i.e. the inner disk radisu $r_i\gg R_*$.  
+The disk extends to infinity.
+
+Calculate the temperature of the disk, $T(r)$, as a function of radius, $r$. Make
+whatever approximations you deem necessary in light of the fact that $r_i\gg R_*$. Be
+sure you get the scaling of $T$ with $r$ correctly. It is less important that you
+get the numerical coefficient correctly.
+
+This disk is PERFECTLY flat. Do not consider individual particles in the disk.
+
+Also, neglect radial transport of energy. Each annulus is independent of
+neighboring annuli. This is a fine approximation for thin disks since they
+transport more radiation vertically than radially (the temperature gradient is
+steeper vertically than radially).
+
+\section*{\centering Problem Set 3 (part 2)}
+
+\section{Practice with $j_\nu$, $\alpha_\nu$, $S_\nu$, $I_\nu$}
+
+\subsection{}
+
+A plane-parallel slab of uniformly dense gas is known to be in LTE (local
+thermodynamic equilibrium) at a uniform temperature $T$. Its thickness normal
+to its surface is $s$. Its absorption coefficient is $\alpha_{\nu,{\rm gas}}$. 
+Write down the
+specific intensity, $I_\nu$, viewed normal to the slab, in terms of the variables
+given.
+
+\subsection{}
+
+The same slab is now filled uniformly with non-emissive dust having absorption
+coefficient $\alpha_{\nu,{\rm dust}}$. The dust is non-emissive, so its emissivity 
+$j_{\nu,{\rm dust}}=0$.
+Write down $I_\nu$ viewed normal to the slab, in terms of all variables given so
+far.
+
+\subsection{}
+
+The slab of gas and dust is further mixed with a third component: an emissive,
+non-absorptive uniform medium having emissivity $j_{\nu,{\rm med}}$ and
+absorption coefficient $\alpha_{\nu,{\rm med}}=0$. Write down $I_\nu$ viewed
+normal to the slab, in terms of all variables given.
+
+A physical realization of this problem might be an HII region surrounding an
+ionizing O star. The material in LTE would be the fully ionized plasma,
+emitting thermal bremsstrahlung radiation. The dust would be dust. The
+emissive, non-absorptive medium would be the same ionized plasma emitting
+recombination (line) radiation. For the assumptions stated in the problem to be
+valid, we would have to evaluate $\nu$ at, say, an optical recombination line
+like H$\alpha$.
+
+\section{Detailed Balance}
+
+Suppose an atom has 2 energy states $E_1$ and $E_2$.  This atom occasionally
+collides with an e$^-$, whereupon it may change states.  Let us say that
+during a collision, there is a probability of $P_{12}$ that the atom transitions
+from state 1 to state 2, and $P_{21}$ for the reverse (from 2 to 1).
+
+\subsection{}
+If these are the only transitions, what do you expect the relative populations
+to be of atoms in state 1 versus state 2 after many collisions?  Write some
+code that verifies this by simulating it (and please submit your code with your homework,
+along with the output of the code).  Pick $P_{12}$ and $P_{21}$ to be something
+illustrative.  Does this system satisfy detailed balance?
+
+\subsection{}
+Modify your code above to add a third energy state, $E_3$, along with the relevant
+transition probabilities to/from all other states.  Now what are the relative
+populations in each state (both numerically for chosen values of $P_{13}$, $P_{23}$, \dots,
+and as an analytic function of these probabilities).  Does this system satisfy
+detailed balance?
+
+\end{document}
