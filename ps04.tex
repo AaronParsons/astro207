@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 4 (part 1)}
+
+\section{Eddington Limit}
+
+Based on Rybicki \& Lightman, Problem 1.4
+
+\subsection{}
+Derive the condition for an optically thin cloud to be ejected by radiation
+pressure from a luminous object of mass $M$ and luminosity $L$:
+\begin{equation}
+M/L < \kappa/4\pi Gc
+\end{equation}
+Remember that $\kappa$ is the mass absorption coefficient (of the cloud).
+
+\subsection{}
+Calculate the terminal velocity $v$ of the cloud, based on radiation and
+gravity alone, if it starts at rest at a distance $R$ from the object.  Show that
+\begin{equation}
+v^2=\frac{2GM}{R}\left(\frac{\kappa L}{4\pi GMc}-1\right).
+\end{equation}
+
+\subsection{}
+One can estimate the (minimum) value of $\kappa$ for hydrogen from
+Thomson scattering off free elections when the hydrogen is ionized.
+The Thomson cross-section is $\sigma_T=6.6\cdot10^{-25}~{\rm cm}^2$.
+The mass scattering coefficient is therefore $>\sigma_T/m_{\rm H}$,
+where $m_{\rm H}$ is the mass of a hydrogen atom.  Show that the maximum
+luminosity that a central mass $M$ can have and not spontaneously eject
+hydrogen by radiation pressure is
+\begin{align}
+L_{\rm EDD}&=4\pi GMcm_{\rm H}/\sigma_T\\
+&= 1.25\cdot10^{38}~{\rm erg}~{\rm s}^{-1} (M/M_\odot)\nonumber,
+\end{align}
+where $M_\odot$ is the mass of the Sun.  This is called the {\it Eddington Limit}.
+
+\def\Tex{{T_{\rm ex}}}
+\section{Hyperfine Emission from Neutral Hydrogen}
+
+Neutral hydrogen in the electronic ground state can be in one of two hyperfine
+states. Denote the number density of atoms in the ground hyperfine level
+(singlet state) as $n_0$, and the number density of atoms in the excited hyperfine
+level (triplet state) as $n_1$. DEFINE the excitation temperature, $\Tex$, of the
+transition as
+\begin{equation}
+\frac{n_1}{n_0}=\frac{g_1}{g_0}e^{-h\nu/k\Tex}.
+\end{equation}
+Here, $h\nu=hc/\lambda$ is the mean energy difference between the levels, and
+$g_0=1$ and $g_1=3$ are the statistical weights of the levels. The excitation
+temperature is merely another way of expressing the ratio of ground state to
+excited state populations. By definition, if a gas is in local thermodynamic
+equilibrium (LTE) at some gas kinetic temperature $T$, then $\Tex = T$; the level
+populations are distributed in Boltzmann fashion at the local temperature $T$.
+Some people refer to the excitation temperature for the $\lambda = 21$ cm transition as
+the {\it spin temperature}. But use of the term ``excitation temperature" is general
+to any line transition; it is simply a measure of how excited an atom is.
+
+\def\Ts{{T_*}}
+\subsection{}
+Define $\Ts=h\nu/k$ and compute its value.
+It is likely that $\Tex\gg\Ts$. For the remainder of this problem, work in the $\Ts/\Tex\ll1$
+limit.
+
+\subsection{}
+Write down the absorption coefficient, $\alpha_\nu$ (units of per length), for
+this transition. Express your answer in terms of $\phi(\nu)$(the line profile
+function), $A_{21}$ (Einstein A coefficient), $\lambda$, whatever densities you need, and
+$\Ts/\Tex$. Do not forget the correction for stimulated emission.
+
+\subsection{}
+Write down the volume emissivity, $j_\nu$ (units of erg s$^{-1}$ cm$^{-3}$ Hz$^{-1}$ sr$^{-1}$), for
+this transition. Use whatever quantities defined above that you need.
+
+\subsection{}
+Write down the source function, $S_\nu$, for this transition.
+
+\subsection{}
+Write down the specific intensity, $I_\nu$, of a cloud of HI that is optically
+thin along the line-of-sight (l-o-s). Take the l-o-s dimension of the cloud to
+be $L$, and give the answer only to leading order in $\tau\ll1$, where $\tau$ is the
+optical depth at an arbitrary wavelength.
+
+Does your answer depend on $\Tex$?  If someone gives you a spectrum of the 21-cm
+line that appears in emission and tells you that the line was emitted from an
+optically thin cloud, what physical quantities can you infer from the spectrum?
+
+\subsection{}
+Write down the optical depth of the cloud. Does your answer depend on $\Tex$?
+
+\subsection{}
+How large would $L$ have to be for the cloud to be marginally optically
+thick? Use a gas density of $n=1~{\rm cm}^{-3}$, a gas temperature of $T = 100$ K, and an
+excitation temperature $\Tex = T$ . Assume the line is only thermally broadened.
+
+\end{document}
