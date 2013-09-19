@@ -37,10 +37,9 @@ The mass scattering coefficient is therefore $>\sigma_T/m_{\rm H}$,
 where $m_{\rm H}$ is the mass of a hydrogen atom.  Show that the maximum
 luminosity that a central mass $M$ can have and not spontaneously eject
 hydrogen by radiation pressure is
-\begin{align}
-L_{\rm EDD}&=4\pi GMcm_{\rm H}/\sigma_T\\
-&= 1.25\cdot10^{38}~{\rm erg}~{\rm s}^{-1} (M/M_\odot)\nonumber,
-\end{align}
+\begin{equation}
+L_{\rm EDD}=4\pi GMcm_{\rm H}/\sigma_T = 1.25\cdot10^{38}~{\rm erg}~{\rm s}^{-1} (M/M_\odot),
+\end{equation}
 where $M_\odot$ is the mass of the Sun.  This is called the {\it Eddington Limit}.
 
 \def\Tex{{T_{\rm ex}}}
@@ -100,5 +99,35 @@ Write down the optical depth of the cloud. Does your answer depend on $\Tex$?
 How large would $L$ have to be for the cloud to be marginally optically
 thick? Use a gas density of $n=1~{\rm cm}^{-3}$, a gas temperature of $T = 100$ K, and an
 excitation temperature $\Tex = T$ . Assume the line is only thermally broadened.
+
+\def\He{{^3{\rm He}^+}}
+\section*{\centering Problem Set 4 (part 2)}
+
+\section{Hyperfine $\He$}
+Observations of the hyperfine transition in $\He$ are used to probe the $\He/H$ abundance
+in the galaxy.  This abundance reflects the primordial yield from big bang nucleosynthesis
+and galactic chemical evolution.
+
+\subsection{}
+Estimate, using the scaling relations presented in class and whatever facts you
+remember, the wavelength of the ground-state electronic (i.e. Ly-$\alpha$ equivalent) transition of $\He$.
+
+\subsection{}
+Estimate, using the scaling relations presented in class and whatever facts you
+remember, the wavelength of the ground-state hyperfine transition of $\He$.  Compare
+to the true answer of 3.46 cm.
+
+\subsection{}
+Here is a way of estimating an Einstein $A_{21}$ coefficient.  $A_{21}^{-1}$ is 
+essentially the expected lifetime of an excited state.  A reasonable semi-classical estimate
+of this timescale is $t_{\rm life}\sim\frac{E}{P}$, where
+$E$ is the energy of the transition, and $P$ is the rate at which
+energy is being radiated --- the power.
+An accelerated charge radiates power according to Lamor's formula:
+\begin{equation}
+P=\frac23\frac{e^2\ddot x^2}{c^2}
+\end{equation}
+where $\ddot x$ is the second derivative of position with time, or acceleration.  Estimate
+$A_{21}$ for the ground-state electronic (Ly-$\alpha$-like) transition of $\He$.
 
 \end{document}
