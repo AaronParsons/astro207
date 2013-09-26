@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{titlesec}
 \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
@@ -86,5 +87,121 @@ electric dipole moment. This problem is similar except that it concerns an
 accelerating magnetic dipole moment.
 
 \section*{\centering Problem Set 5 (part 2)}
+
+\def\Tex{{T_{\rm ex}}}
+\def\Jbar{{\bar J}}
+\def\qot{{q_{12}}}
+\def\qto{{q_{21}}}
+\def\Ato{{A_{21}}}
+\section{21 (Flavors of) Temperatures for 21cm Radiation}
+
+This problem revisits the famous hyperfine transition in neutral hydrogen. Here
+we try to understand what sets the excitation (spin) temperature, $\Tex$. (In a
+previous problem set, we merely contented ourselves with the statement that 
+$\Tex\gg T_*$.  While we're at it, we learn more astronomer's jargon.
+
+In general, the excitation temperature of a transition is influenced by two
+factors: (1) the radiation field, and (2) collisions with surrounding species.
+
+The radiation field can either excite the atom through photon absorption, or
+de-excite through stimulated emission. Measure the strength of the ambient
+radiation field at 21 cm by $\Jbar$, the mean (i.e., angle-averaged) intensity
+integrated over the hyperfine line $\nu$ profile (recall Rybicki \& Lightman chapter
+1).
+
+As for collisions, consider here exciting and de-exciting collisions with
+fellow neutral hydrogen atoms; Purcell and Field (1957, hereafter PF) conclude
+that collisions between a given electronic-ground-state H atom and other
+electronic-ground-state H atoms are most important in the predominantly neutral
+HI clouds of the ISM. (Electrons are $\sim$42 times faster and tend to dominate
+the excitation dynamics in other situations, but assume here that there are too
+few of them in these cold clouds.) Denote the collisional excitation rate
+coefficient by $\qot$, and the collision de-excitation rate coefficient by
+$\qto$ Assume for this problem that both hyperfine-excited and hyperfine-
+ground atoms can excite or de-excite the hyperfine level in an atom.
+\footnote{ In truth, excitations and de-excitations proceed, as PF describe, by
+``spin-exchange" collisions, in which an electron with a certain spin in one H
+atom swaps places with an electron having a different spin coming from the
+colliding H atom. A given atom can swap its way up to the hyperfine excited
+state, or swap its way down to the hyperfine ground state. Here we follow PF
+and place the relative probabilities of undergoing a swap-up versus a swap-down
+into $\qot$ and $\qto$.}
+
+\def\TK{{T_{\rm K}}}
+\def\TR{{T_{\rm R}}}
+\subsection{} Write down the equation of global (not detailed!) balance for
+this transition. That is, write down the statement that the rate of excitations
+(from all possible channels) per volume per time equals the rate of
+de-excitations (from all possible channels) per volume per time.
+
+Use only the following variables: $n_1$ and $n_2$ are the number densities of atoms
+in the ground and excited states, respectively, $n = n_1 + n_2$, $\TK$ is the kinetic
+temperature of the atoms that move according to a Maxwellian, $\qot$, any Einstein
+coefficients you want, $\Jbar$,and the statistical weights $g_1$ and $g_2$
+of the ground and excited states, respectively. 
+
+What you have written down is an equation for the excitation temperature 
+$(\Tex\leftrightarrow n_1/n_2)$
+in terms of the radiation field and the rate of collisions. Regard the
+latter two as given throughout this problem.
+
+\subsection{} DEFINE a ``radiation temperature," $\TR$ , from $\Jbar$ as
+\begin{equation}
+\Jbar_\nu\equiv B_\nu(\TR)
+\end{equation}
+
+Note that we are NOT saying the ambient radiation field is Planckian. We are
+merely DEFINING a number $\TR$ by using Planck's function, $B_\nu$, 
+where $\nu=1420$ MHz,
+the frequency of the 21 cm line.
+
+Re-write your equation in the previous section to solve for $\Tex$ in terms of the following
+variables: $\TK$, $\TR$, $T_∗\equiv h\nu/k$ (recall last problem set), and the dimensionless
+variable
+\begin{equation}
+z\equiv\frac{g_1 n\qot T_*}{g_2 A_{21}\TK}
+\end{equation}
+
+where $\Ato=2.85\cdot10^{-15}~{\rm s}^{-1}$ is the Einstein decay coefficient.
+Use the very likely condition that $\TK$ , $\TR\gg T_*$ to rid your equation of all
+exponentials.
+
+Verify that if $z\gg1$, $\Tex\approx\TK$ (collisions beat radiation; the transition is in
+LTE at $\TK$), but that if $z\ll1$, $\Tex\approx\TR$ (radiation beats collisions; the
+transition is not in LTE at $\TK$).
+
+\subsection{} To order of magnitude (actually much better than that), what
+fraction of HI is in the excited hyperfine state? Recall that $g_1 = 1$ and $g_2 = 3$
+and use the very likely condition that $\TK$, $\TR\gg T_*$.
+
+\def\nuPF{{\nu_{\rm PF}}}
+\subsection{} Estimate the value for $z$ for an HI cloud at $\TK = 100K$, $n =
+1 {\rm cm}^{−3}$. Use Table 1 and equation (9) of PF; note that PF's collision
+frequency $\nu=n\langle\sigma v\rangle$ is not the same as our line frequency $\nu$ ; 
+call PF's $\nu=\nuPF$; then $n\qot=3\nuPF/8$.  (For those interested, the 3/8 can be understood
+easily; skim the first 3 pages of PF and use your answer from the previous section). 
+
+Based on your answer, would you expect collisions or radiation to be more
+important in determining the degree of excitation?
+
+\def\ncrit{{n_{crit}}}
+\subsection{} ``Critical densities," $\ncrit$, for exciting the line by collisions are 
+defined by setting the rate of spontaneous decays equal to the rate of collisional 
+de-excitations. Show that such a procedure gives
+\begin{equation}
+\ncrit=\frac{\Ato}{\qto}
+\end{equation}
+and solve for its value for this line at $\TK = 100$K.
+
+One can define $\ncrit$ for any line transition at any temperature; it is a
+crude gauge of the density of colliders required for collisions to be important
+in setting the level populations.
+
+\subsection{} Suppose radio observations are made that spatially resolve
+emission from a uniform HI cloud that is optically thick to its own 21 cm line
+radiation. Prove that the observed specific intensity, $I_\nu$, equals 
+\begin{equation}
+I_\nu=\frac{2k\Tex}{\lambda^2}.
+\end{equation}
 
 \end{document}
