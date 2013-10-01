@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 6 (part 1)}
+
+\section{Saha and the Redshift of Recombination}
+
+Based on Rybicki \& Lightman 9.4.
+
+The thermal de Broglie wavelength of electrons at temperature $T$ is
+defined by $\lambda=h/(2\pi mkT)^{1/2}$.  The degree of degeneracy of
+the electrions can be measured by the number of electrons in a cube $\lambda$
+on a side:
+\begin{equation}
+\xi\equiv n_e\lambda^3\approx 4.1\cdot10^{-16}~n_e T^{-\frac32}
+\end{equation}
+For many cases of physical interest, the electrons are very non-degenerate,
+with the quantity $\gamma\equiv{\rm ln}~\xi^{-1}$ being of order 10 to 30.
+We want to investigate the consequences of the Blotzmann and Saha equations of
+$\gamma$ being large and only weakly dependent on temperature.  For the present
+purposes, assume that the partition functions are independent of temperature
+and of order unity.
+
+\subsection{}
+\label{sec:p1a}
+Show that the value of temperature at which the stage of ionization passes from
+$j$ to $j+1$ (i.e. when the $j+1$th electron is knocked off) is given approximately by
+\begin{equation}
+kt\sim\frac\chi\gamma
+\end{equation}
+where $\chi$ is the ionization potential between stages $j$ and $j+1$.  Therefore,
+this temperature is much smaller than the ionization potential expressed in
+temperature units.
+
+\subsection{}
+The rapidity with which the ionization stage changes is measured by the
+temperature range $\Delta T$ over which the ration of populations 
+$N_j/N_{j+1}$ changes substantially.  Show that
+\begin{equation}
+\frac{\Delta T}{T}\sim\left[\frac{d{\rm log}(N_{j+1}/N_j)}{d\rm{log} T}\right]^{-1}\sim\gamma^{-1}
+\end{equation}
+Therefore, $\Delta T$ is much smaller than $T$ itself, and the change occurs rapidly.
+
+\subsection{}
+Using the Boltzmann equation and the result from \S\ref{sec:p1a}, show that when $\gamma$
+is large, an atom or ion stays mostly in its ground state before being ionized.
+
+\subsection{}
+Calculate the redshift, $z_{rec}$, at which recombination occurred 
+in the early universe. Use the temperature-redshift relation
+\begin{equation}
+T_{\rm photon} = T_0(1+z) 
+\end{equation}
+and the relation between baryonic number density and redshift
+\begin{equation}
+n=n_0(1 + z)^3.
+\end{equation}
+
+Here $T_0 = 2.73K$ is the temperature of the cosmic microwave photon gas today,
+and $n_0 = 10^{-7} cm^{-3}$ is the number density of baryons (read: hydrogen atoms)
+today, grossly averaged over the entire universe. You may define the epoch of
+recombination to be when 0.5 of the protons have recombined to form neutral
+hydrogen.  
+
+(Redshift is a cosmologist’s measure of time. A redshift $z = 0$
+corresponds to today. As one goes back in time, the redshift increases. Photons
+that have travelled from an epoch corresponding to a redshift $z$ have their
+original wavelengths, $\lambda$, stretched to a longer wavelength, $\lambda^\prime$, by the expansion
+of the universe. By definition, $\lambda^\prime/\lambda=1+z$.)
+
+\end{document}
