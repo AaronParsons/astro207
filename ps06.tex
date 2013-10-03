@@ -5,6 +5,10 @@
 \usepackage{titlesec}
 \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 
+\def\Te{{T_e}}
+\def\Tp{{T_p}}
+\def\tep{{t_{ep}}}
+\def\trec{{t_{rec}}}
 \begin{document}
 \pagestyle{empty}
 \parindent=0pt
@@ -75,5 +79,95 @@ corresponds to today. As one goes back in time, the redshift increases. Photons
 that have travelled from an epoch corresponding to a redshift $z$ have their
 original wavelengths, $\lambda$, stretched to a longer wavelength, $\lambda^\prime$, by the expansion
 of the universe. By definition, $\lambda^\prime/\lambda=1+z$.)
+
+\section*{\centering Problem Set 6 (part 2)}
+
+\section{Blowing Str\"omgren Bubbles}\label{p2}
+
+Consider a lone O star emitting $\eta$ Lyman limit photons per second. It sits
+inside hydrogen gas of infinite extent and of number density n. The star
+ionizes an HII region—a.k.a. a ``Str\"omgren sphere," after Bengt Str\"omgren, who
+understood that such spheres have sharp boundaries—in which hydrogen is nearly
+completely ionized.
+
+Every Lyman limit photon goes towards ionizing a neutral hydrogen atom. That
+is, every photon emitted by the star goes towards maintaining the Str\"omgren
+bubble. Put yet another way, no Lyman limit photon emitted by the star travels
+past the radius of the Str\"omgren sphere.
+
+The rate at which Lyman limit photons are emitted by the central star equals
+the rate of radiative recombinations in the ionized gas. The sphere is nearly
+completely ionized\footnote{The 
+sphere cannot be 100\% ionized because then there would be no neutrals to
+absorb the Lyman limit photons that are continuously streaming out of the star.}.
+These facts of photo-ionization equilibrium determine the
+approximate radius of the Str\"omgren sphere.
+
+The temperature inside the sphere is about 10000 K. (A class on the interstellar medium can show you why.)
+
+\subsection{} OPTIONAL
+
+Derive a symbolic expression for the radius of the Str\"omgren sphere using the
+above variables and whatever variables were introduced in lecture.
+
+\subsection{}\label{p2partb}
+
+What is the timescale, $\trec$, over which a free proton radiatively recombines in
+the sphere? That is, how long would a free proton have to wait before
+undergoing a radiative recombination? Give both a symbolic expression, and a
+numerical evaluation for $n = 1~{\rm cm}^{-3}$.
+
+\subsection{}
+
+If the star were initially ``off," and the gas surrounding it initially neutral,
+what is the timescale for the Str\"omgren sphere to develop after the star were
+turned ``on"? That is, how long does the star take to blow an ionized bubble?
+Think simply and to order-of-magnitude; you should get the same answer as \ref{p2partb}.
+
+\section{Time to Relax in the Str\"omgren Sphere}
+
+It is often assumed that velocity distributions of particles are Maxwellian.
+The validity of this assumption rests on the ability of particles to collide
+elastically with one another and share their kinetic energy. For a Maxwellian
+to be appropriate, the timescale for a collision must be short compared to
+other timescales of interest. This problem tests these assumptions for the case
+of the Str\"omgren sphere of nearly completely ionized hydrogen of problem \ref{p2}.
+
+\subsection{}\label{p3parta}
+
+Establishing the electron (kinetic) temperature: what is the timescale, $t_e$, for
+free electrons in the Str\"omgren sphere to collide with one another? Consider
+collisions occurring at relative velocities typical of those in an electron
+gas at temperature $\Te$. Work only to order-of-magnitude and express your answer
+in terms of $n$, $\Te$, and other fundamental constants.
+
+I think it is fair to say that this problem is done most easily in cgs units.
+
+\subsection{}\label{p3partb}
+
+Establishing the proton (kinetic) temperature: repeat \ref{p3parta}, but for
+protons, and consider collisions at relative velocities typical of those in a
+proton gas of temperature $\Tp$. Call the proton relaxation time tp.
+
+\subsection{}\label{p3partc}
+
+Establishing a common (kinetic) temperature: suppose that initially, $\Te>\Tp$.
+What is the timescale over which electrons and protons equilibrate to a
+common kinetic temperature? This is not merely the timescale for a proton to
+collide with an electron. You must consider also the amount of energy exchanged
+between an electron and proton during each encounter. Estimate, to
+order-of-magnitude, the time it takes a cold proton to acquire the same kinetic
+energy as a hot electron. Call this time $\tep$. Again, express your answer
+symbolically.
+
+Hint: you might find it helpful to switch the charge on the electron and
+consider head-on collisions between the positive electron and positive proton.
+
+\subsection{}\label{p3partd}
+
+Numerically evaluate $t_e/\trec$, $t_p/\trec$, and $\tep/\trec$, for $\Te\sim\Tp\sim 10^4$ K
+(but $\Te\ne\Tp$ so that $\tep\ne 0$). Is assuming a Maxwellian distribution of
+velocities at a common temperature for both electrons and ions a good
+approximation in Str\"omgren spheres?
 
 \end{document}
