@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+\pagestyle{empty}
+%\parindent=0pt
+
+\section*{\centering Problem Set 7 (part 1)}
+
+\section{Pulsar Dispersion Measure}
+
+A radio astronomer uses the Green Bank Telescope to observe a pulsar 
+in a band from 1 to 2 GHz, recording a frequency power spectrum about every 10 ms.  The resulting
+(noisy) frequency spectrum is recorded as pulsar.dat (available on the course GitHub repo).  It looks like 
+noise, but
+I promise you that, for the right dispersion measure, there is a pulse in there.
+
+\subsection{}
+De-disperse the measured power spectra to determine the 
+DM of the pulsar.  You may have to try many DMs to find the one that works.
+To help you, the beginning of the file is timed to the arrival time without dispersion delay.  For bonus
+points, you could make your code not depend on this fact.
+
+Just a warning: be careful about the difference between $\omega$ and $\nu$.  The reported frequencies in
+the data file are $\nu$, of course.
+
+\subsection{}
+For an assumed density of electrons in the interstellar medium of 0.03 cm$^{-3}$, calculate the 
+distance to this pulsar. Does this seem reasonable (what scale would you use to judge ``reasonable")?
+
+\subsection{}
+For such an assumed electron density, is the radio astronomer safely observing above the plasma cut-off frequency?
+
+\subsection{}
+In an earlier problem set (the Eddington limit), 
+we made use of the Thomson cross-section, $\sigma_T=6.65\cdot10^{-25}~{\rm cm}^2$,
+for a photon scattering off an electron. We will discuss Thomson scattering in more detail later, but
+for now,
+calculate the optical depth to Thomson scattering along the line-of-sight to this pulsar.
+
+\section{Faraday Rotation}
+
+Consider the propagation of light thorugh a magnetized plasma.  The magnetic field is uniform: $\vec B_0=B_0\hat z$.
+Light travels parallel to $\hat z$.
+
+An electron in the plasma feels a force from the electromagnetic wave and a force from the externally imposed
+$B$-field.  Its equation of motion reads
+\begin{equation}
+m\dot \vec v=-e\vec E-\frac{e}{c}\vec v\times \vec B_0
+\end{equation}
+where the electric field $\vec E$ can be decomp[osed into right-circularly polarized (RCP) and
+left-circularly-polarized (LCP) waves:
+\begin{equation}
+\vec E=E_0(\hat x\mp i\hat y)e^{i(k_\mp z-\omega t)}
+\end{equation}
+where it is understood that the real part of $\vec E$ should be taken.  The upper sign ($-$) corresponds
+to RCP waves, while the lower sign ($+$) corresponds to LCP waves.
+
+In the equation of motion above, we have neglected the Lorentz force from the wave's
+$B$-field, since it is small (by $v/c$) compared to the force from the wave's $E$-field.
+
+\subsection{}
+Prove that the solution of the equation of motion reads
+\begin{equation}
+\vec v=\frac{-ie}{m(\omega\pm\omega_{cyc})}\vec E
+\end{equation}
+where $\omega_{cyc}\equiv eB_0/mc$.  This is the hardest part of the derivation for the dispersion
+relation of RCP and LCP waves.
+
+\subsection{}
+Based on Rybicki \& Lightman Problem 8.3.
+
+The signal from a pulsed, polarized source is measured to have an arrival time delay that varies
+with frequency as $dt_p/d\omega=1.1\cdot10^{-5}~{\rm s}^2$, and a Faraday rotation that
+varies with frequency as $d\Delta\theta/d\omega=1.9\cdot10^{-4}~{\rm s}$.  The measurements are
+made around the frequency $\omega=10^8~{\rm s}^{-1}$, and the source is at unknown distance from
+the earth.  Find the mean magnetic field, $\langle B_\parallel\rangle$, in the interstellar space
+between the earth and the source:
+\begin{equation}
+\langle B_\parallel\rangle\equiv\frac{\int{n B_\parallel~ds}}{\int{n~ds}}
+\end{equation}
+
+\section*{\centering Problem Set 7 (part 2)}
+
+\section{The Orion Nebula}
+
+\subsection{}
+
+Sketch the flux density, $F_\nu$, for the Orion Nebula due to its free-free
+emission from a wavelength of $\lambda=100~\mu m$ to $\lambda=100~cm$. Express $F_\nu$ in Jys
+($10^{-23}$ is cgs units). Plot the spectrum on a log-log plot, and indicate
+power-law indices where appropriate.  
+
+Take the density of electrons to be 
+$n_e=2\cdot10^3~{\rm cm}^{-3}$,
+the electron and proton temperatures to be $T=T_e=T_p=8\cdot10^3~K$,
+the dimension of the ionized cloud to be $R=1pc$, and the distance to the Orion
+Nebula to be $d = 500 pc$. Take whatever geometry (cube, sphere) for the cloud is
+most convenient.  
+
+{\it Please do not forget free-free self-absorption.}
+
+\subsection{} OPTIONAL 
+Overlay on your plot $F_\nu$ from pure electron-electron
+scatterings. Here aim only for order-of-magnitude accuracy. Keep in mind that
+electron-electron collisions involve time-varying quadrupole moments, not
+time-varying dipole moments, and recall the quadrupole vs. dipole scalings from
+our discussion of Einstein A's.  
+
+For this part, consider the emissivity ($j_\nu$)
+purely from electron-electron scatterings. Drop the emissivity from
+electron-proton scatterings. However, for the absorptivity ($\alpha_\nu$), consider the
+contributions from both electron-proton and electron-electron scatterings. If
+you think one absorption process is more important than the other, justify why
+you think that is the case and proceed by including just the one.
+
+\end{document}
