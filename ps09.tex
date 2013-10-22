@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+\pagestyle{empty}
+%\parindent=0pt
+
+\section*{\centering Problem Set 9 (part 1)}
+
+\section{Great Balls of (Relativistic) Fire}
+
+Based on Rybicki \& Lightman 4.1.
+
+In astronomy, it is frequently argued that a source of radiation that
+undergoes a fluctuation of duration $\Delta t$ must have a physical
+diameter of order $D\lesssim c\Delta t$.  This argument is based on the 
+fact that even if all portions of the source undergo a disturbance at the same instant
+and for an infinitesimal period of time, the resulting signal at the
+observer will be smeared out over a tie interval of $\Delta t_{min}\sim D/c$
+because of the finite light travel time across the source.  Suppose, however,
+that the source is an optically thick spherical shell of radius $R(t)$ that
+is expanding with relativistic velocity $\beta\sim1$,$\gamma\gg1$ and energized
+by a stationary point at its center.  
+By consideration of relativistic beaming effects,
+show that if the observer sees a fluctaion from the shell of duration $\Delta t$
+at time $t$, the source may actually be of radius
+\begin{equation}
+R<2\gamma^2c\Delta t
+\end{equation}
+rather than the much smaller limit given by the nonrelativistic considerations.
+In the rest frame of the shell surface, each surface element may be treated
+as an isotropic emitter.
+
+This latter argument has been used to show that the active regions
+in quasars may be much larger than $c\Delta t\sim1$ light month across,
+and thus avoids much energy being crammed into so small a volume.
+
+\section{The Blob}
+
+Based on Rybicki \& Lightman 4.7.
+
+An object emits a blob of material at speed $v$ at an angle $\theta$ to
+the line-of-sight of a distant observer.
+
+\subsection{}
+Show that the apparent tansverse velocity inferred by the observer
+(i.e. the angular velocity on the sky times the distance to the object) is
+\begin{equation}
+v_{app}=\frac{v\sin\theta}{1-(v/c)\cos\theta}
+\end{equation}
+
+\subsection{}
+Show that $v_{app}$ can exceed $c$; find the angle for which $v_{app}$ is maximum,
+and show that this maximum is $v_{max}=\gamma v$.
+
+\subsection{}
+Plot $v_{app}/c$ versus $\theta$ for $\gamma=10^2$.  Does the viewing angle $\theta$
+need to be especially small for superluminal motion to be perceived?
+
+\section{Problem Set 9 (part 2)}
+
+\section{Synchrotron Losses}
+
+\subsection{}
+Obtain an analytic expression for the energy of a single relativistic
+electron as a function of time, $E(t)$, taking into account its energy loss by
+synchrotron radiation. Your expression should contain only the variables $E(0)$
+(the initial energy of the electron), $B$ (the magnetic field, here held fixeId
+with time, following the rest of the world, though one should worry in general
+about the field changing with time just as the electron energy spectrum changes
+with time), time $t$, and fundamental constants. Assume $\sin\alpha=1$ (the electron
+pitch angle is 90 degrees) for simplicity.
+
+For (synchrotron) problems of interest to us, the electron always remains
+relativistic. It merely evolves from a large $\gamma\gg1$ to a smaller $\gamma\gg1$.
+
+\subsection{}
+How can you reconcile the loss of energy of the electron with the bald
+statement of Rybicki \& Lightman on page 168 that 
+\begin{equation}
+\frac{d}{dt}(\gamma mc^2)=q\vec v\cdot \vec E=0
+\end{equation}
+implies``$\gamma$ is constant"?
+
+\subsection{}\label{partc}
+We have made arguments in class that power-law distributions of electrons in
+astrophysical sources are maintained against synchrotron losses by continuous
+energization by central engines (a.k.a. injection). The injection (input)
+spectrum of electrons is modified by synchrotron losses to produce a
+steady-state (output) distribution.
+
+Call $\eta(E,t)=dN/dE$ the differential energy spectrum of electrons as
+discussed repeatedly in class. Continuity of electrons in energy space reads
+\begin{equation}
+\frac{\partial\eta(E,t)}{\partial t}+\frac{\partial}{\partial E}[\dot E\eta(E,t)]=I
+\end{equation}
+where $I$ is the rate of injection of electrons with some input distribution
+and $\dot E$ is the rate of energy loss of a single electron by synchrotron
+radiation. This equation should not mystify you; it merely describes how the
+number of electrons in a given energy
+bin changes with time, taking into account a flux divergence (the second term
+on the left-hand-side) and a source term (the right-hand-side).
+
+We have assumed in class a steady-state distribution of electron energies for which
+$\eta\propto E^p$.  Given $p$, how must $I$ scale with $E$?  Give on the scaling and
+forget about the numerical coefficients.
+
+As with most scaling problems, you don’t have to solve anything in detail. Ruthlessly work to order of magnitude.
+
+\subsection{}\label{partd}
+Electrons having a given energy must wait a characteristic time 
+before synchrotron losses become important. Before this time elapses 
+for all such electrons, how does $\eta$ scale with $E$?
+
+\subsection{}
+The spectral index ($\alpha = d\ln F_\nu/d\ln\nu$) of radiation in a fixed frequency
+range from a radio jet flattens with increasing distance from the central
+galaxy. That is, $\alpha = −0.5$ at the remote edge of the jet (the ``hot spot"), and $\alpha=-1$
+closer in. Given your understanding in \ref{partc} and \ref{partd}, where are the
+``freshest" electrons located, i.e., those newly injected into the energy
+spectrum? Are they at the end of the jet, or are they closer in? In other
+words, where is the principal site of particle acceleration?
+
+\end{document}
