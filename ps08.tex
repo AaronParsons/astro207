@@ -13,7 +13,7 @@
 
 \section{A Compton Monte Carlo}
 
-An intuitive and commonly applied method for modeling in- verse Compton
+An intuitive and commonly applied method for modeling inverse Compton
 emission is to us a Monte Carlo approach, in which the radiation field is
 represented by discrete, individual packets of photons. The fate of each photon
 packet is determined by ``rolling the dice", i.e., choosing random numbers drawn
@@ -44,6 +44,7 @@ $\theta^\prime_{out}$ is the outgoing angle (in the rest frame).  We simulate
 a scattering by sampling the incoming and outgoing directions randomly. (Since
 we are considering $\tau\ll1$, we will only need to scatter each packet once).
 Assume, for simplicity, that $\theta_{in}$ and $\theta^\prime_{out}$ are isotropic,
+% XXX for next time, these should be uniform in cos theta to mimic dipole response
 and generate them randomly.  After a random scattering, the packet has a new luminosity
 \begin{equation}
 L_{out} = L_p\frac{E_{out}}{E_{in}}(1-e^{-\tau})
@@ -102,7 +103,7 @@ A cloud of non-relativistic electrons is maintained at a temperature, $T$.  The 
 scattering, $\tau_{es}\gg1$, but very thin to absorption, $\tau_*(h\nu=kT)\ll1$.  A copious
 supply of ``soft" photons, each of characteristic energy $E_i\ll kT$ is injected into the cloud.
 As a result of inverse Compton scattering, these initially soft photons emerge from the cloud 
-with characteristic energies $E_f\gg E_i$.  It is foud that $E_f$ increases rapidly with
+with characteristic energies $E_f\gg E_i$.  It is found that $E_f$ increases rapidly with
 increasing $\tau_{es}$ as the latter is varied, until $\tau_{es}$ reaches a critical value
 $\tau_{crit}$, above which the Comptonization process saturates.
 
