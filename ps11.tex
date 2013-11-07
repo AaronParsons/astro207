@@ -48,9 +48,14 @@ $\kappa(\lambda)$ contributed by all dust grains over the wavelength range $\lam
 wavelength which grain sizes dominate the opacity.
 
 
-\section*{Problem Set 10 (part 2)}
-
 \section{Diatomic}
+
+\begin{figure}[!ht]\centering
+\includegraphics[width=2in]{ps11_linewidth.png}
+\caption{
+Line width as a function of density for emission from a medium of diatomic molecules.
+}\label{fig:linewidth}
+\end{figure}
 
 Based on Rybicki \& Lightman 11.1.
 
@@ -65,12 +70,6 @@ Estimate $r_0$ in terms of fundamental constants.
 Estimate the cross-section $\sigma_c$ for collisions between molecules.
 
 \subsection{}
-\begin{figure}
-\includegraphics[width=3in]{ps11_linewidth.png}
-\caption{
-Line width as a function of denisty for emission from a medium of diatomic molecules.
-}\label{fig:linewidth}
-\end{figure}
 
 It is experimentally observed that , as a function of mass density $\rho$ of
 the medium, the line width of the rotational lines has the form
@@ -78,31 +77,40 @@ shown in Figure \ref{fig:linewidth}.  If only Doppler and collisional broadening
 are present, estimate $\rho_0$ and show that it may be written completely in
 terms of fundamental constants, independent of $m_p$. 
 
-We derived in class that for a synchrotron self-Compton (SSC) emitting source
-that is static in bulk, the ratio of the luminosity due to first-generation
-inverse Compton scattering of synchrotron photons to the luminosity due to synchrotron processes is
-\begin{equation}
-f\equiv\frac{L_{IC,1}}{L_{sync}}=C\nu_mT_{bm}^5
-\end{equation}
-where $\nu_m$ is the frequency at which the synchrotron spectrum beaks, and $T_{bm}$
-is the brightness temperature of the synchrotron radiation at that frequency.
+\section{The Forest for the Trees}
+
+\begin{figure}[!ht]\centering
+\includegraphics[width=3in]{lya_forest.png}
+\caption{
+Some typical Ly-$\alpha$ forest absorption features in high-redshift quasars.
+}\label{fig:lya_forest}
+\end{figure}
 
 \subsection{}
-Derive an estimate for the constant $C$ in terms of fundamental constants.
-Assume whatever geometry you like for the source.  I found I had to use the (usual)
-constants $e$, $k$, $c$, and $m_e$.
+Plot the Lorentzian (natural) line profile function for Ly-$\alpha$.  Overlay on the same plot a Doppler
+profile corresponding to a temperature of 100 K.  Calculate numerically the total (Voigt) line profile
+function and overlay it as well.  Make sure you get your normalizations correct.  Identify, in the Voigt
+profile, the transition between the Lorentzian and Doppler-dominated regimes.
 
 \subsection{}
-If $\nu_m\sim1~{\rm GHz}$ (as it typically is for compact radio sources), what is the
-maximum $T_{bm}$ above which $f>1$?  Express in Kelvin.
+Suppose we observe the Ly-$\alpha$ transition in absorption, perhaps because of a cloud of (fractionally neutral)
+hydrogen backlit by a bright quasar.  Such clouds give rise to a ``forest" of absorption features in
+high-redshift quasar spectra (which are typically called the ``Lyman-$\alpha$ forest") because redshifting
+causes the Lyman-$\alpha$ frequency in the rest frame of the cloud to appear at different observed
+frequencies (see Figure \ref{fig:lya_forest}).
+
+Plot, for each of the line profiles above, the absorption feature
+you would observe for a neutral hydrogen column density of $10^6~{\rm cm}^{-2}$.  You'll probably
+want to think carefully about how to incorporate your line profile function into a cross-section for
+absorption.
 
 \subsection{}
-Given $f$, what is $L_{IC,2}/L_{IC,1}$?  That is, what is the ratio of second-generation
-to first-generation scattered power?  Explain your answer.
+If we were to measure the width (at half-max) of a particular ``tree" (absorption feature) in a
+quasar spectrum, how could we back out the temperature and/or the column density of the cloud that gave
+rise to that feature?  Over what range of optical depths might this be possible?  You may find it helpful
+to tune your plotter over a range of column densities and temperatures to map out features that can help
+you identify (and distinguish between) the observed effects of column density and cloud temperature.
 
-\subsection{}
-Consider the situation after $N$ scatterings, where $N\rightarrow\infty$.  What is the 
-critical $f$ for which the total luminosity of the source becomes unbounded?  Careful
-estimates will be rewarded.
+
 
 \end{document}
