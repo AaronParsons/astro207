@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+\pagestyle{empty}
+%\parindent=0pt
+
+\def\nufs{{\nu_{fs}}}
+\section*{\centering Problem Set 12}
+
+\section{Flipping Spins at the Epoch of Reionization}
+
+Observations of the 21 cm line at redshifts of $z\ge10$ could probe the
+distribution of neutral hydrogen at the epoch of reionization, providing new
+insight into astrophysics and cosmology. This is the goal of a new generation
+of radio interferometers e.g., the Murchison Widefield Array (MWA), the LOw
+Frequency ARray (LOFAR), the Precision Array to Probe the Epoch of Reionization
+(PAPER), the 21 cm Array (21CMA), and the Giant Meterwave Radio Telescope
+(GMRT), along with next generation instruments like the Square Kilometer Array
+(SKA).
+
+\begin{figure}[!ht]
+\includegraphics[height=3in]{spintemp.png}
+\caption{
+Schematic picture of the predicted cosmological 21 cm signature through the
+epoch of reionizaiton. From Prichard and Loeb (2012).
+}\label{fig:spintemp}
+\end{figure}
+
+Due to cosmological redshift, the 21 cm signal at different epochs will map to
+different wavelengths; hence we may be able to read off the evolution of
+hydrogen gas from a spectrum. Figure \ref{fig:spintemp}, from the nice review article of
+Prichard and Loeb (2012) , shows what the spectrum might look like. At
+different redshifts, the 21cm line may be seen in either emission or absorption
+relative to the background radiation source, which is generally the CMB. Here
+we consider the basic physics of the 21 cm fluctuations, and familiarize
+ourselves with the terminology used in the literature. In particular, the 21 cm
+community is fond of defining a great variety of ``temperatures".
+
+First, define the constant $T_*=h\nufs/k=0.068 K$, where $\nufs$ is the
+frequency of the 21 cm line. We will be in the regime $T\gg T_*$ for any reasonable
+temperature we may encounter, and are thus in the Raleigh-Jeans limit. In this
+case, people describe the observed specific intensity using the brightness
+temperature, $T_b$, defined by
+\begin{equation}
+I_\nu=\frac{2kT_b}{\lambda^2}=\frac{2\nufs^2}{c^2}kT_b
+\end{equation}
+The value $T_b$ may or may not have anything to do with the actual kinetic
+temperature, $T_K$ of the gas being observed. As defined, it is merely an
+alternative way of expressing $I_\nu$.
+
+We define another temperature, the spin temperature, $T_s$, which describes the
+hyperfine level populations\footnote{To be consistent with Prichard and Loeb,
+I'll use a subscript 1 to describe the excited ($F=1$) hyperfine state of 
+hydrogen and subscript 0 for the ground state ($F=0$). For other transitions, the
+spin temperature is usually called the excitation temperature.}
+\begin{equation}
+\frac{n_1}{n_0}=\frac{g_1}{g_0}e^{-h\nufs/kT_s}
+\end{equation}
+When the gas is in LTE we have the identification $T_s = T_K$; i.e., the spin
+temperature is the same as the actual gas temperature. If LTE does not hold, $T_s$
+does not correspond to any real thermodynamic temperature, and is simply a
+convenient parameter to describe the ratio $n_1/n_0$.
+
+\def\Tg{{T_\gamma}}
+The hyperfine level populations will be influenced by radiative transitions. We
+define the radiation temperature, $\Tg$, in terms of the local mean intensity of
+the radiation field, $J_\nu$
+\begin{equation}
+J_\nu(\nufs)=B_\nu(\Tg,\nufs)
+\end{equation}
+This definition does not necessarily assume the radiation field is a blackbody
+--- we are simply defining $\Tg$ as the temperature for which the Planck function
+equals $J_\nu$ at the frequency $\nufs$. In our case, the radiation field is due
+(primarily) to the CMB, which actually is a blackbody with $\Tg=2.7(1+z)$.
+
+\def\dTb{{\delta T_b}}
+\subsection{}
+Consider a specific intensity beam from the background CMB passing through a
+hydrogen cloud of optical depth $\tau$. Show that the observed fluctuation in
+the brightness temperature of the 21 cm line (relative to the background CMB
+brightness temperature) is given by\footnote{We won’t gone into the effects of
+cosmological redshift, which reduce the overall intensity of the fluctuation.
+If included, the right hand side of this expression should be divided by a
+factor of $(1 + z)$.}
+\begin{equation}
+\dTb=(T_s-\Tg)(1-e^{-\tau})
+\end{equation}
+If we can determine $T_s$, we can predict whether the 21 cm line should be seen
+in emission $(\dTb > 0)$ or absorption $(\dTb < 0)$. Calculating the spin
+temperature, however, is difficult because it is affected by various
+astrophysical processes.
+
+\subsection{}
+The hyperfine levels will generally be in statistical equilibrium (not
+necessarily LTE) in which the spin flip transitions are in steady state. Assume
+that transition between the levels are due to either collisions (e.g., impacts
+with other hydrogen atoms, see $q_{10}$ below) or radiation. Show using the Einstein coefficients
+that the expression for the spin temperature\footnote{Recall $T\gg T_*$ for any $T$} is
+\begin{equation}
+T_s^{-1}=\frac{\Tg^{-1}+x_cT_K^{-1}}{1+x_c}
+\end{equation}
+where
+\begin{equation}
+x_c=\frac{q_{10}}{A_{10}}\frac{T_*}{\Tg}.
+\end{equation}
+Determine the value of $T_s$ in the two limits $x_c\ll1$ and $x_c\gg1$ and
+briefly explain why these limits makes sense.
+
+\subsection{}
+\label{sec:subc}
+There is a critical density\footnote{This is a slightly different critical
+density than we discussed in class, in which we only looked at the ratio of
+collisional to spontaneous de-excitation $q_{10}/A_{10}$.  We see that taking into
+account the transitions driven by the incident radiation field introduces the
+additional factor $T_*/\Tg$.} where $x_c\sim1$. As a rough estimate of its value,
+consider the case where $q_{10}$ is due to neutral hydrogen atoms colliding with
+each other, and assume the cross-section for collisional de-excitation is just
+the geometrical cross section of an
+H atom. Determine the critical hydrogen density for the specific conditions 
+$\Tg=2.7K$ and $T_K=100K$.
+
+There is another important effect that can ``flip the spin" of a hydrogen atom
+--- the scattering of Ly-$\alpha$ photons\footnote{ Lyman alpha photons will be
+pro- duced in abundance once stars/AGN form and produce HII regions.  }. A
+Ly-$\alpha$ photon can excite a hydrogen atom in either of the two $n = 1$
+hyperfine states to an $n = 2$ level.  The subsequent emission of a Ly-$\alpha$
+photon can return the electron to either of the two $n = 1$ hyperfine states,
+effectively causing a transition between these levels. This is known as the
+Wouthuysen-Field effect.
+
+The Ly-$\alpha$ line is so optically thick that we expect the radiation field
+near line center to be coupled to the gas temperature and reach its LTE
+value\footnote{The coupling of the Ly-$\alpha$ photons and the gas thermal energy pool is
+subtle, but related to the energy exchange that occurs when an atom recoils
+upon scattering a Ly-$\alpha$ photon. Though the energy exchange of any one scattering
+is small, many repeated scatterings can effectively couple the Ly-$\alpha$ radiation to
+the gas temperature. This is similar to the comptonization we discussed, in
+which radiation exchanges energy with the gas through electron scattering.}
+\def\nuly{{\nu_{Ly\alpha}}}
+\begin{equation}
+J_\nu(\nuly)=B_\nu(T_K,\nuly)
+\end{equation}
+Let $P_{10}$ be the rate at which Ly-$\alpha$ photons drive transitions from the ground to
+the excited hyperfine level. From LTE arguments we would also then expect that
+the total rate of transitions from 0 to 1 is
+\begin{equation}
+P_{01}=P_{10}\frac{g_1}{g_0}e^{-h\nufs/kT_K}
+\end{equation}
+
+\subsection{}
+Show that a more general expression for the spin temperature
+which includes the Wouthuysen-Field effect (and assumes the 
+Ly-$\alpha$ radiation field is well-coupled to the gas temperature) is
+\begin{equation}
+T_s^{-1}=\frac{\Tg^{-1}+(x_c+x_\alpha)T_K^{-1}}{1+x_c+x_\alpha}
+\end{equation}
+and write down the expression for $x_\alpha$ in terms of $P_{10}$.
+
+\subsection{}
+Now we can make qualitative predictions of the kind of signal we expect from
+cosmological 21 cm measurements. For each epoch below, give a very brief
+explanation as to why you predict we should see the 21 cm fluctuations
+(relative to the CMB) in emission, in absorption, or not at all.
+\begin{enumerate}
+
+\item $(200\le z\le 1100)$: After recombination at $z\approx1100$, the gas density is
+high enough that the gas and CMB radiation remain thermally coupled10 and have
+the same temperature. There are as yet no sources of Ly-$\alpha$ or ionizing
+photons.
+
+\item $(40\le z\le 200)$: As cosmological expansion continues, the gas and
+radiation go out of equilibrium and their temperatures evolve independently and
+adiabatically. The gas density is still well above the critical density defined
+in \ref{sec:subc}, though.
+
+\item $(30\le z\le 40)$: The gas density drops below the critical density such
+that radiative transitions from the CMB set the level populations.
+
+\item $(15\le z\le 30)$: The first sources (stars, AGN) turn on, and produce
+enough Ly-$\alpha$ photons that the hyperfine level populations are set by the
+Wouthuysen-Field effect. The gas is still cool from adiabatic expansion, so 
+$T_K < \Tg$.
+
+\item $(7\le z\le 15)$: The radiation (mostly x-rays) from sources heat the gas
+to the point that $T_K$ becomes larger than the CMB temperature. Lyman alpha
+coupling is still effective (i.e., $x_\alpha\gg1$).
+
+\item $(z\le 7)$: Enough ionizing radiation from the sources has been emitted
+that reionization is complete --- i.e., essentially all of the neutral hydrogen
+in the intergalactic medium has been ionized.
+
+\end{enumerate}
+
+Comment: We can now better understand the predicted signal drawn in Figure \ref{fig:spintemp}.
+The above run down is of course just a guess at what the 21 signature should
+look like, and at what redshifts we might expect transitions. We still have a
+lot to learn about cosmological reionization and the sources of radiation
+that influence the intergalactic medium. Having actual 21 cm observations at
+these epochs obviously would teach us a lot.
+
+\end{document}
