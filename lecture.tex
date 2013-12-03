@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
-\title{UC Berkeley, Astro 201, Radiative Processes in Astrophysics}
-\author{E. Chiang, transcribed by Aaron Parsons}
+\title{Radiative Processes in Astrophysics}
+\author{E. Chiang and A. Parsons}
 \date{Fall, 2004}
 \usepackage{graphicx}
 
@@ -275,7 +275,7 @@ Suppose we look along a column of this gas.  At each point, the source
 function will be: $S_\nu=B_\nu(T)$.  Therefore, $I_\nu$ along that column
 will be: 
 \def\np{{\nu^\prime}}
-$$I_\nu=\int_0^{T_\nu}{S_\nu(T_\np)e^{-(T_\np-T_\nu)}dT_\np}$$
+$$I_\nu=\int_0^{\tau_\nu}{S_\nu(\tau_\np)e^{-(\tau_\np-\tau_\nu)}d\tau_\np}$$
 
 \subsection*{ Einstein Coefficients}
 
@@ -446,7 +446,7 @@ energy series:
 $$E_n=(n+\hf)\hbar\wz$$
 For a harmonic oscillator, $\wz=\sqrt{k\over m}$.  We estimate that since
 the force for a spring is $k\cdot x$, and that force should be about the 
-Coulomb force on $e^-$'s.  If we say that atoms stretch with respect to
+Coulomb force on electrons.  If we say that atoms stretch with respect to
 each other about a Bohr radius:
 $$ka_0\sim{e^2\over a_0^2}$$
 $$\Delta E\eval{vib\atop trans}\sim Ryd\cdot\sqrt{m_e\over A\cdot m_p}$$
@@ -465,7 +465,7 @@ looks like:
 $$\ef=E_0\eikrwt$$
 We'll say that the displacement of $e^-\ll{2\pi\over k}$.  The equation of
 motion for a single electron is then:
-$$\ddot x+\gamma\.x+\wz^2x={eE_0\eikrwt\over m_e}$$
+$$\ddot x+\gamma\.x+\wz^2x={-eE_0\eikrwt\over m_e}$$
 where $\gamma$ is our dampening factor.  Note that $\bfield$ is absent 
 here; we're neglecting it because it is small for
 reasonable energies. It turns out this
@@ -482,18 +482,18 @@ $k$ (phase).
 \subsection*{ The Dispersion Relation}
 
 Let's solve Maxwell's equations.  Recall that $\vec J$ is the current density:
-$$\begin{aligned}\vec J&=n\cdot e\cdot\.x\\ 
-&={ne(-i\omega)(-eE_0\eikrwt)\over m_e(\wz^2-\omega^2)}=\sigma\ef\\ \end{aligned}$$
+$$\begin{aligned}\vec J&=-n\cdot e\cdot\.x\\ 
+&={-ne(-i\omega)(-eE_0\eikrwt)\over m_e(\wz^2-\omega^2)}=\sigma\ef\\ \end{aligned}$$
 where $\sigma\equiv conductivity={-ne^2i\omega\over m_e(\wz^2-\omega^2)}$, and
 n is the \# density of electrons.
 So on to Maxwell's equations:
 $$\begin{aligned}\dce&=-{1\over c}{\partial\bfield\over\partial t}\\ 
-ikE&={i\omega B\over c}\\ \end{aligned}$$
+ik\times E&={i\omega B\over c}\\ \end{aligned}$$
 $$\begin{aligned}\dcb&={4\pi\vec J\over c}+{1\over c}{\partial\ef\over\partial t}\\ 
--ikB&=\left({4\pi\sigma\over c}-{i\omega\over c}\right)E\\ \end{aligned}$$
+-ik\times B&=\left({4\pi\sigma\over c}-{i\omega\over c}\right)E\\ \end{aligned}$$
 Combining these two equations we get:
-$$\boxed{\left({ck\over\omega}\right)^2=1+{4\pi ne^2\over 
-m_e(\wz^2-\omega^2)}}$$
+$$\boxed{\left({ck\over\omega}\right)^2=1-{4\pi ne^2\over 
+m_e(\omega^2-\wz^2)}}$$
 This is our dispersion relation.  The plasma frequency is defined as:
 $$\omega_p^2\equiv {4\pi ne^2\over m_e}$$
 and the index of refraction is:
@@ -517,7 +517,7 @@ Now $e\cdot\vec x=\vec d$ (the electric dipole moment) and
 $\ddot x\sim\omega_0^2x$ for a spring, so:
 $$\ato^{-1}\sim{3\hbar\wz c^3\over2d^2\wz^4}$$
 $$\boxed{\ato\sim{2d^2\wz^3\over3\hbar c^3}}$$
-For H: $d\sim ea_0$ and $\lambda_\lya=1216\AA$ so:
+For H: $d\sim ea_0$ and $\lambda_\lya=1216\AA$ (and don't forget $\omega=2\pi\nu$) so:
 $$\ato\sim5\e8s^{-1}$$
 
 \subsection*{ Magnetic Dipole for $\lya$}
@@ -560,7 +560,7 @@ $$\boxed{{\ato\eval{quad}\over\ato\eval{di}}
 Thus $28\mu m$, the lowest quadrupole rotational transition of
 $H_2$, should have an $\ato$ of about:
 $$\ato\eval{28\mu m}\sim\ato\eval\lya\left({s\over\lambda_{H_2}}\right)^2
-\left({\lambda_\lya\over \lambda_{H_2}}\right)
+\left({\lambda_\lya\over \lambda_{H_2}}\right)^3
 \sim\ato\eval\lya\left({a_0\over 28\mu m}\right)^2
 \left({1216\AA\over 28\mu m}\right)^3
 \sim7\e{-11}s^{-1}$$
@@ -727,7 +727,7 @@ is just right, it will pass blue wavelengths while extinguishing red.\par
 \def\sabs{\sigma_{abs}}
 \begin{itemize}
 \item  Crystalline dielectrics: $\qabs \propto {a\over \lambda^2}$ (for
-$\lambda \gg a$.  Then:
+$\lambda \gg a$).  Then:
 $$\alpha_\nu \eval{abs} = n_d\sabs = n_d\pi a^2\qabs
 \propto {a^2\over \lambda^2}$$
 Now what we measure in the field is $\tau$, the
@@ -738,7 +738,7 @@ Rayleigh scattering.
 \item  In general: $j_\nu\eval{emission} = \alpha_\nu \cdot B_\nu(T)$.
 Then:
 $$j_\nu\eval{scattering}(\^n) = n_d(\qscat\pi a^2)\int{I_\nu(\^n)
-F(\^n-\^n^\prime)d\Omega^\prime)}$$
+F(\^n-\^n^\prime)d\Omega^\prime}$$
 The term $F(\^n - \^n^\prime)$ is called the ``scattering phase function'', and
 is used to add up all of the incoming paths of light, taking into account their
 relative phases.  $n_d$ is the \# density of scattering grains.  For small
@@ -810,19 +810,19 @@ $$\overbrace{\hf m_rv^2}^{center\ of\ mass\ E} = hv_{12} + \hf m_rv^{\prime2}$$
 Where $m_r$ is the reduced mass $m_Am_B\over m_A+m_B$. However many $B_{slow}$
 are created by collisional excitation, the same number are used for the
 reverse de-excitation.  This is {\bf detailed balance}.\par
-Second, under thermal equilibrium, particles have a {\bf Maxwellian} velocity
+Second, assuming particles have a {\bf Maxwellian} velocity
 distribution:
 $$\boxed{f(v)=4\pi\left({m_r\over 2\pi kT}\right)^{3\over 2}v^2
 e^{-m_rv^2\over 2kT}}$$
 \centerline{(Maxwellian velocity distribution)}
 In thermal equilibrium,
 $${n_A^*\over n_A} = {g_2\over g_1}e^{-h\nu_{21}\over kT}$$
-Now, assuming detailed balance and thermal equilibrium,
+Now, assuming detailed balance (with $v dv=v^\prime dv^\prime$) and thermal equilibrium,
 $$n_An_Bf(v)dv\,v\sigot=n_A^*n_Bf(v^\prime)dv^\prime v^\prime \sigto$$
 \def\emvkt{e^{-m_rv^2\over2kT}}
 \def\emvpkt{e^{-m_rv^{\prime2}\over2kT}}
 \def\ehvkt{e^{-h\nu_{21}\over2kT}}
-$$\sigot v^2\emvkt = {g_2\over t_1}\ehvkt \nu^{\prime2}\emvpkt v^\prime 
+$$\sigot v^2\emvkt = {g_2\over t_1}\ehvkt v^{\prime2}\emvpkt v^\prime 
 dv^\prime\sigto$$
 $$\sigot dv\,v^3 \emvkt = {g_2\over t_1}\ehvkt \ehvkt \emvkt v^{\prime3}
 dv^\prime \sigto$$
@@ -850,8 +850,8 @@ $$= \pi a_0^2\left[1+\underbrace{Ze^2\over m_ev^2a_0}_{Coulomb\ focusing\atop
 factor}\right]$$
 Generally, the Coulomb focusing factor $>1$ because we want to excite, not
 ionize.  $a_0={\hbar^2\over Ze^2m_e}$, so:
-$$\pi b^2 = {\pi\hbar^2\over m_ev^2}$$
-$$\sigot = {\pi\hbar^2\over m_e^2v^2}
+$$\pi b^2 = {\pi\hbar^2\over Z m_ev^2}$$
+$$\sigot = {\pi\hbar^2\over Z m_e^2v^2}
 \overbrace{\left(\Omega(1,2)\over 
 g_1\right)}^{quantum\ mechanical\atop correction\ factor}$$
 $\Omega$ is the ``collisional strength'', and generally is 0 below the
@@ -870,7 +870,7 @@ $$\sigot\eval{osterbrock} \sim 10^{-15} cm^2$$
 
 Forgot something for the Einstein Analog.  Recall:
 $$g_1v^2\sigma_{12}(v)=g_2v^{\prime2}\sigma_{21}(v^\prime)$$
-$$\hf m_4v^2=h\nu_{21}+\hf m_r(v^\prime)^2$$
+$$\hf m_ev^2=h\nu_{21}+\hf m_r(v^\prime)^2$$
 For the special case of $f(v)$ being Maxwellian, then:
 $${q_{12}\over q_{21}}\equiv{\mean{\sigma_{12}v}\over\mean{\sigma_{21}v}}
 ={g_2\over g_1}e^{-h\nu_{21}\over kT}$$
@@ -933,7 +933,7 @@ $$E=\hf m_ev^2-(-\chi)=h\nu$$
 So we can make our n's and g's go away.  For $f(v)$, we'll use our Maxwellian:
 $$f(v)=4\pi\left({m_e\over 2\pi kT}\right)^{3\over 2}v^2e^{-m_ev^2\over 2kT}$$
 Finally, Saha tells us in thermal equilibrium:
-$${n_+n_e\over n_0}=\left[{2\pi m_ekT\over h^2}\right]^{3\over 2}{2g_+\over g_n}
+$${n_+n_e\over n_0}=\left[{2\pi m_ekT\over h^2}\right]^{3\over 2}{2g_+\over g_0}
 e^{-\chi\over kT}$$
 So now we're essentially done:
 $$1={n_+n_ef(v)v\sigfb(v)dv\over{4\pi B_\nu\over h\nu}d\nu(1-\ehvkt)
@@ -1202,7 +1202,7 @@ define the coefficient for thermal free-free absorption as:
 \def\anff{\alpha_{\nu,ff}}
 $$\boxed{\anff\equiv{\jnff\over B_\nu}}$$
 We can express the opacity as:
-\def\knff{K_{\nu,ff}}
+\def\knff{\kappa_{\nu,ff}}
 $$\boxed{\knff={\anff\over\rho}\propto{n_en_p\nu^{-3}(e^{-h\nu\over kT}-1)\over
 \rho\sqrt{T}e^{h\nu\over kT}}}$$
 where $\rho$ is the total density.  Since most photons have $h\nu\sim kT$,
@@ -1408,13 +1408,14 @@ from the electron very often.  In fact, you'll just see it once per revolution.
 Each time you do see it, you will see a spike in power.  We'd like to figure
 out long in time these pulses are separated.  To do this, we have the 
 following equations for relativistic motion:
-$$\begin{aligned}\ddt\vec P&={e\over c}\vec v\times\vec B\\ 
+$$\begin{aligned}\ddt\vec p&={e\over c}\vec v\times\vec B\\ 
 \ddt(\gamma m\vec v)&={e\over c}\vec v\times\vec B+e\vec E\\ \end{aligned}$$
 $$\ddt(Energy)=\ddt(\gamma mc^2)=e\vec v\cdot\vec E$$
+where $\vec p$ is momentum.
 Now $\vec B=\vec B_{external}=B\^z$ and $\vec E=\vec E_{external}=0$.  There
 are also contributions of the self-interaction of the electron's field with
 the electron, but we'll neglect these as being a minor perturbation.  Then:
-$$\boxed{\gamma m{d\vec v\over dt}=e\vec v\times\vec B}$$
+$$\boxed{\gamma m{d\vec v\over dt}=\frac{e\vec v}{c}\times\vec B}$$
 Let's define $\alpha$ to be the ``pitch angle'' between $\vec B$ and $\vec v$
 (that is, the angle which makes the $e^-$ travel in a helix instead of a 
 circle).
