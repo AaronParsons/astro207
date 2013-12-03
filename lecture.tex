@@ -1,0 +1,2882 @@
+\documentclass[11pt]{article}
+\title{UC Berkeley, Astro 201, Radiative Processes in Astrophysics}
+\author{E. Chiang, transcribed by Aaron Parsons}
+\date{Fall, 2004}
+\usepackage{graphicx}
+
+\def\.{\dot}
+\def\^{\hat}
+\def\_{\bar}
+\def\~{\tilde}
+\def\hf{{1 \over 2}}
+\def\imply{\Rightarrow}
+\def\inv#1{{1 \over #1}}
+\def\ddt{{d \over dt}}
+\parindent=0mm
+\parskip=3pt
+\def\sqr#1#2{{\vcenter{\vbox{\hrule height.#2pt
+    \hbox{\vrule width.#2pt height#1pt \kern#1pt
+        \vrule width.#2pt}
+    \hrule height.#2pt}}}}
+\def\square{\mathchoice\sqr34\sqr34\sqr{2.1}3\sqr{1.5}3}    
+\def\mean#1{\left\langle #1\right\rangle}
+\def\sigot{\sigma_{12}}
+\def\sigto{\sigma_{21}}
+\def\eval#1{\big|_{#1}}
+\def\tr{\nabla}
+\def\dce{\vec\tr\times\vec E}
+\def\dcb{\vec\tr\times\vec B}
+\def\wz{\omega_0}
+\def\ef{\vec E}
+\def\ato{{A_{21}}}
+\def\bto{{B_{21}}}
+\def\bot{{B_{12}}}
+\def\bfield{{\vec B}}
+\def\ap{{a^\prime}}
+\def\xp{{x^{\prime}}}
+\def\yp{{y^{\prime}}}
+\def\zp{{z^{\prime}}}
+\def\tp{{t^{\prime}}}
+\def\upx{{u_x^\prime}}
+\def\upy{{u_y^\prime}}
+\def\e#1{\cdot10^{#1}}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{eufrak}
+\begin{document}
+\maketitle
+
+\section*{Lecture 1}
+
+\subsection*{Units}
+
+Here are some terms pertaining to telescope observations:\par
+aperture area ($\Delta A$), solid angle on sky ($\Delta \Omega 
+[\square ",\square^\circ , sr]$), exposure time ($\Delta t$), collects 
+energy ($\Delta E$), over waveband ($\Delta \nu [Hz^{-1}]$), but 
+$\Delta\lambda\ne {c\over \Delta\nu}$.
+$${\Delta E\over\Delta t\Delta\nu\Delta A\Delta\Omega} \iff
+{dE \over dt d\nu dA d\Omega} \equiv I_\nu$$
+$I_\nu$ is the specific intensity per unit frequency.
+
+Flux density is power per unit frequency passing through a 
+differential area whose normal is $\^n$. Thus, flux density is:
+$$\boxed{F_\nu\equiv\int I_\nu\cos\theta d\Omega}$$
+
+\subsection*{ Proof that Specific Intensity is conserved along a ray }
+
+The power received by the telescope is:
+$$P_{rec}=I_\nu d\Omega dA$$
+where
+$I_\nu(\alpha,\delta )$ is the intensity as a function of right-ascension
+($\alpha$) and declination ($\delta$).  Say that $\Sigma_\nu(\alpha,\delta)$ 
+is the surface luminosity of a patch of sky (that is, the emitted intensity).
+Then power emitted by patch of sky is:
+$$P_{emit}=\Sigma_\nu{dA\over r^2}d\tilde A$$
+Recognizing that $d\tilde A=d\Omega r^2$:
+$$\Sigma_\nu=I_\nu$$
+This derivation assumes that we are in a {\it vacuum} and that the 
+{\it frequencies of photons are constant}.
+If frequencies change, then though specific intensity $I_\nu$ is not conserved,
+${I_\nu\over\nu^3}$ is.
+Also, for redshift $z$,
+$$I_\nu\propto\nu^3 \propto\inv{(1+z)^3}$$
+so intensity decreases with redshift. Finally:
+$${I_\nu\over\eta^2}$$
+is conserved along a ray, where $\eta$ is the index of refraction.
+
+\subsection*{ The Blackbody }
+
+A blackbody is the simplest source: it absorbs and reemits radiation with
+100\% efficiency.  The frequency content of blackbody radiation is given by
+the {\it Planck Function}:
+\def\ehv{e^{{h\nu \over kT}}}
+$$B_\nu={h\nu\over\lambda^2}{2\over(\ehv-1)}$$
+$$\boxed{B_\nu={2h\nu^3\over c^2(\ehv-1)}\ne B_\lambda}$$
+\centerline{(The Planck Function for Black Body Radiation)}\par
+
+Derivation:\par
+The \# density of photons having frequency between $\nu$ and $\nu+d\nu$ has
+to equal the \# density of phase-space cells in that region, multiplied by
+the occupation \# per cell.  Thus:
+$$n_\nu d\nu={4\pi\nu^2d\nu\over c^3}{2\over\ehv-1}$$
+However,
+$$h\nu{n_\nu c\over 4\pi}=I_\nu=B_\nu$$
+so we have it.  In the limit that $h\nu\gg kT$:
+$$B_\nu\approx{2h\nu^3\over c^2}e^{-{h\nu\over kT}}$$
+\centerline{Wein tail}\par
+If $h\nu\ll kT$:
+$$B_\nu\approx{2kT\over\lambda^2}$$
+\centerline{Rayleigh-Jeans tail}
+Note that this tail peaks at $\sim {3kT\over h}$. Also,
+$$\nu B_\nu=\lambda B_\lambda$$
+
+\section*{ Lecture 2}
+
+\subsection*{ Reiteration: Conservation of specific intensity }
+
+Conservation of specific intensity told us the intensity collected by your
+telescope is absolutely equal to the surface intensity emitted into the angle
+leftrightarrowonding to your pixel on the sky. {\it Specific intensity is
+distance independent}.
+$1 m^2$ of sky emitted into angle $1\square " =$ specific intensity
+measured by a $1m^2$ telescope pointed at a $1\square "$ pixel of sky.
+
+\subsection*{ Units}
+
+We have flux, flux density, surface brightness, and spectral energy 
+distribution to describe luminosity.  When in doubt, look at the units.
+Surface brightness, like specific intensity, is distance independent. It is
+simply specific intensity integrated over frequency.
+
+\subsection*{ Lenses}
+
+If you look at something through a lens, the specific intensity of a point
+is conserved.  In the lens, the specific intensity may be greater, because
+$I_\nu\over\eta^2$ is conserved (remember that $\eta$ is the index of
+refraction of the medium), but once the light goes out again, even if the
+object looks bigger, the specific intensity is the same.  {\it This does not
+violate conservation of energy because the light is being focused to
+a smaller area.}\par
+
+Now if something is {\it inside} the lens (say, a bowl of water), then
+the lens bends light rays closer to each other, increasing the specific
+intensity.  Thus, the object is emitting/scattering higher density photons,
+and appears more luminous, and the object also appears larger.  This means
+that there must be some places where the object, omitting the lens, would have
+been visible, but now isn't.
+
+\subsection*{ Blackbodies}
+
+The CMB is the perfect blackbody because in the past, the surface of the 
+black body (the edge of the universe) was not allowed to leak out energy.
+This begs the question:
+does it matter what the boundary of the black body is made of?
+The answer is: No. In the short term, the boundary may imperfectly reflect 
+a photon,
+but then the resulting change in the temperature of boundary dictates that
+it will tend to reemit the energy into the photon gas. Overall:
+$$I_\nu I_{emitted}=I_\nu I_{absorbed}=B_\nu f_{abs}$$
+However, $f_{emission}B_\nu\equiv I_\nu I_{emitted}$, so:
+$$\boxed{f_{emission}=f_{abs}}$$
+\centerline{(Kirchoff's Law)}\par
+Note that Kirchoff's Law is true regardless of equilibrium.
+
+\subsection*{ Fundamental equation of transfer}
+
+The fundamental equation of transfer is governed by emission and extinction. 
+Extinction is brought about by absorption (which changes photon energy) or
+by scattering (which does not).  Examples of scattering are Thomson scattering
+off of cold electrons, Rayleigh scattering in the atmosphere, and Line
+scattering (reemission in a different direction). 
+An example of absorption is photoionization (where a photon ionizes an atom, 
+say by knocking off an electron).\par
+
+\begin{itemize}
+\item  Absorption:\par
+Let's say radiation $I_\nu$ passes through a region $ds$ of 
+absorption/scattering on its way to us. Then:
+$$dI_\nu=-\alpha_\nu I_\nu ds$$
+where $\alpha_\nu$ is the {\it extinction} coefficient (units of $cm^{-1}$).
+We may compute $\alpha_\nu$ a couple different ways:
+$$\alpha_\nu=\overbrace{n}^{\#\ density}
+\overbrace{\sigma_\nu}^{cross\ section}
+=\overbrace{\rho}^{mass\ density}\overbrace{\kappa_\nu}^{opacity}$$
+Solving for intensity:
+$$\begin{aligned}I_\nu(s)&=I_\nu(0)e^{-n\sigma_\nu s}\\ 
+&=I_\nu(0)e^{-\tau_\nu}\\ \end{aligned}$$
+where $\tau_\nu$ is the {\it optical depth} at $\nu$.
+Optical depth is often computed as:
+$$\tau_\nu=n\sigma_\nu s=N\sigma_\nu$$ 
+where $N$, the {\it column density}, is in $cm^{-2}$ and is the \# of 
+extinguishers per unit area.
+Similarly, 
+$$\tau_\nu=\rho\kappa_\nu s=\Sigma\kappa_\nu$$
+where $\Sigma$ is the mass surface density.
+$$\tau_\nu\begin{cases}\ll 1 &optically\ thin\\
+\gg 1 &optically\ thick\end{cases}$$
+
+\def\mfp{\lambda_{mfp,\nu}}
+The {\it Mean Free Path} is given by: $\mfp=\alpha_\nu^{-1}=\inv{n\sigma_nu}
+=\inv{\rho K_\nu}$. Thus:
+$$\tau_\nu={s\over\mfp}$$
+That is, the optical depth is the number of mean-free-paths deep a medium is.
+For Poisson processes, the probability of absorption is given by:
+$$P(n)={e^{-{s\over\mfp}}\left({s\over\mfp}\right)^n\over n!}$$
+Therefore:
+$$I_\nu(s)=I_\nu(0)e^{-\alpha_\nu s}$$
+
+\item Emission:\par
+If $j_\nu $ is the emissivity, then the contribution of the emissivity of
+a medium to the flux is:
+$$dI_\nu=j_\nu ds$$
+\item Emission and Extinction together:
+$$\boxed{{dI_\nu\over ds}=j_\nu-\alpha_\nu I_\nu}$$
+\centerline{(Fundamental Equation of Transfer)}\par
+It is often convenient to express this in terms of optical depth.  
+Dividing by $\alpha_\nu$ and recognizing $d\tau_\nu = ds \alpha_\nu$:
+$$\begin{aligned}{dI\nu\over d\tau_\nu}&={j_\nu\over\alpha_\nu}-I_\nu\\ 
+&=S_\nu-I_\nu\\
+\end{aligned}$$
+where $S_\nu$ is a ``source function''. In general,
+$$S_\nu\eval{scattering}\propto\int{I_\nu d\Omega}$$
+There is a formal solution for $I_\nu$.  Let's define 
+$\tilde I\equiv Ie^{\tau\nu}$ and $\tilde S\equiv Se^{\tau\nu}$.  Then:
+$${d\tilde I\over d\tau_\nu}=\tilde S$$
+$$\tilde I(\tau _\nu)=\tilde I(0)+\int_0^{\tau_\nu}{\tilde Sd\tilde\tau_\nu}$$
+$$\boxed{I_\nu(\tau_\nu)=\overbrace{I_\nu(0)e^{-\tau_\nu}}^{atten\ bg\ light}
++\overbrace{\int_0^{\tau_\nu}{S_\nu(\tau_\nu^\prime)
+\underbrace{e^{-(\tau_\nu-\tau_\nu^\prime)}}_{self-absorption}
+d\tau_\nu^\prime}}^{glowing\ medium}}$$
+If $S_\nu$ is constant with $\tau_\nu$, then:
+$$I_\nu(\tau_\nu)=I_\nu(0)e^{-\tau_\nu}+S_\nu(1-e^{-\tau_\nu})$$
+That second term on the righthand side can be approximated as $S_\nu\tau_\nu$
+for $\tau_\nu\ll 1$, since self-absorption is negligible.  Similarly, for
+$\tau_\nu\gg 1$, it may be approximated as $S_\nu$.
+The source function $S_\nu$ is everything.  It has both the absorption and
+emission coefficients embedded in it.
+\end{itemize}
+
+\def\eboltz{e^{{-h\nu _0 \over kT}}}
+
+\section*{ Lecture 3}
+
+For a sphere to be a black body, it requires that $f_{abs} = f_{emis} = 1$.
+However it can still be Planckean if $0<f_{abs}=f_{emis}\le 1$.
+
+\subsection*{ Local Thermodynamic Equilibrium (LTE)}
+
+Local Thermodynamic Equilibrium means 
+$$S_\nu=B_\nu(T)$$
+where $T$ is {\it local}.
+Take a sphere at surface temp $T$, with some gas (matter) inside it.   Allow
+to come to thermal equilibrium.  Inside the sphere, 
+you see a Planckean spectrum ($I_\nu = B_\nu$).  Now suppose you take a box of
+gas (it is both emissive and absorbent) and shoot rays of photons through
+that box suffer some absorption: 
+$$dI_\nu = -\alpha _\nu ds I_\nu$$
+But
+those photons also pick up some intensity: 
+$$dI_\nu = +j_\nu ds$$
+But since the photons
+should not pick up energy going through the box (everything is at the same
+temperature), 
+$$S_\nu\equiv{j_\nu\over\alpha_\nu}=I_\nu=B_\nu$$
+
+Now suppose you let all the photons out of this sphere.  Those photons will
+no longer be in thermal equilibrium with the gas.  Suppose we magically fix
+the temperature of the gas at this point.  The source function will remain the
+same (it will still be the case that $S_\nu = B_\nu$) because the source 
+function {\it is a property of the matter alone} (the absorptive and emissive 
+properties of it).  However, $I_\nu\ne B_\nu$.\par
+
+Suppose we look along a column of this gas.  At each point, the source
+function will be: $S_\nu=B_\nu(T)$.  Therefore, $I_\nu$ along that column
+will be: 
+\def\np{{\nu^\prime}}
+$$I_\nu=\int_0^{T_\nu}{S_\nu(T_\np)e^{-(T_\np-T_\nu)}dT_\np}$$
+
+\subsection*{ Einstein Coefficients}
+
+Derivation identical to Rybicki's.  We should memorize these.\par
+
+These coefficients govern the interaction of radiation with discrete energy
+levels.  Say we have 2 energy levels with a difference $\Delta E=h\nu_0$.
+There is some uncertainty associated with $\nu$, but we'll say it's small for
+now.\par
+There are 3 coefficients:\par
+\begin{itemize}
+\item  $\ato$ governs decay from 2 to 1, and is the transition 
+probability per
+unit time.  The probability of spontaneous
+de-excitation and release of photon is Poisson-distributed with mean rate
+$\ato$. So $\ato^{-1}$ is the mean lifetime of the excited state.  e.g.
+For $H_\alpha$ (n=3 to n=2): $\ato\approx 10^9 s^{-1}$.
+
+\item  $\bot$ governs absorptions causing transitions $1\to2$.
+The transition probability per unit time is $\bot J_\nu$, where $\bot$ is
+the probability constant, and $J_\nu$ is:
+$$J_\nu \equiv {\int{I_\nu d\Omega} \over 4\pi}$$ 
+It depends on $I_\nu$ (the intensity), but it does not depend on 
+direction, so we integrate over all angles.  The $4\pi$ is a normalization
+constant which makes $J_\nu$ the mean intensity, instead of the total intensity.
+However, we have to remember that there are uncertainties in the energy-level
+separations.  $\phi(\nu)\equiv$ is called the line profile function.  It 
+describes
+some (maybe gaussian) distribution of absorption around $\nu_0$ (the
+absorption frequency), and is subject to the requirement that:
+$$\int_0^\infty{\phi(\nu)d\nu}=1$$
+Say that $\Delta\nu$ is the width
+of the distribution around $\nu_0$.  $\Delta \nu $ is affected by many factors:
+$\ato$ (the natural, uncertainty-based broadening of at atom in isolation),
+$\nu_0{V_T\over c}$ (the thermal, Doppler-based broadening), and 
+$n_{coll}\sigma_{coll}v_{rel}$
+(collisional broadening, a.k.a. pressure broadening).
+So really, the transition probability per unit time is:
+$$R_{ex}^{-1}=\bot\int_0^\infty{J_\nu\phi(\nu)d\nu}\approx\bot\_J$$
+
+\item  $\bto$ governs stimulated emission.  In this example, we are in energy
+state 2, and an incoming photon causes a transition to energy level 1 and the
+emission of 2 photons.  The transition per unit time is $\bto\_J$.
+\end{itemize}
+
+\subsection*{ Einstein Relations among coefficients}
+
+Assume we have many atoms with 2 energy states, and $n_1$ is the \# density
+in state 1, ditto for $n_2$.  Assume we are in thermal, steady-state 
+equilibrium, so:
+$$n_1\bot\_J=n_2\ato+n_2\bto\_J$$
+This is because as many atoms need to be
+going from energy state 1 to 2 as visa versa.
+A second relation is:
+$\_J = {n_2\ato\over n_1\bot-n_2\bto}$.
+Using that ${n_2\over n_1}={g_2\over g_1}\eboltz$:
+$$\_J={{\ato\over\bto}\over{g_1\bot\over g_2\bto}\eboltz-1}$$
+
+In thermal equilibrium $J_\nu=B_\nu$:
+$$\begin{aligned}\_J&\equiv\int_0^\infty{J_\nu\phi(\nu)d\nu}\\ 
+&=\int_0^\infty{B_\nu\phi(\nu)d\nu}\\ 
+&\approx B_\nu(\nu_0)\\ 
+&={2h\nu_0^3\over c^2(\eboltz-1)}\\ \end{aligned}$$
+
+Combining this with $\_J$ earlier, we get:
+$$\boxed{g_1\bot=g_2\bto}$$
+\centerline{and}
+$${\ato\over\bto}={2h\nu^3\over c^2}$$
+
+\subsection*{ Rewriting $j_\nu, \alpha_\nu $ in terms of Einstein coeffs}
+
+In a small volume $dV$:
+$$\begin{aligned}j_\nu&\equiv{dE\over dt\,dV\,d\nu\,d\Omega}\\ 
+&={h\nu_0\ato n_2\phi(\nu)\over4\pi}\\ \end{aligned}$$
+
+We can express $\alpha_\nu$ in terms of the Einstein coefficients.  The
+excitation probability per time is $n_1B_{12}\_J$, and
+the energy lost in crossing the small volume 
+$\propto n_1\bot{I_\nu d\Omega\over4\pi}\phi(\nu)d\nu$
+(it is the probability per time per volume of going $1\to2$ by absorbing 
+$I_\nu$ from
+a cone of solid angle $d\Omega$ and frequency range $[\nu,\nu+d\nu]$). Thus,
+the energy is given by:
+$$\begin{aligned}E&=n_1\bot{I_\nu d\Omega\over4\pi}\phi(\nu)d\nu h\nu dt\,dV\\ 
+&=\alpha_\nu I_\nu ds\,dt\,d\Omega\,dA\,d\nu\\ \end{aligned}$$ 
+Recognizing that $dV=dA\,ds$:
+$$\alpha_\nu={n_1\bot\phi(\nu)\over4\pi}h\nu$$
+Correcting for stimulated emission, we get:
+$$\boxed{\alpha_\nu={(n_1\bot-n_2\bto)\phi(\nu)h\nu\over4\pi}}$$
+
+\section*{ Lecture 4 }
+
+\subsection*{ Estimating Cross-Section}
+
+The absorption coefficient, written in terms of Einstein constants is:
+$$\alpha_\nu={n_1\bot\phi(\nu)\over4\pi}h\nu=n_1\sigot$$
+Thus, the cross-section of an atom for absorption of a photon is:
+$$\sigot={\bot\phi(\nu)h\nu\over4\pi}$$
+To estimate $\bot$, we use the fact that, ignoring g's, $\bot\sim\bto$,
+and ${\ato\over\bto}={2h\nu^3\over c^2}$.  Then using the approximation that
+that $\phi(\nu)\sim\inv{\Delta\nu}$, we get:
+$$\sigot\sim{\ato\over\left({2h\nu^3\over c^2}\right)}
+\inv{\Delta\nu}$$
+$$\boxed{\sigot\sim{\lambda^2\over8\pi}{\ato\over\Delta\nu}}$$
+In a single atom, $\Delta\nu\sim\ato$, so $\sigot\sim{\lambda^2\over8\pi}$.
+
+\subsection*{ Order of Magnitude Interaction of Radiation and Matter}
+
+\subsection*{Energy Levels}
+\begin{itemize}
+\item Electronic Transitions:\par
+We'll start with the Bohr atom.  We begin by quantizing angular momentum:
+$$m_ev_ea_0=n\hbar$$
+If we balance the force required to keep the $e^-$ in a circular orbit
+with the electric force:
+$${m_ev_e^2\over a_0}={Ze^2\over a_0^2}$$
+$$a_0={\hbar^2\over m_ee^2Z}\approx0.52{\AA\over Z}$$
+A {\it Rydberg} is the energy required to ionize an H atom from the ground
+state.  It is $\sim13.6eV$.  We can estimate it by integrating the electric
+force from $r=a_0$ to $r=\infty$, but in reality, there is another factor of
+2:
+$$\boxed{Rydberg={Ze^2\over2a_0}={Z^2e^4m_e\over2\hbar^2}=13.6\cdot Z^2eV}$$
+\item Fine Structure:\par
+Fine Structure comes from the interaction of the magnetic moment of the $e^-$
+with the a $\bfield$ caused by the
+Lorentz-transformed Coulomb field of the proton (generated by the $e^-$'s 
+motion).  The 
+energy of a dipole interaction is $E=\vec\mu\cdot\bfield$, so we'd expect
+that:
+$$\Delta E\sim\mu B$$
+To estimate B: $B\sim{Ze\over a_0^2}{v\over c}$, and ${v\over c}\sim
+{e^2\over\hbar c}=\alpha=\inv{137}$ ($\alpha$ is the fine structure constant):
+$$B\sim{Ze^3\over\hbar ca_0^2}$$
+Estimating $\mu$: The $\bfield$ of a dipole goes as $B_{di}\sim{\mu\over r^3}$,
+so $\mu\sim B_e\eval{r_e}r_e^3$, where $r_e$ is the classical $e^-$ radius.
+Estimating that the rest mass energy of the $e^-$ should be about the 
+electrostatic potential energy left in the $e^-$, $m_ec^2\sim{e\over r_e}$:
+$$r_e\sim{e^2\over m_ec^2}$$
+We can estimate $B_e$ by reverting to Maxwell's equation:
+$$\dcb={4\pi J\over c}$$
+$${B_e\over2\pi r_e}={4\pi\over c}{I\over4\pi r_e^2}$$
+Again, we estimate that $I\sim{e\over t_{spin}}$, and because the electron
+spin is quantized, $\hbar=m_er_e^2{2\pi\over t_{spin}}$.
+After some algebra, we get that:
+$$\mu_e={e\hbar\over2m_ec}$$
+\centerline{(Bohr magneton for $e^-$)}
+$$\mu_p={Ze\hbar\over2m_pc}$$
+\centerline{(Bohr magneton for nucleus)}
+Getting back to the energy:
+$$\begin{aligned}\Delta E&\sim{e\hbar\over2m_ec}{Ze\over a_0^2}\alpha\\ 
+&\sim Z^4\alpha^2\cdot Ryd\\ \end{aligned}$$
+
+\item Hyperfine Structure:\par
+Instead of using the Bohr magneton, we use the intrinsic magnetic moment
+(spin) of the nucleus:
+$$B\eval{p}\sim{\mu_p\over a_0^3}\sim B_{fine}{m_e\over m_p}$$
+Thus:
+$$\Delta E\sim\Delta E_{fine}{m_e\over m_p}$$
+
+Note that Fine and Hyperfine are magnetic dipole transitions.  $e^-$ level
+transitions are {\it electric} dipole transitions.  Magnetic dipole transitions
+are generally weaker.
+
+\item  Vibrational Transitions in Molecules:\par
+Our general technique with vibrational transitions is to model them as
+harmonic oscillators.  Thus, they should have the characteristic harmonic
+energy series:
+$$E_n=(n+\hf)\hbar\wz$$
+For a harmonic oscillator, $\wz=\sqrt{k\over m}$.  We estimate that since
+the force for a spring is $k\cdot x$, and that force should be about the 
+Coulomb force on $e^-$'s.  If we say that atoms stretch with respect to
+each other about a Bohr radius:
+$$ka_0\sim{e^2\over a_0^2}$$
+$$\Delta E\eval{vib\atop trans}\sim Ryd\cdot\sqrt{m_e\over A\cdot m_p}$$
+where A is the atomic mass \# of our atoms.
+
+\item  Rotational Transitions in Molecules:\par
+The thing to remember is that angular momentum comes in units of $\hbar$.
+\end{itemize}
+
+\subsection*{ Damped Simple Harmonic Oscillator}
+
+We can model $e^-$ and their atoms as a lattice of springs connecting $e^-$
+to fixed points.  Say that we send a plane wave at these springs that
+looks like:
+\def\eikrwt{e^{i(\vec k\vec r-wt)}}
+$$\ef=E_0\eikrwt$$
+We'll say that the displacement of $e^-\ll{2\pi\over k}$.  The equation of
+motion for a single electron is then:
+$$\ddot x+\gamma\.x+\wz^2x={eE_0\eikrwt\over m_e}$$
+where $\gamma$ is our dampening factor.  Note that $\bfield$ is absent 
+here; we're neglecting it because it is small for
+reasonable energies. It turns out this
+equation has the steady-state solution:
+$$x={-e\over m_e}{\left((\wz^2-\omega^2)+i\omega\gamma\right)\over
+\left((\wz^2-\omega^2)^2+(\omega\gamma)^2\right)}E_0\eikrwt$$
+The limiting cases of this equation explain many phenomena.  For example:
+$\gamma=0$ (loss-less propagation).\par
+In this case, our solution looks like:
+$$x={-e\over m_e}{E_0\eikrwt\over(\wz^2-\omega^2)}$$
+From this we can use the dispersion relation to relate $\omega$ (frequency) and
+$k$ (phase).
+
+\subsection*{ The Dispersion Relation}
+
+Let's solve Maxwell's equations.  Recall that $\vec J$ is the current density:
+$$\begin{aligned}\vec J&=n\cdot e\cdot\.x\\ 
+&={ne(-i\omega)(-eE_0\eikrwt)\over m_e(\wz^2-\omega^2)}=\sigma\ef\\ \end{aligned}$$
+where $\sigma\equiv conductivity={-ne^2i\omega\over m_e(\wz^2-\omega^2)}$, and
+n is the \# density of electrons.
+So on to Maxwell's equations:
+$$\begin{aligned}\dce&=-{1\over c}{\partial\bfield\over\partial t}\\ 
+ikE&={i\omega B\over c}\\ \end{aligned}$$
+$$\begin{aligned}\dcb&={4\pi\vec J\over c}+{1\over c}{\partial\ef\over\partial t}\\ 
+-ikB&=\left({4\pi\sigma\over c}-{i\omega\over c}\right)E\\ \end{aligned}$$
+Combining these two equations we get:
+$$\boxed{\left({ck\over\omega}\right)^2=1+{4\pi ne^2\over 
+m_e(\wz^2-\omega^2)}}$$
+This is our dispersion relation.  The plasma frequency is defined as:
+$$\omega_p^2\equiv {4\pi ne^2\over m_e}$$
+and the index of refraction is:
+$$\eta\equiv{ck\over\omega}$$
+Rewritten in these terms, our dispersion relation in plasma is:
+$$\boxed{\eta^2=1-{\omega_p^2\over\omega^2}}$$
+
+\section*{ Lecture 5 }
+
+\def\lya{Ly\alpha}
+\subsection*{ Einstein A's for $\lya$}
+
+$\ato$ is a measure of the probability of decay per unit time, so
+$\ato^{-1}\sim lifetime$.  This should be about
+equal to the energy of the electron state divided by the average power radiated
+by an electron being accelerated:
+$$\ato^{-1}\sim{E\over P}\sim{\hbar\omega_0\over{2\over3}{e^2\ddot x^2
+\over c^3}}
+\sim{3\hbar\omega_0c^3\over2(e\ddot x)^2}$$
+Now $e\cdot\vec x=\vec d$ (the electric dipole moment) and
+$\ddot x\sim\omega_0^2x$ for a spring, so:
+$$\ato^{-1}\sim{3\hbar\wz c^3\over2d^2\wz^4}$$
+$$\boxed{\ato\sim{2d^2\wz^3\over3\hbar c^3}}$$
+For H: $d\sim ea_0$ and $\lambda_\lya=1216\AA$ so:
+$$\ato\sim5\e8s^{-1}$$
+
+\subsection*{ Magnetic Dipole for $\lya$}
+
+The magnetic dipole of an electron is:
+$$\mu_e={e\hbar\over m_ec}$$
+Thus we can estimate the ratio of $\ato$ for magnetic dipole transitions to
+that of electric dipole transitions:
+$${\ato\eval{mag}\over\ato\eval{elec}}\sim\left({\mu_e\over d}\right)^2
+\sim\left({e^2\over\hbar c}\right)^2\sim\alpha^2$$
+This tells us that the magnetic dipole states (that is, fine and hyperfine
+states) are longer lived than electric dipole states by a factor of $\alpha^2$.
+$${\ato\eval{21cm}\over\ato\eval{Ly\alpha}}\sim\alpha^2
+\left({1216\AA\over21cm}\right)^3$$
+$$\ato\eval{21cm}\sim6\e{-15}s^{-1}$$
+The actual value is $2.876\e{-15}s^{-1}$.
+
+\def\mfe{\mathfrak{E}}
+\subsection*{ Electric Quadrupole}
+
+If one is nearby a rotating quadrupole, one sees the $\mfe$  (electric)
+field rotating rigidly.
+However, from far away, there are kinks in the field, resulting in a retarded
+potential.  The radiation nearby goes as $r_{near}\sim\lambda$.  For a monopole,
+the electric field is $\mfe\sim{q\over r^2}$.  For a dipole, it is 
+$\mfe={q\over r^2}
+{s\over r}$, where s is the charge separation.  For a quadrupole: 
+$$\mfe={q\over r^2}\left({s\over r}\right)^2$$
+Since $P\propto \mfe^2$, the ratio of the powers emitted by a
+quadrupole vs. a dipole should be:
+$${P_{quad}\over P_{di}}\sim\left({s\over r}\right)^2
+\sim\left({s\over\lambda}\right)^2$$
+An acoustic analogy: a kettle whistle is a monopole, a
+guitar string is a dipole, and a tuning fork (with its two out-of-phase
+prongs) is a quadrupole.\\
+
+Anyway, since $\ato\sim{P\over E}$,
+$$\boxed{{\ato\eval{quad}\over\ato\eval{di}}
+\sim\left({s\over\lambda}\right)^2}$$
+Thus $28\mu m$, the lowest quadrupole rotational transition of
+$H_2$, should have an $\ato$ of about:
+$$\ato\eval{28\mu m}\sim\ato\eval\lya\left({s\over\lambda_{H_2}}\right)^2
+\left({\lambda_\lya\over \lambda_{H_2}}\right)
+\sim\ato\eval\lya\left({a_0\over 28\mu m}\right)^2
+\left({1216\AA\over 28\mu m}\right)^3
+\sim7\e{-11}s^{-1}$$
+The actual value is $3\e{-11}s^{-1}$.
+
+\subsection*{ Radio Recombination Lines}
+
+In HI, the $n=110\to n=109$ transition has a wavelength of 6 cm.  We can
+estimate its $\ato$:
+$$\ato\eval{6cm}\sim\ato\eval{Ly\alpha}
+\underbrace{\left({1216\AA\over6cm}\right)^3}_{change\atop in\ \lambda}
+\underbrace{\left({a_{110}\over a_0}\right)^2}_{change\atop in\ atom\ size}$$
+\def\bra#1{\langle #1|}
+\def\ket#1{|#1\rangle}
+This presents the question of which dipole moment to use.  It turns out
+we must use $\bra{i}\vec k\cdot\vec r\ket{f}$.
+
+\subsection*{ Back to $\sigma$}
+
+$$\sigot\eval{line\atop center}\sim{\lambda^2\over8\pi}{\ato\over\Delta\nu}$$
+Now $\Delta\nu\sim\nu$ for doppler broadening, and $\ato\sim\nu^3$, so for
+electric and magnetic dipole transitions:
+$$\sigot\sim\lambda^0$$
+So the cross-section for these transitions does not depend on wavelength.
+
+\subsection*{ Interaction of Radiation with Grains}
+
+In general, we will be talking about a plane wave of wavelength $\lambda$
+which is incident upon a particle (grain) of radius a.  The cross-section
+for absorption, scattering, and emission will all be proportional to the
+physical cross-section of the grain, with some {\it absorption efficiency}
+Q:
+$$\sigma_i=Q_i\pi a^2$$
+Kirchkoff's Law requires that $Q_{emit}=Q_{abs}$.  If $a\gg\lambda$, then
+\def\qscat{Q_{scat}}
+\def\qabs{Q_{abs}}
+we have the geometric optics limit, and $\qscat+\qabs\sim$.  In fact,
+Babinet's Principle says:
+$$\boxed{\qscat+\qabs=2}$$
+The proof of this goes as follows: suppose we have an infinite plane wave
+focused by an infinite lens onto a point on a wall.  The power pattern
+should be a delta function at that point on the wall.  Now suppose you
+place a screen with an aperture of diameter $a$ between the plane wave
+and the lens.  We should now see an interference pattern on the wall.  Call
+the power incident on a point on the wall $P_1$.  Now put in a new aperture
+which is the exact compliment of our previous one (it is a scattering
+body of diameter $a$), we should see a new power at our point on the wall: 
+$P_2$.
+However, the sum of waves incident on the wall under these two apertures
+should be the same as the wave from the sum of the apertures, which was
+a delta function.  Thus:
+$$P_1=P_2$$
+The first aperture (the slit) represented the scattering power from 
+diffraction alone $(\qscat=1)$, and the second represented the absorbed 
+power.  The sum of these two powers, for everywhere but the true focus
+point, is actually twice the incident power, and since $P_1=P_2$, we
+get:
+$$\qscat+\qabs=2$$
+Note that if $\qscat>1$, then the object in ``shiny'': more light gets
+diffracted and less gets absorbed.  Thus, although $\qscat$ changes,
+the sum remains the same.
+
+\section*{ Lecture 6 }
+
+\def\eb{e^{h\nu \over kT}}
+
+\subsection*{ Flat Blackbody disk:}
+
+$$\begin{aligned}\nu F_\nu&\propto\nu^4\int_{r_i}^{r_0}{2\pi r\,dr\over\eb-1}\\ 
+&\propto \nu^3\int_{r_i}^{r_0}{r\,dr\over 
+e^{h\nu\over kT}({r\over R_*})^{3\over 4}-1}\\ \end{aligned}$$
+Define $x \equiv {h\nu\over kT_*}({r\over R_*})^{3/4}$. Then:
+\def\hnkt{{h\nu \over kT_*}}
+\def\tq{{3\over 4}}
+$$\nu F_\nu \propto \nu^4\int{{\hnkt ({r_i\over R_*})^\tq}^{\hnkt ({r_o\over 
+R_*})^\tq}{x^3dx\over e^x - 1}}$$
+We are free to choose $\nu$, so we'll choose it such that:
+$$\nu_0\sim{kT_*\over h}({R_*\over r_0})^\tq\ll\nu\ll{kT_*\over h}
+({R_*\over r_i})^\tq\sim\nu_i$$
+Then the integral simplifies to:
+$$\nu F_\nu \propto \nu^{4\over 3}\int_{x\ll 1}^{x\gg 1}{x^3dx\over e^x-1}$$
+This is, on the whole, insensitive to exact values on the bounds of the
+integral, so:
+$$\nu F_\nu \propto \nu^{4\over 3}$$
+Thus, if we are plotting $\nu F_\nu$ vs. $\nu$ (like on the homework), we
+see a flattening of the spectrum for the blackbody disk because of the region
+where $\nu F_\nu \propto \nu^{4\over 3}$.  
+
+\subsection*{ Plane waves through a lens onto a backdrop}
+
+We are considering a case of sending an infinite plane wave through an
+infinite lens with focal length $f$ onto a backdrop which is distance $f$
+away.  Next, we consider what happens if we have: (a) an occulting object
+at the center of the lens, (b) the exact opposite of that object--an
+aperture at that point.  We'll get diffraction patterns on our backdrop in
+both of these cases.  What is interesting is that the sum of the apertures
+(in our case, an infinite aperture minus a spot plus that spot) should also
+sum the diffraction patterns.  The diffraction pattern for an infinite, 
+unblocked aperture is just a delta function (everything focused at the 
+focal point).  Thus the fringe patterns for each of the partially blocked
+apertures must be the same, but $180^\circ$ out of phase.  Of course,
+the (infinite aperture minus a spot) contains a delta function in addition
+to its diffraction pattern.\par
+
+\subsection*{ Small Grains}
+
+Now let's consider the case that this spot (a small object obstructing a 
+plane wave) is small, so that $a \ll \lambda$.  This is called the ``Rayleigh
+Limit''.  In this case, $Q_{scat} \ll 1$ and $Q_{em} = Q_{abs} \ll 1$.  If
+\def\qabs{Q_{abs}}
+\def\qscat{Q_{scat}}
+\def\qemis{Q_{emis}}
+we were to graph $\qabs$ vs. $\lambda$, we'd get something flat ($= 1$) out to
+$2\pi a$, after which, $\qabs$ would decrease as $(\inv{\lambda})^\beta$, where
+$\beta\eval{abs} = [1-3]$.  On the other hand, graphing $\qscat$ vs. $\lambda$
+, we get that after $2\pi a$, $\qscat$ drops as $(\inv{\lambda})^4$. 
+Why does $Q$ decrease as $a\over \lambda$?\par
+
+\begin{itemize}
+\item  Let's consider the case of emitting with a dipole antenna.  For a 
+region close to the antenna (the near zone, of order $\lambda$), 
+$P_{rad}\propto E^2$, and at the edge of the near zone, 
+$E\propto{a\over\lambda}$.  Since $P_{rad}\propto\qemis\propto\qabs$,
+$$\qabs\propto\left({a\over\lambda}\right)^2$$
+
+\item  Here's another crude way of looking at it: 
+if you're in a boat that's small compared
+to the size of a wave coming at it, you aren't going to do anything to that
+wave (you won't scatter, everything transmits).
+
+\item  Another way of looking at it: 
+the damped simple harmonic oscillator.  Recall that:
+$$\sigma_{abs} = {4\pi e^2\over m_e c}{w\gamma \over \left[(w_0^2-w^2)^2 +
+(w\gamma)^2\right]}$$
+If $w \ll w_0$, then:
+$$\sigma_{abs} \to {4\pi e^2\over m_e c}{w^2\gamma \over w_0^4} \propto w^2$$
+Thus, $\qabs \propto \inv{\lambda^2}$.
+\end{itemize}
+
+Finally, there is Mie Theory, which states that if $\eta = n +ik$, where
+$\eta$ is the complex index of refraction, then you can express $\qabs$ and
+$\qscat$ in terms of the size parameter $x \equiv {2\pi a\over \lambda}$.
+For this derivation that Mie did, $n, k$ are called ``optical constants''.  This
+is a bad name, because both of these are actually functions of $\lambda$.\par
+
+Now we look at the handout Eugene gave us (Chiang et al, 2001, ApJ, 547, 1077).
+Notice on the $\qabs$ vs. $\lambda$ plots, in addition to the decay we
+described, there are ``bumps and wiggles''.  These are characteristic of the
+resonances of the systems (e.g. they leftrightarrowond to a rotational mode, etc.).
+The varying lines on each graph are for different sized particles.  Notice the
+characteristic Rayleigh Limit for small particles. \par
+
+\def\qext{Q_{ext}}
+There's another graph about how extinction $\qext = \qabs + \qscat$ goes as
+the size parameter is changed.  There is a large ``hump'' where $\qext$ goes to
+about 4.  It can do this (we'd said it couldn't go above 2) because we are not
+yet in the geometric optic limit.  Notice that on this big hump, there is a
+region where increased wavelength causes increased extinction.  This is the
+process which causes ``blue moons''.  If the size of particles in the atmosphere
+is just right, it will pass blue wavelengths while extinguishing red.\par
+
+\subsection*{ Some special results}
+
+\def\sabs{\sigma_{abs}}
+\begin{itemize}
+\item  Crystalline dielectrics: $\qabs \propto {a\over \lambda^2}$ (for
+$\lambda \gg a$.  Then:
+$$\alpha_\nu \eval{abs} = n_d\sabs = n_d\pi a^2\qabs
+\propto {a^2\over \lambda^2}$$
+Now what we measure in the field is $\tau$, the
+optical thickness.  However, $\tau_\nu = \sum{K_\nu}$, where $K_\nu = 
+{\sabs \over m_{particle}} \propto a^0$.  This is how the mass of 
+particles can measured. Then $\qscat \sim ({a\over \lambda})^4$, like
+Rayleigh scattering.
+\item  In general: $j_\nu\eval{emission} = \alpha_\nu \cdot B_\nu(T)$.
+Then:
+$$j_\nu\eval{scattering}(\^n) = n_d(\qscat\pi a^2)\int{I_\nu(\^n)
+F(\^n-\^n^\prime)d\Omega^\prime)}$$
+The term $F(\^n - \^n^\prime)$ is called the ``scattering phase function'', and
+is used to add up all of the incoming paths of light, taking into account their
+relative phases.  $n_d$ is the \# density of scattering grains.  For small
+enough grains ($a\ll \lambda$), F is independent of the properties of the
+material the grains are made of:
+$$F = {1+\cos^2\theta\over 2}$$
+where $\theta$ is the angle from the propagation direction of the incident beam.
+This gives us a characteristic ``dog bone'' scattering pattern. Small grains
+are (to within a factor of 2) isotropic scatterers.  The factor of 2 is the 
+dog bone pattern.  Note that the ``missing half'' at right angles to the
+propagation direction is the portion of incident light which had no polarization
+component which aligns with the characteristic polarization which must exist
+for light detected at a right angle from a scattering body.
+\end{itemize}
+
+\section*{ Lecture 7 }
+
+\subsection*{ Increasing Grain Size}
+
+We return to the model in which an infinite plane wave passes through an
+aperture, is focused by an infinite lens, and shines on a wall.  In this
+model, as the slit aperture widens (a increases), then the diffraction
+pattern narrows.  Thus, for larger grain sizes, there is more forward
+scattering than in other directions.  The fitting formula for the power
+pattern for large grains is:
+$$F(\theta)={1-g^2\over1+g^2-2g\cos\theta}$$
+where $g\equiv\mean{\cos\theta}={\int{F\cos\theta d\Omega}\over
+\int{Fd\Omega}}$. Note that this formula fails for $\theta=100^\circ$.  If
+$g=1$, then we have isotropic scattering, and as $g\to1$, $F(\theta)$ peaks
+increasingly in the $\theta=0$ direction (it is increasingly 
+``forward throwing'').
+
+\subsection*{ Forward Scattering}
+
+Forward scattering can actually increase the intensity of light in some areas
+over if there were no scattering at all.
+If particles are smaller that the wavelength of light, there is isotropic
+scattering.  For larger particles, the power is more concentrated in the 
+perfectly forward and backward directions.  This is why, where there is fog,
+you dim your headlights.  The larger scattering particles in the fog actually
+increases the intensity of light reflected back at you and at oncoming cars.
+
+\subsection*{ Collisional Excitation Cross-sections}
+
+The Einstein analog:
+$$\overbrace{A}^{low\ E\ particle} + \overbrace{B_{fast}}^{high\ E\ e^-}
+\to \overbrace{A^*}^{excited} + B_{slow}$$
+So the Rate of Excitations $R_{ex}$ is given by:
+
+\def\rex{R_{ex}}
+\def\vrel{v_{rel}}
+$$\rex = n_An_B\sigma_{12}f(\vrel)\vrel$$
+Suppose we have some distribution of relative velocities given by $f(v)dv$,
+where $f$ is the fraction of collisions occurring with relative velocities
+$[\vrel, \vrel +dv]$.  Then:
+$$\rex = n_An_B\int_0^{\infty}f(v)dv\sigot(v)v$$
+$$=n_An_B \mean{\sigot v}$$
+\def\qot{q_{12}}
+\def\qto{q_{21}}
+$$=n_An_B\qot$$
+where $\qot$ is the ``collisional rate coefficient'' $[cm^3s^{-1}]$.  Then the
+Rate of de-excitation is given by:
+$$R_{deex} = n_An_B\int_0^\infty{f(v)v\,dv\sigma_{21}(v) = n_A^*n_B\qto}$$
+We recognize now that $\sigot(v)n_An_Bf(v)dv\,v$ is the rate of excitations of 
+A using B moving at relative velocity $v$.  If we have detailed balance,
+then this has to be the same as the rate of de-excitation
+$n_A^*n_Bf(v^\prime)v^\prime\sigto(v^\prime)$.
+$$\overbrace{\hf m_rv^2}^{center\ of\ mass\ E} = hv_{12} + \hf m_rv^{\prime2}$$
+Where $m_r$ is the reduced mass $m_Am_B\over m_A+m_B$. However many $B_{slow}$
+are created by collisional excitation, the same number are used for the
+reverse de-excitation.  This is {\bf detailed balance}.\par
+Second, under thermal equilibrium, particles have a {\bf Maxwellian} velocity
+distribution:
+$$\boxed{f(v)=4\pi\left({m_r\over 2\pi kT}\right)^{3\over 2}v^2
+e^{-m_rv^2\over 2kT}}$$
+\centerline{(Maxwellian velocity distribution)}
+In thermal equilibrium,
+$${n_A^*\over n_A} = {g_2\over g_1}e^{-h\nu_{21}\over kT}$$
+Now, assuming detailed balance and thermal equilibrium,
+$$n_An_Bf(v)dv\,v\sigot=n_A^*n_Bf(v^\prime)dv^\prime v^\prime \sigto$$
+\def\emvkt{e^{-m_rv^2\over2kT}}
+\def\emvpkt{e^{-m_rv^{\prime2}\over2kT}}
+\def\ehvkt{e^{-h\nu_{21}\over2kT}}
+$$\sigot v^2\emvkt = {g_2\over t_1}\ehvkt \nu^{\prime2}\emvpkt v^\prime 
+dv^\prime\sigto$$
+$$\sigot dv\,v^3 \emvkt = {g_2\over t_1}\ehvkt \ehvkt \emvkt v^{\prime3}
+dv^\prime \sigto$$
+$$\boxed{g_1v^2\sigot(v) = g_2v^{\prime2}\sigto(v^\prime)}$$
+This is the ``Einstein analog''.\par
+For a specific case, $B=e^-$, $A=$ion with bound electron.
+\begin{itemize}
+\item Incident electron has kinetic energy $>h\nu_{21}$.
+$$\hf m_rv^2 \approx \hf m_ev^2 > h\nu_{21}$$
+\item  Coulomb focusing gives $\inv{v^2}$ cross-section.
+\end{itemize}
+We want to know how far away an electron with $v$ can be aimed
+and still hit the $a_0$ radius cloud around the ion.  This is $b$, the
+{\bf impact parameter}.  Our collision cross-section $=\pi b^2$.  Our
+angular momentum is conserved, so 
+$$m_ev\,b=m_ev_fa_0$$
+We know that $v_f^2 = v^2 + v_\perp^2$, where $v_\perp$ is the velocity
+$\perp$ to the original electron velocity.  This is a result of it falling
+toward the ion.  Then:
+$$\hf m_ev_\perp^2 \sim {Ze^2\over a_0}$$
+$$v_f^2 = v^2 + {Ze^2\over m_ea_0}$$
+$$b={a_0v_f\over v}$$
+$$\pi b^2 = {\pi a_0^2\over v^2}\left[v^2+{Ze^2\over m_ea_0}\right]$$
+$$= \pi a_0^2\left[1+\underbrace{Ze^2\over m_ev^2a_0}_{Coulomb\ focusing\atop 
+factor}\right]$$
+Generally, the Coulomb focusing factor $>1$ because we want to excite, not
+ionize.  $a_0={\hbar^2\over Ze^2m_e}$, so:
+$$\pi b^2 = {\pi\hbar^2\over m_ev^2}$$
+$$\sigot = {\pi\hbar^2\over m_e^2v^2}
+\overbrace{\left(\Omega(1,2)\over 
+g_1\right)}^{quantum\ mechanical\atop correction\ factor}$$
+$\Omega$ is the ``collisional strength'', and generally is 0 below the
+$v$ threshold, goes to 1 at the threshold, and decreases for increasing
+$v$, with some occasional spikes.  Generally, it is of order 1, with some
+slight temperature dependency.
+$$\qot=\mean{\sigot v} \propto \mean{\inv{v}} \propto \inv{\sqrt{T}}$$
+\begin{itemize}
+\item 2000 K gas.  $v_{term} \sim \sqrt{\gamma kT\over m}$, so 
+$v\sim \sqrt{2000\over 100}42\cdot 1{km\over s} \approx 160{km\over s}$. Then
+$$\sigot \sim 10^{-14}cm^2\left({\Omega(1,2)\over g_1}\right)$$
+$$\sigot\eval{osterbrock} \sim 10^{-15} cm^2$$
+\end{itemize}
+
+\section*{ Lecture 8 }
+
+Forgot something for the Einstein Analog.  Recall:
+$$g_1v^2\sigma_{12}(v)=g_2v^{\prime2}\sigma_{21}(v^\prime)$$
+$$\hf m_4v^2=h\nu_{21}+\hf m_r(v^\prime)^2$$
+For the special case of $f(v)$ being Maxwellian, then:
+$${q_{12}\over q_{21}}\equiv{\mean{\sigma_{12}v}\over\mean{\sigma_{21}v}}
+={g_2\over g_1}e^{-h\nu_{21}\over kT}$$
+This has a Boltzmann factor, which makes you thing we're assuming LTE, but
+we're not. \par
+Last time, we were talking about electron-ion collisional excitation, given by:
+$$\qot\equiv\mean{\sigot v}\propto\inv{v}\propto T^{-\hf}$$
+We can extend this for neutral-ion collisional excitation:
+$$\qot \propto T^\hf T^{-\hf} \propto T^0$$
+$$\sigot\equiv{\pi\hbar^2\over m_ev^2}{\Omega(1,2)\over g}$$
+where $\Omega(1,2)$ scales as $T^\hf$.  Notice this means that for some
+neutral-ion collisional excitation, it is {\it temperature independent}.
+For neutral-neutral collisional excitation:
+$$\qot=\mean{\sigot v}\propto T^\hf$$
+$$\sigot\propto T^0\sim \pi(Fa_0)^2$$
+This is all we'll talk about bound-bound transitions.
+
+\subsection*{ Bound-Free Transitions (Photoionization)}
+
+\def\sigbf{\sigma_{bf}}
+We'll calculate the cross-section of a bound-free transition $\sigbf$:
+$$\sigbf\sim{\lambda^2\over 8\pi}{A_{21}\over \Delta\nu}$$
+It turns out that $\Delta\nu$ is about $\nu$. $\lambda\approx 912\AA$, 
+so scaling from Lyman-alpha:
+$$\sigbf\sim{(912\AA)^3\over c\cdot8\pi}A_{21,Ly\alpha}
+\left({1216\AA\over912\AA}\right)^3\sim 10^{-18}cm^2$$
+It turns out that the real answer is $\sigbf\sim 6\cdot 10^{-18}cm^2$.  In
+general:
+$$\sigbf=\sigma\eval{edge}\left({E_{photon\,in}\over E_{edge}}\right)^{-3}$$
+That exponent (-3) is actually $-\frac83$ near the edge and goes to $-\frac72$
+far from it.  So you see $\sigbf$ spike up as the photon reaches the 
+ionization energy, and then decrease exponentially as energy increases.
+However, you can see new spikes from ionizing electrons in inner shells.
+
+\subsection*{ Radiative Recombination}
+
+\def\sigfb{\sigma_{fb}}
+This is the inverse process of photoionization, so $\sigfb$ is the cross-section
+for an ion recapturing its electron and emitting a photon.  We'll relate
+$\sigfb$ to $\sigbf$.  This is called the Milne Relation.  In this derivation,
+we'll start by assuming complete thermal equilibrium and derive a result which
+will end up being independent of thermal equilibrium.  Let's start calculating
+the rate of radiative recombinations.  Thermal equilibrium dictates that this
+must equal the rate of photoionization.  For radiative recombination:
+$$rate\ of\ recombination
+=n_+n_e\sigfb(v)v[f(v)dv]={\#\ of\ recombinations\over volume\ time}$$
+We'll set this equal to the rate of photoionization. This rate is:
+$$rate\ of\ photoionization
+={B_\nu4\pi d\nu\over h\nu}n_0\sigbf
+\overbrace{\left(1-{g_0\over g_+}{n_+\over n_0}\right)}^{{correction\ for\atop
+stimulated}\atop recombination}$$
+where $n_0$ is the \# density of neutrals. Note this has units of \# flux.
+Note also that $\sigbf$ depends on $\nu$, and $n_+\over n_0$ is evaluated
+at the relative velocity $v$ such that $h\nu=\hf m_ev^2+\chi$, where $\chi$
+is the threshold ionization energy.  In thermal equilibrium, we know that:
+$${n_+\over n_0}={g_+\over g_0}e^{-E\over kT}$$
+where $E$ is the energy difference between state 1 (proton + unbound $e^-$)
+and state 2 (bound proton/electron pair).  Thus $E$ is given by:
+$$E=\hf m_ev^2-(-\chi)=h\nu$$
+So we can make our n's and g's go away.  For $f(v)$, we'll use our Maxwellian:
+$$f(v)=4\pi\left({m_e\over 2\pi kT}\right)^{3\over 2}v^2e^{-m_ev^2\over 2kT}$$
+Finally, Saha tells us in thermal equilibrium:
+$${n_+n_e\over n_0}=\left[{2\pi m_ekT\over h^2}\right]^{3\over 2}{2g_+\over g_n}
+e^{-\chi\over kT}$$
+So now we're essentially done:
+$$1={n_+n_ef(v)v\sigfb(v)dv\over{4\pi B_\nu\over h\nu}d\nu(1-\ehvkt)
+n_0\sigbf(v)}$$
+and plugging in all of our relations we get:
+$$\boxed{{\sigfb(v)\over\sigbf(\nu)}=
+{g_0\over g_+}\left({h\nu\over m_ecv}\right)^2}$$
+\centerline{(Milne Relation)}
+Notice how all of the T's vanished.  
+This result is independent of thermal
+equilibrium.  However, you still have to pay attention to your statistical
+weights (g's).
+
+\section*{ Lecture 9 }
+
+Recall that we were deriving the Milne relation:
+$${\sigfb(v)\over\sigbf(\nu)}={g_0\over g_+}\left({h\nu\over m_ecv}\right)^2$$
+$(\hf m_ev^2+\chi=h\nu)$.  In the following equation, Eugene has replaced
+the $g_e$ of Rybicki and Lightman with the number $2$, because that is the
+number of spin states of the electron.  This is just to be more clear.  So
+the {\bf Saha} equation is:
+$${n_+n_e\over n_0}=\left[{2\pi m_ekT\over h^2}\right]^{3\over2}{2g_+\over
+g_0}e^{-\chi\over kT}$$
+\centerline{(Saha Equation)}
+Note that the number of internal degrees of freedom for the proton $g_+=2$, and
+the number for neutral hydrogen:
+$$g_0=\overbrace{n^2\cdot2}^{deg\ of\ freedom\ bound\ e^-}\overbrace{\cdot2}
+^{proton}$$
+$$g_0=4n^2$$
+Beware that Shu says $g_0=2n^2$ and $g_+=2$.  We are now going to write the
+``Recombination Coefficient'' $\alpha$:
+$$\begin{aligned}\alpha&=\sum{\int_0^\infty{\sigfb(n,v)v\,f(v)dv}}\\ 
+&=\sum_n{\mean{\sigfb(n,v)v}}\\ \end{aligned}$$
+$$\vartheta(\alpha)\simeq\vartheta\left(\sigbf({h\nu\over m_ecv})^2v\right)$$
+We'll estimate that for hydrogen, $\sigbf\sim10^{-18} cm^2$, $h\nu\approx
+13.6eV$, and $v\sim\sqrt{2kT\over m_e}$, where $T\sim10^4K$.  Thus
+$$\vartheta(\alpha)\simeq10^{-13}{cm^3\over s}\left({10^4K\over T}\right)^\hf$$
+You can look this up in Osterbrock: at $T=10^4K$, the sum over all bound
+states (``recombination''):
+$$\alpha_A=4\e{-13}{cm^3\over s}$$
+and the sum over all bound states except $n=1$ (we might be interested in
+omitting the free-to-ground transition because it is likely to ionize
+a nearby atom):
+$$\alpha_B=2\e{-13}{cm^3\over s}$$
+
+\subsection*{ Derivation of Saha}
+
+Saha makes use of LTE.  This equation tells us what the \# density ratio is
+between states 1 and 2.  We'll say that $n_{0,1}$ is the \# density of neutral
+atoms with an $e^-$ in energy level 1.  $n_{+,1}$ is the \# density of ionized
+atoms which still have an $e^-$ in energy level 1.  Saha says
+collisional ionizations match the rate of collisional recombination:
+$${n_+n_e\over n_0}=\left[{2\pi m_ekT\over h^2}\right]^{3\over2}{2g_+\over
+g_0}e^{-\chi\over kT}$$
+The Boltzmann relation says:
+\def\npo{n_{+,1}}
+\def\noo{n_{0,1}}
+\def\gpo{g_{+,1}}
+\def\goo{g_{0,1}}
+$${\npo\over\noo}={\gpo\over\goo}e^{-E\over kT}$$
+where $E=E_{state\ 2}-E_{state\ 1}=\hf m_ev^2-(-\chi)=\hf m_ev^2+\chi$.  Now
+we need to figure out our numbers of internal degrees of freedom:
+$$\gpo =\gpo\eval{internal}\cdot g_e\eval{internal}\cdot 
+g_e\eval{translational\ motion}\cdot \gpo\eval{translational\ motion}$$
+$g_e$ is easy: $g_e=2$.  $g_e\eval{translational}$ is harder:
+$$g_e\eval{translational} = {(vol\ in\ conf\ space)(vol\ in\ momentum\ space)
+\over h^3}$$
+The volume in configuration space is $\inv{n_e}$.  The volume in momentum
+space is $4\pi p^2dp=4\pi m_e^3v^2dv$. Now on to $\goo$:
+$$\goo=\goo\eval{internal}\cdot\goo\eval{translational}$$
+$${\npo\over\noo}=\int_0^\infty{\gpo\eval{internal}\cdot\gpo\eval{trans}
+\over\goo\eval{internal}\cdot\goo\eval{trans}}{2\over n_e}
+{4\pi m_ev^2dv\over h^3}e^{-(\hf m_ev^2+\chi_1)\over kT}$$
+$${\npo n_e\over \noo}=\left[{2\pi m_ekT\over h^2}\right]^{3\over2}
+{2\gpo\eval{int}\over\goo\eval{int}}e^{-\chi_1\over kT}$$
+Now what if we were talking about going from neutral bound state in energy
+level 2 (instead of 1) to an ionized atom with electron in energy state 1.
+It turns out, we just need to replace $\goo$ with $g_{0,2}$ and
+\def\got{g_{0,2}}
+\def\nzt{n_{0,2}}
+$\chi_1$ with $\chi_2=\chi_1-E_{0,12}$.  Thus:
+$${\npo n_e\over\nzt}=\left[{2\pi m_ekT\over h^2}\right]^{3\over2}{2\gpo
+e^{-\chi_2\over kT}\over\got e^{E_{0,12}\over kT}}$$
+\def\tpmekth{\left[{2\pi m_ekT\over h^2}\right]^{3\over2}}
+Where the rightmost, bottom factor used to be $\goo$.  In general,
+$${n_{0,j}\over t_je^{-E_{0,1j}\over kT}}={\npo n_e\over\tpmekth 2\gpo
+e^{-\chi_1\over kT}}$$
+We'll define the right-hand side above to be $R$.  Then:
+$${R\over n_0}=\inv{U_0(T)}={\npo n_e\over\tpmekth 2\gpo
+e^{-\chi_1\over kT}n_0}$$
+$${\npo n_e\over n_0}=\tpmekth{2\gpo\over U_0(T)}
+e^{-\chi_1\over kT}$$
+$$\boxed{{n_pn_e\over n_o}=\tpmekth{2U_+(T)\over U_0(T)}
+e^{-\chi_1\over kT}}$$
+This is the full Saha equation.  Remember that Saha assumes that we are in LTE:
+the rate of collisional ionizations must equal the rate of collisional 
+recombination.  This predicts why we had to wait until the
+universe got to 3000K until recombination occurred.  We would have naively 
+expected
+that as soon as the temperature of the universe dropped below the ionizing 
+energy of ground-state hydrogen, we would have recombination.  However, 
+Remember that we can't follow Saha out too far.  Soon, collisions stop happening
+often enough to maintain LTE, and Saha becomes invalid.  For example, Saha
+would say that after recombination we would continue to lose free electrons
+at the same (logarithmic) rate.  In truth, the number of free electrons
+asymptotically approaches $10^{-3}n_B$ (where $n_B$ is the number of baryons).
+We can estimate why this is.  The time for a proton to find an electron is
+given by:
+$$t=\inv{n_e\mean{\sigfb v}}\ll{a\over \.a}$$
+That is, collisional ionizing equilibrium just starts to fail when:
+$$\inv{n_e\mean{\sigfb v}}\sim{a\over \.a}$$
+Since we know the Hubble time ($2\e5 yrs$), we can actually estimate
+the number of free electrons in the universe at the time of recombination:
+$$n_e\sim\inv{(2\e{-13})(2\e5)(\pi\e7)}\sim1$$
+
+\section*{ Lecture 10 }
+
+\subsection*{ Applications of Saha}
+
+Recall that we had calculated the time for a proton to radiatively recombine
+with an $e^-$ as:
+$$t_{recomb}\sim\inv{n_e\mean{\sigfb v}}$$
+Saha tells us that:
+$${\npo\over\noo}=\underbrace{\left({2\pi m_ekT\over 
+h^2n_e^{2\over3}}\right)^{3\over2}}_{{translational\atop phase\ space}\atop factor}
+{2\gpo\over\goo}e^{-\chi_1\over kT}$$
+where T is the temperature of matter.
+
+\begin{itemize}
+\item  T and z of recombination:\par
+COBE has measured the temperature of the CMB to be:
+$$T=3K(1+z)$$
+Let's assume that just prior to recombination, photons and matter were
+in thermal equilibrium, so:
+$$T_\gamma\eval{recomb}=T_m\eval{recomb}$$
+and also, the rate of photoionization of H by the photon gas should equal
+the rate of radiative recombination.  These assumptions allow us to use the
+Saha Equation.  Since ${\rho_0\over m_H}\sim{H^2\Omega_b\over Gm_H}$,
+$$n=n_0(1+z)^3$$
+Therefore, if we set ${n_+\over n_0}=\hf$ (we define this at recombination
+time), then we can use Saha to solve for T, and then z.  After recombination,
+there is no more Compton scattering to exchange energy between photons and
+matter, so $T_\gamma\ne T_m$.  Since fractional ionization is determined by the
+ratio of the rates of ionization and recombination (of which radiative
+recombination is largest):
+$$\inv{n_e\mean{\sigfb v}}\eval{recomb}\sim{a\over\.a}\eval{recomb}$$
+That is, the timescale of radiative recombination is of order $2\e5yrs$.
+
+\item  Kramer's Opacity (used for stellar interiors and accretion disk
+interiors.\par
+This is the opacity due to the photoionization of metals.  It is useful
+in a gas at thermal equilibrium which is as sufficiently high temperatures
+that H,He are nearly ionized, but metals retain their last few $e^-$.  This
+formula is an approximate fitting formula (it doesn't account for the ionization
+edges of metals).  It assumes the cosmic abundance of materials, and it
+uses Saha.  It also uses $v\sim{kT\over h}$:
+$$\boxed{K_{Kramer}={\rho_{cgs}\over T^{3.5}\cdot3\e{23}{cm^2\over g}}}$$
+where $\rho_{cgs}$ is the density of all gas (including metals). Thus:
+$$\rho K_{bf}=n_{metal}\sigbf$$
+where $\rho,K_{bf}$ are for everything, $n_{metal}$ is the number of
+extinguishers, and $\sigbf$ is the cross-section for extinguishers.
+\def\nmet{n_{metals}}
+$$\begin{aligned}R_{photoion}&\propto\nmet n_{photons}\sigbf\\ 
+&\propto\nmet\underbrace{\left({aT^4\over h\nu}\right)}_{whole\ field\over
+energy}\sigbf\\ 
+&\propto\nmet{T^4\over T}\sigbf\\ \end{aligned}$$
+Note that we used $h\nu=kT$.  Similarly, if $\alpha\sim T^{-\hf}$, then:
+$$\begin{aligned}R_{rad-recomb}&\propto n_e\nmet+\alpha\\ 
+&\propto n_e\nmet+T^{-\hf}\\ \end{aligned}$$
+Setting these two results equal we get:
+$$\nmet\sigbf\propto n_e\nmet+T^{-3.5}$$
+$$K_{bf}\propto{n_e\nmet\over\rho} T^{-3.5}$$
+And since $n_e\sim\rho$ and $\nmet\propto\rho Z$:
+$$K_{bf}\propto\rho T^{-3.5}$$
+\end{itemize}
+
+\subsection*{ Instability Strip}
+
+There is a strip on an HR diagram where stars will pulsate.  This is the
+result of the exponential sensitivity of the ionization temperature
+($e^{-\chi\over kT}$).  The following describes the ``K mechanism'' for
+star pulsation.\par
+In a normal star, if the outer shell loses pressure, the work done by
+the collapse of the shell heats the star, increasing density and pressure.
+$K_{bf}$ affects how fast radiation escapes, and when energy finally
+does  escape, equilibrium is restored and the star maintains its new
+size.  However, in zones of partial ionization, the adiabatic increase
+in E goes into ionizing material.  This liberates $e^-$ without raising
+the temperature.  Since temperature is constant and $\rho$ increases,
+so $K_{bf}$ increases, and photons can't get out.  This continues until
+He is fully ionized, and then the outer shell puffs up, and the cycle
+continues.
+
+\subsection*{ Collisional Ionization Cross-Section}
+
+For H:
+$$\sigma_{coll,bf}\sim\pi a_0^2\left({\chi\over E}\right)$$
+for an $e^-$ hitting an H atom.  Note that $\chi$ is the ionization
+energy, and E is the electron kinetic energy.  The cross-sections
+for many atoms are uncalculated and unmeasured.  For more information,
+take a look at (Bely and van Regemorter 1970 ARAA), (Bates 1962 Atomic
+and Molecular Processes), and (Jefferies 1968 Spectral Line Formation).
+
+\section*{ Lecture 11 }
+
+\subsection*{ Bremsstrahlung (braking radiation)}
+
+Bremsstrahlung is the continuum of emission from a plasma caused by
+the deflection of charged particles off of one another.  The most
+important deflection which we will talk about is of an $e^-$ by
+a positive nucleus.  Recall that the power radiated by an accelerated
+$e^-$ is:
+$$P={2\over3}{e^2a^2\over c^3}$$
+In this case, the acceleration is from the electrical force of a
+nucleus, so $a\sim{Ze^2\over b^2m_e}$, where b is the distance of
+closest approach between the $e^-$ and the nucleus.  Thus:
+$$P={2\over3}{Z^2e^6\over b^4m_e^2c^3}$$
+The energy released by this encounter is given by $E\sim P\Delta t$, where
+$\Delta t$ is about how long the $e^-$ is within order b of the nucleus.  Thus
+$\Delta t\sim{2b\over v}$, where v is the velocity of the electron.  Therefore:
+$$E\sim{4\over3}{Z^2e^6\over m_e^2c^3b^4}{b\over v}$$
+From the point of view of the $e^-$, the force of the $\ef$ of the nucleus
+starts out pulling the $e^-$ almost directly forward, and ends up pulling
+the $e^-$ nearly backward.  If we graph the portion of this force which
+pulls the $e^-$ sideways, we have something that looks a lot like the
+upper half of a sine wave of period $2\Delta t$.  
+This enables us to relate $d\nu$ to
+$db$, which will be useful to us in a minute:
+$$d\nu\sim{v\over4b}db$$
+Now let's consider $e^-$'s going in a ring around a nucleus at radius
+b.  The ``fraction'' of an electron in a section db of that ring is 
+$2\pi b\,db\,n_ev$, where $n_e$ is the number of electrons in the ring.
+Thus, the power radiated by that section of ring is:
+$$dP\sim E\cdot2\pi b\,db\,n_ev$$
+Using our relation between $d\nu$ and db, and our expression for E:
+$${dP\over d\nu}\sim{32\pi\over3}{Z^2e^6n_e\over m_e^2c^3v}$$
+So the power per frequency interval is independent of distance.\par
+Now let's assume a Maxwellian
+velocity distribution.  We'll define a $\nu_{fix}$ such that
+$h\nu_{fix}\sim\hf mv_{min}^2$, where $v_{min}$ is the minimum velocity
+required to keep an $e^-$ moving unbound around a nucleus.  Then
+the average total power released over all frequencies is:
+$$\begin{aligned}\mean{P\over\nu}&=\int_{v_{min}}^\infty{{dP\over d\nu}4\pi
+\left({m_e\over2\pi kT}\right)^{3\over2}e^{-m_ev^2\over2kT}v^2dv}\\ 
+&={64\sqrt{\pi}\over3\sqrt{2}}{Z^2e^6n_e\over m_e^{3\over2}c^3(kT)^\hf}
+e^{-h\nu\over kT}\\ \end{aligned}$$
+\def\jnff{j_{\nu,ff}}
+We now define $\jnff$ to be the volume emissivity for free-free interactions.
+That is, $\jnff$ measures the power radiated by plasma, per volume, into
+a solid angle $d\Omega$.  We can calculate the ``per $d\Omega$'' because this
+radiation is isotropic:
+$$\boxed{\jnff={16\over3\sqrt{2\pi}}{Z^2e^6\over m_e^{3\over2}c^3(kT)^\hf}
+n_en_pe^{-h\nu\over kT}}$$
+where $n_p$ is the \# density of ions.  This is the expression for
+Thermal Bremsstrahlung.  Note that the definition of $\jnff$ in Rybicki \&
+Lightman has an additional factor of ${\pi\over\sqrt{3}}\_g_{ff}(v,T)$, which
+is a quantum mechanics correction factor of order unity.  It's called the
+``Gaunt factor''.  Compare $\nu\jnff$ to the power emitted by a blackbody:
+they both peak at $4kT\over h$, and for small $\nu$, they both go as
+$\nu^3$.
+
+\subsection*{ Inverse Bremsstrahlung}
+
+An $e^-$ can also absorb a photon and become more energetic and ``free''.  We 
+define the coefficient for thermal free-free absorption as:
+\def\anff{\alpha_{\nu,ff}}
+$$\boxed{\anff\equiv{\jnff\over B_\nu}}$$
+We can express the opacity as:
+\def\knff{K_{\nu,ff}}
+$$\boxed{\knff={\anff\over\rho}\propto{n_en_p\nu^{-3}(e^{-h\nu\over kT}-1)\over
+\rho\sqrt{T}e^{h\nu\over kT}}}$$
+where $\rho$ is the total density.  Since most photons have $h\nu\sim kT$,
+$$\begin{aligned}\knff&\propto{n_en_p\over\rho}{T^{-3}\over\sqrt{T}}\\ 
+&\propto\rho T^{-3.5}\\ \end{aligned}$$
+See how we got back to Kramer's opacity!\par
+It is important to remember the assumptions we made to get here:
+\begin{itemize}
+\item Maxwellian velocity distribution, which should be valid since the
+collision time scale is very small, so the system should relax to a 
+Maxwellian distribution quickly.
+\item Non-relativistic, so $T\le{m_ec^2\over k}\sim7\e9K$, which
+is an okay assumption for most plasmas.\par
+Some examples of Thermal Bremsstrahlung are HII regions, and the diffuse
+IGM (which contains nuclei and H).
+\end{itemize}
+
+\section*{ Lecture 12 }
+
+\subsection*{ Synchrotron (Magneto-Bremsstrahlung)}
+
+Synchrotron radiation is radiation caused by a magnetic field accelerating
+a charge.  It is generally relativistic (the Lorentz factor $\gamma\gg1$).
+We'll discuss this later, but first will do Cyclotrons, where $\gamma\approx1$.
+
+\subsection*{ Cyclotron}
+
+If we have an electron moving in circles in a magnetic field B, then the
+frequency of its ``orbit'' is:
+$$\omega_{cyc}={eB\over m_ec}$$
+We can compute the power pattern radiated by this electron in a direction 
+$\theta$ (measured from the vector toward the center of the orbit) by the 
+acceleration of the charge:
+$${dP\over d\Omega}={e^2a^2\over c^3}{\sin^2\theta\over4\pi}$$
+where $a$ is the acceleration of the charge, given by:
+$$a={evB\over cm_e}$$
+
+\subsection*{ Derivation of Power Pattern}
+
+Say that we have an $e^-$ moving in a straight line along the x axis, and
+it gets accelerated, starting at $x=0$, for a duration $\Delta t$.  Let
+$\theta$ measure the angle of a field line emitted by the $e^-$, from the
+acceleration axis.  The 
+acceleration of $e^-$ causes a ``jog'' in the electric field compared to where
+it would have been (this jog propagates outward at $c$).  Say that $E_{tr}$
+is the electric field carried in the transverse component 
+($\perp$ to $\theta$), and
+$E_r$ measures the component in the radial component of the jog.  Then:
+$$\begin{aligned}{E_{tr}\over E_r}&={(a\Delta t)t\sin\theta\over c\Delta t}\\ 
+&={at\sin\theta\over c}\\ \end{aligned}$$
+Just to get that factor of $t$ out of there, say that $r=ct$:
+$${E_{tr}\over E_r}={ar\sin\theta\over c^2}$$
+We know that $E_r={e\over r^2}$, so:
+$$\boxed{E_{tr}={ea\sin\theta\over c^2r}}$$
+Note how the transverse field goes off as $r^{-1}$, so when
+you go far enough away, it always wins out over the plain electric field.\par
+What's the transverse magnetic field?  Maxwell's equations tell us:
+$$\begin{aligned}\dce=-{1\over c}{\partial B\over\partial t}\\ 
+&=\vmatrix\^x&\^y&\^r\\
+{\partial\over\partial x}&{\partial\over\partial y}&{\partial\over\partial r}\\
+E_{tr}&0&E_r\endvmatrix\\ 
+&=\^x({\partial E_r\over\partial y})+\^y({\partial E_{tr}\over\partial r}
+-{\partial E_r\over\partial y})+\^r({\partial E_{tr}\over\partial y})\\ 
+&\approx\^y{\partial E_{tr}\over\partial r}\\ \end{aligned}$$
+Say we define $f$ such that:
+$$E_{tr}=f(r-ct)$$
+then $\vec B=f(r-ct)\^y$, so:
+$$\begin{aligned}-{1\over c}{\partial f(r-ct)\^y\over \partial t}
+&={-\^y\over c}{\partial f(r-ct)\over \partial(r-ct)}{\partial(r-ct)\over
+\partial t}\\ 
+&=\^y{\partial f(r-ct)\over\partial(r-ct)}\\ \end{aligned}$$
+Also:
+$$\begin{aligned}\dce&={\partial E_{tr}\over\partial r}\\ 
+&=\^y{\partial f(r-ct)\over\partial(r-ct)}{\partial(r-ct)\over\partial r}\\ 
+&=\^y{\partial f(r-ct)\over\partial(r-ct)}\\ \end{aligned}$$
+Thus, $E_{tr}$ and $B_{tr}$ have the same magnitude.\par
+To cut to the chase, the power radiated from the entire sphere is:
+$$\begin{aligned}P_{sphere}&={e^2a^2\over4\pi r^2c^3}\int_0^\pi{\sin^2\theta 
+2\pi\sin\theta r^2d\theta}\\ 
+&={2\over3}{e^2a^2\over c^3}\\ \end{aligned}$$
+This is the Larmor power formula.  We can also calculate the Poynting flux:
+$${\vec E\times\vec B\over4\pi}c=e^2a^2{\sin^2\theta\over4\pi r^2}$$
+Incidentally, you get the same result if you accelerate the charge perpendicular
+to the direction it was moving.\par
+The {\it axis of polarization} of this radiation is:
+$$(\vec a\times\vec r)\times\vec r$$
+Remember that $\vec a$ is the acceleration axis, and $\theta$ is always measured
+from that axis.
+\begin{itemize}
+\item Returning to the cyclotron example, if we observe from above
+an $e^-$ going in circles, we should see a constant flux (our angle with respect
+to the $e^-$ isn't changing), and it will be {\it circularly polarized}, 
+because the axis of polarization goes in circles as the $e^-$ goes in circles.
+If we were to observe this circling edge-on, then we'd receive linearly
+polarized radiation, and the flux from the accelerating $e^-$ oscillates
+with a frequency twice that of the $e^-$'s orbit.
+\end{itemize}
+
+Looking at the electron cyclotron emission from solar wind particles, we see
+that the flux density of the aurora from most planets drops after a frequency
+of about 1MHz, as dictated by the cyclotron frequency:
+$$\omega_{cyc}={eB\over m_ec}$$
+This tells us that the magnetic field for most planets is about the same.
+Jupiter is different because it has a very strong magnetic field.
+
+\section*{ Lecture 13 }
+
+\subsection*{ Clarification on Milne Relation}
+
+Recall that we had an expression for the rate of photoionization:
+$$R_{ion}={B_\nu4\pi d\nu\over h\nu}n_0\sigbf
+\overbrace{\left(1-{g_0\over g_+}{n_+\over n_0}\right)}^{{correction\ for\atop 
+stimulated}\atop recombination}$$
+It looks as though, for a highly ionized gas, the correction for stimulated 
+emission (which we may alternately write as $1-e^{-h\nu\over kT}$) could 
+become negative (which is bad).
+Defining G to be the ratio of the rate stimulated 
+recombination to the rate of spontaneous recombination, so that:
+$$R_{ion}={4\pi B_\nu\over h\nu}d\nu\sigbf(\nu)\inv{1+G}$$
+Then by analogy with line emission:
+$$G={n_2\bto\_J\over n_2\ato}={\_J\over {2h\nu^3\over c^2}}$$
+Recall that $\_J=\int_0^\infty{J_\nu\phi(\nu)d\nu}$, and in thermal
+equilibrium $J_\nu=\inv{4\pi}\int{I_\nu d\Omega}$, so assuming that
+$\phi(\nu)$ is about a delta function, 
+$\_J\approx B_\nu$.  Thus for G, we get:
+$$G={B_\nu\over{2h\nu^3\over c^2}}$$
+We know by conservation of energy that for
+stimulated emission:
+$$\begin{aligned}h\nu+\hf m_ev_e^2&=2h\nu-\chi\\ 
+h\nu&=\hf m_ev_e^2+\chi>0\\ \end{aligned}$$
+so it turns out that the stimulated emission term cannot be negative.  In 
+general,
+if you're unsure about whether to include the correction for stimulated
+recombination, compute G, and it will tell you.
+
+\subsection*{ Synchrotron Radiation}
+
+The Synchrotron is a relativistic cyclotron, so the Lorentz factor 
+$\gamma\gg1$.  As a result, the angular power pattern of an $e^-$ circling in a B
+field will take a new form.  Instead of having a ``donut'' of power emitted
+from the accelerated charge, much more of the field is going to be thrown in
+the forward direction, and much less in the backward direction.  To see this,
+let's define the {\it primed frame} to be the instantaneous rest frame of an
+$e^-$ which, in our frame, is moving in the $\^x$ direction and being 
+accelerated in the $\^y$ direction.
+In the primed frame, the acceleration of the electron ($\ap$) is still pointing
+in the $\^y$ direction.  We can relate $\ap$ to $a$ by
+noting that if $\vec\ap=\ap_y\^y^\prime+\ap_x\^x^\prime$:
+$$\begin{aligned}a_x&={\ap_x\over\gamma^3(1+{vu_x^\prime\over c^2})}\\ 
+a_y&={\ap_y\over\gamma^2(1+{vu_x^\prime\over c^2})}\\ \end{aligned}$$
+where $\upx$ is the observed velocity in the primed frame: 
+$\upx\equiv{d\xp\over d\tp}$.
+\begin{itemize}
+\item Proof: The Lorentz transformation tells us:
+$$\begin{aligned}\xp&=\gamma(x-vt)\\ 
+\yp&=y\\ 
+\zp&=z\\ 
+\tp&=\gamma(t-{vx\over c^2})\\ \end{aligned}$$
+Taking derivatives of these equations:
+$$\begin{aligned}d\xp&=\gamma(dx-vdt)\\ 
+d\yp&=dy\\ 
+d\zp&=dz\\ 
+d\tp&=\gamma(dt-{vdx\over c^2})\\ \end{aligned}$$
+Thus:
+$$\begin{aligned}{dx\over dt}&={d\xp+vd\tp\over d\tp+{vdxp\over c^2}}\\ 
+&={\upx+v\over1+{vu_x\over c^2}}\\ 
+{dy\over dt}&={\upy\over\gamma(1+{vu_x\over c^2})}\\ \end{aligned}$$
+Defining $\theta$ to be the angle of a vector from the $\^x$ direction (and
+similarly, $\theta^\prime$ from $\^x^\prime$), then:
+$$\begin{aligned}\tan\theta&={u_y\over u_x}={\upy\over\gamma(\upx+v)}\\ 
+&={\tan\theta^\prime\over\gamma(1+{v\over\upx})}\\ \end{aligned}$$
+Since $\upx=c\cos\theta^\prime$:
+$$\begin{aligned}\tan\theta&={\tan\theta^\prime\over\gamma(1+{v\over 
+c\cos\theta^\prime})}\\ 
+&={\sin\theta^\prime\over\gamma(\cos\theta^\prime+\beta)}\\ \end{aligned}$$
+\end{itemize}
+
+Here's a chart relating $\theta$ and $\theta^\prime$ for $\beta\approx1$,
+$\gamma\gg1$:
+$$\begin{matrix}
+\theta^\prime&\theta\\
+0^\circ&0^\circ\\
+45^\circ&{\sqrt{2}\over2+\sqrt{2}}{1\over\gamma}\ll1\\
+90^\circ&\inv{\gamma}\\
+135^\circ&{\sqrt{2}\over2-\sqrt{2}}\inv{\gamma}\\
+180^\circ&180^\circ\\
+\end{matrix}$$
+As is evident, photons emitted various angles in the $e^-$'s rest frame
+end up being beamed forward in the lab frame.
+This has applications in gamma ray bursts.  When a star goes supernova, 
+it's electrons are accelerated to relativistic velocities.  Because of
+relativistic beaming, we can only see the few electrons whose beams
+point at us.  As the $e^-$'s slow down (because they are radiating power),
+they stop being relativistic, and we get to see radiation from a larger
+angle.  Thus, the flux curve is ``flattened'' for times shortly after
+a star goes supernova.
+
+\subsection*{ Synchrotron Characteristic Frequency}
+
+Suppose you are observing an $e^-$ emitting synchrotron radiation.  Since
+radiation is just being emitted forward by the $e^-$, you won't see radiation
+from the electron very often.  In fact, you'll just see it once per revolution.
+Each time you do see it, you will see a spike in power.  We'd like to figure
+out long in time these pulses are separated.  To do this, we have the 
+following equations for relativistic motion:
+$$\begin{aligned}\ddt\vec P&={e\over c}\vec v\times\vec B\\ 
+\ddt(\gamma m\vec v)&={e\over c}\vec v\times\vec B+e\vec E\\ \end{aligned}$$
+$$\ddt(Energy)=\ddt(\gamma mc^2)=e\vec v\cdot\vec E$$
+Now $\vec B=\vec B_{external}=B\^z$ and $\vec E=\vec E_{external}=0$.  There
+are also contributions of the self-interaction of the electron's field with
+the electron, but we'll neglect these as being a minor perturbation.  Then:
+$$\boxed{\gamma m{d\vec v\over dt}=e\vec v\times\vec B}$$
+Let's define $\alpha$ to be the ``pitch angle'' between $\vec B$ and $\vec v$
+(that is, the angle which makes the $e^-$ travel in a helix instead of a 
+circle).
+Then:
+$$\gamma m{v_\perp^2\over r_p}={evB\sin\alpha\over c}$$
+where $r_p$ is the projected radius of orbit, looking down on $\vec B$. Thus:
+$$\gamma m{(v\sin\alpha)^2\over r_p}={evB\sin\alpha\over c}$$
+$$r_p={\gamma mc\over eB}v\sin\alpha$$
+The time to make an orbit is ${2\pi\over\omega_B}$, neglecting radiation
+reactions, so:
+$$\omega_B={v_\perp\over r_p}={v\sin\alpha\over r_p}={eB\over\gamma mc}
+={\omega_{cyc}\over\gamma}$$
+
+\subsection*{ Photons Chasing Photons}
+
+The photons emitted by the $e^-$ are being squished together by the fact that
+the $e^-$ is itself moving close to the speed of light.  If some $e^-$ is
+spiraling around, there is only a tiny arc over which the $e^-$ emits
+photons that we can see.  We would like to calculate this arc in order to
+figure the width of the pulse of radiation an observer sees from synchrotron
+radiation.  The width of the arc over which the $e^-$ emits radiation that
+we see (as the electron sweeps its beam past us) is just the width of the
+beam that the $e^-$ emits, which is $2\over\gamma$.  The time interval
+over which this arc is swept out is determined by the time it takes the
+$e^-$ to travel an angle of $2\over\gamma$ around the circle.  However, we can
+also calculate this by noting that the change in v over the interval must
+come from the acceleration of the $\vec B$ field:
+$$\gamma{\Delta v\over\Delta t_{21}}={evB\sin\alpha\over c}$$
+$${\Delta v\over\Delta t_{21}}=\omega_Bv\sin\alpha$$
+$$\Delta t={\Delta v\over \omega_B v\sin\alpha}$$
+Now $\Delta v\sim v{2\over\gamma}$, so:
+$$\boxed{\Delta t_{21}\sim{2\over\gamma\omega_B\sin\alpha}}$$
+
+\section*{ Lecture 14 }
+
+\subsection*{ Finishing Synchrotron Characteristic Frequency}
+
+In computing the time width of the pulses received from an $e^-$ emitting 
+synchrotron radiation, we first measure the time during which the 
+electron emits radiation toward the observer (starting at some initial
+point 1 and finishing at point 2):
+$$\Delta t_{21}={2\over\gamma\omega_B\sin\alpha}$$
+However, during the time the electron was emitting this radiation, it was
+also moving toward us, so we receive these photons in a shorter burst than
+they were emitted at.  The difference in the actual physical length of
+\def\tto{{t_{21}}}
+the emission goes from being $c\Delta\tto$ to $(c-v)\Delta\tto$ (we assume
+that for the duration of the emission, the $e^-$ is going approximately
+straight at you).  Thus we can get the actual time width of the pulse:
+$$\Delta t={(c-v)\Delta\tto\over c}=(1-\beta)\Delta\tto$$
+For $\gamma\gg1$, $\beta\to1$, so:
+$$\Delta t\approx\inv{\omega_{cyc}\gamma^2\sin\alpha}$$
+This factor of $\inv{\gamma^2}$ comes from the following:
+$${\gamma_{rel\atop mass}\over
+\gamma_{{phot\atop chase}\atop phot}^2\gamma_{beam}}$$
+Using $\Delta t$, we can deduce the synchrotron frequency.  We've just done 
+an approximate computation here.  Rybicki \& Lightman do it
+for real and get
+$$\boxed{\omega_{sync}={3\over2}\gamma^2\omega_{cyc}\sin\alpha}$$
+
+\subsection*{ Synchrotron Power}
+
+Notice that the $\gamma^2$ makes synchrotron radiation ``harder'' than
+cyclotron radiation.  In a cyclotron, the power radiated into all solid
+angles is:
+$$P={2\over3}{e^2a^2\over c^3}$$
+Let's derive this for the synchrotron.  In the electron frame:
+$$P^\prime={2\over3}{e^2a^{\prime 2}\over c^3}$$
+It turns out that power is a relativistic invariant.  To see this, note
+$P^\prime={dU^\prime\over dt^\prime}$, and we know the following:
+$$\begin{matrix}
+\begin{aligned} U^\prime&=\gamma(U-vp_x)\\ 
+t^\prime&=\gamma(t-{vx\over c^2})\\ \end{aligned}&
+\begin{aligned} U&=\gamma(u^\prime+vp_x^\prime)\\ 
+t&=\gamma(t^\prime+{v\xp\over c^2})\\ \end{aligned}
+\end{matrix}$$
+and in the prime frame  ($s^\prime$), $d\xp=dp_x^\prime=0$.\par
+So we've shown that once we calculate $P^\prime$, we know $P$ in all frames.
+What we need to do now is calculate $a^\prime$.  We'll do the following:
+\begin{itemize}
+\item  Get $a^\prime(a)$, the Lorentz transform of acceleration.
+\item  Get $a^\prime$ due to $E^\prime$.
+\end{itemize}
+As an exercise in special relativity, we'll derive what $\ef^\prime$ is by
+\def\sigo{\sigma_0}
+investigating two parallel plates--the bottom one having charge density $\sigo$ 
+and the top having $-\sigo$ We
+know in a motionless frame that the field between the plates is:
+$$\begin{aligned}E_{y_0}&=4\pi\sigma_0\\ 
+B_0&=0\\ \end{aligned}$$
+In a frame ($s$) where we are moving at $v=-v_0\^x$, these become:
+$$\begin{aligned}E_y&=4\pi\sigma=4\pi\gamma_0\sigo=\gamma_0E_{y_o}\\ 
+B_z&={4\pi J\over c}={4\pi\over c}\sigma v_0={4\pi\over c}\gamma_0\sigo v_0=
+E_{y_0}{v_0\over c}\gamma_0\\ \end{aligned}$$
+Jumping into one more frame ($s^\prime$) where $v=v^\prime\^x$ relative to 
+frame $s$, we have:
+$$\begin{aligned}E_y^\prime&=4\pi\sigma^\prime\\ 
+B_z^\prime={4\pi\over c}\sigma^\prime v^\prime\\ \end{aligned}$$
+We need to figure $\sigma^\prime$, and our first instinct might be to say
+$\sigma^\prime=\gamma^\prime\sigma$, but that is wrong.  We have to reference
+it from $\sigo$:
+$$\sigma^\prime=\gamma^\prime\sigo$$
+Now we do some algebra:
+\def\gamp{{\gamma^\prime}}
+\def\gamo{{\gamma_0}}
+$$\begin{aligned}E_y^\prime&=4\pi\gamp\sigo\\ 
+&=4\pi\gamma\gamo(1-{vv_0\over c^2})\sigo\\ 
+&=\underbrace{4\pi\gamo\sigo}_{E_y}\gamma-\underbrace{4\pi\gamo v_0\sigo\over
+c}_{B_z}{\gamma v\over c}\\ \end{aligned}$$
+Thus we have:
+$$\begin{matrix}
+\boxed{E_y^\prime=\gamma E_y-{\gamma v\over c}B_z}&
+\boxed{E_z^\prime=\gamma E_z+{\gamma v\over c}B_y}&
+\boxed{B_y^\prime=\gamma B_y+{\gamma v\over c}E_z}
+\end{matrix}$$
+And, of course, $E_x^\prime=E_x$.  The only thing we need to get now is
+$B_x^\prime$.  For this we'll talk about a solenoid aligned with the $\^x$
+direction with $n$ turns per unit length.  The field of this solenoid
+in the rest frame is:
+$$B_x={4\pi\over c}nI$$
+Jumping to a frame where $\vec v=v\^x$, $B_x^\prime={4\pi n^\prime I^\prime\over
+c}$. Using that:
+$$\begin{aligned}n^\prime&=\gamma n\\ 
+I^\prime&={dQ^\prime\over dt^\prime}={dQ\over\gamma dt}={I\over\gamma}\\ \end{aligned}$$
+We find that:
+$$\boxed{B_x^\prime=B_x}$$
+Recall that we've derived all of this for boosts in the $\^x$ direction.
+To be completely general, we'll write them for any direction:
+$$\begin{matrix}\begin{aligned}E_\|^\prime&=E_\|\\ 
+B_\|^\prime&=B_\|\\ \end{aligned}&
+\begin{aligned}\vec E_\perp^\prime
+&=\gamma(\ef_\perp+{\vec v\over c}\times\bfield)\\ 
+\vec B_\perp^\prime&=\gamma(\bfield_\perp-{\vec v\over c}\times\ef)\\ 
+\end{aligned}
+\end{matrix}$$
+So finally, back to the synchrotron.  Since $e^-$ is at rest in the primed
+frame:
+$$\vec a^\prime={e\ef^\prime\over m_e}$$
+$$\ef_\|^\prime=\ef_\|=0$$
+$$\ef_\perp^\prime=\gamma{\vec v\times\bfield\over c}$$
+$$|E_\perp|={\gamma vB\over c}\sin\alpha$$
+Therefore, the magnitude of the acceleration is:
+$$|a^\prime|={e\gamma vB\over m_ec}\sin\alpha$$
+And so the power radiated is:
+$$\boxed{P^\prime={2\over3}{e^4\gamma^2v^2B^2\over m_e^2c^5}\sin^2\alpha}$$
+Note that as $v\to c$,
+$$P\to{2\over3}{e^4\gamma^2B^2\over m_e^2c^3}\sin^2\alpha$$
+Thus we get {\it way} more power ($\gamma_{v\to c}^2\over\beta_{v\ll c}^2$) 
+out of the synchrotron.  How long can an $e^-$ hold up radiating this kind
+of power?
+$$t_{life}\sim{\gamma m_ec^2\over\left({e^4\gamma^2B^2\over m_e^2c^3}\right)}$$
+The time it takes an $e^-$ to go in the circle is just:
+$$t_{orb}\sim{\gamma m_ec\over eB}$$
+Taking the ratio of these, we find that the critical $B$ required to make
+these timescales comparable is:
+$$\gamma^2B\sim{c^4m_e^2\over e^3}\approx{3^4\e{40}\e{-54}\over
+5^3\e{-30}}\approx10^{16}cgs$$
+Getting back to P, there is a prettier way of writing it:
+$$P=\overbrace{2\sigma_Tc\,U_B}^{E\ intercepted\atop by\ e^-}
+\sin^2\alpha\overbrace{\gamma^2}^{relativistic\atop enhancement}$$
+where $\sigma_T={8\pi\over3}r_0^2$ is the Thomson cross-section ($r_0$ being
+defined by ${e^2\over r_0}=m_ec^2$), and $U_B$ is the energy stored in the
+magnetic field $U_B={B^2\over8\pi}$.
+
+\section*{ Lecture 15 }
+
+\subsection*{ Synchrotron Cooling Time}
+
+To estimate the Synchrotron cooling time, we'll set up our standard expression
+of self-energy over power radiated:
+$$t_{cool}\sim{\gamma m_ec^2\over u_Bc\sigma_T\gamma^22\cdot\sin^2\alpha}$$
+Instead of doing anything fancy with $\sin^2\alpha$, we'll just use that
+$\mean{\sin^2\alpha}={2\over3}$.  $U_B$ we can estimate as $\mean{B^2}\over
+8\pi$, giving us:
+$$\begin{aligned}t_{cool}&\sim{m_ec^2\over{4\over3}\sigma_Tc}\inv{\gamma U_B}\\ 
+&\sim16yr\left({1\,Gauss\over B}\right)^2\left(\inv{\gamma}\right)\\ \end{aligned}$$
+\begin{itemize}
+\item Let's examine the cooling time for radio jets, 
+where $B\sim1mGauss$, 
+and $\gamma\sim10^3$.  Plugging this in, we get $t_{cool}\sim10^4yr$.  Compare
+this to $t_{dyn}\sim{l\over c}\sim{1kpc\over c}\sim10^4yr$.
+
+\item We'll also estimate the cooling time of the Crab Nebula.  To set
+an upper bound on $t_{cool}$, we'll use the most energetic X-rays.  We can
+do this because $\gamma$ uniquely determines the electron energy and as a 
+result, it uniquely determines a photon energy.  For the Crab Nebula, we'll
+pick a photon energy: $E=4keV$.  Then:
+$$\begin{aligned}\omega&\sim\omega_{crit}\sim\gamma^2\omega_{cyc}\\ 
+&\sim{E\over\hbar}\sim\gamma^2{eB\over m_ec}\\ \end{aligned}$$
+$B\sim mG$ gives us that $t_{cool}\sim2yrs$.  Clearly, since the Crab Nebula
+was created some 1000 years ago, there must be a source of fresh electrons.
+This source is the pulsar, sitting in the middle of the nebula.
+\end{itemize}
+
+\subsection*{ Polarization}
+
+Returning to the non-relativistic cyclotron, recall that when we observe 
+an $e^-$ in a circular orbit from the plane of that orbit, we see linearly
+polarized photons, and when we observe it from above the plane of the
+orbit, we see circularly polarized photons.  In the synchrotron, 
+the total emission of the $e^-$ (both the linearly polarized photons
+in the plane of the orbit and the circularly polarized photons perpendicular
+to the orbit) are swept into the forward direction.  Thus, for a single
+electron, we'd see the top and bottom fringes of the beam are circularly
+polarized, and the center of the beam is linearly polarized.  If we have
+several electrons, the bottom (circularly polarized) fringe of
+its beam will overlap the top (oppositely circularly polarized) fringe
+of the next electrons beam.  These will tend to cancel, and we find that
+synchrotron radiation is generally dominated by linearly polarized photons.
+The upper bound for how much of the radiation is linearly polarized is set by
+a perfectly uniform $B$ field, where 75\% is linearly polarized.
+
+\subsection*{ Spectra of Synchrotron Radiation}
+
+The power spectrum of a single $e^-$ undergoing synchrotron radiation peaks at 
+$\omega_{crit}\sim\gamma^2\omega_{cyc}$.  For small $\omega$, $P$ goes as
+$\omega^{1\over3}$, and for $\omega\gg\omega_{crit}$, $P$ goes as
+$\omega^\hf e^{-\omega}$.  In general, recall that $P\propto B^2\gamma^2$.
+We would like to calculate the power spectrum of an ensemble of $e^-$.  To do
+this, we need to describe how many electrons there are per energy.  We'll
+assume a power law distribution of $e^-$ energies (${dN\over dE}$ goes as
+$E^p$, where $p$ is the {\it differential energy spectrum index}).  We make this
+assumption simply because this coincides with our observations (see Nilsen and
+Zager).  Let's consider the power radiated by electrons with energies between
+$E$ and $E+dE$:
+$$\begin{aligned}dP&=dN\times P\eval{single\ e^-}\\ 
+&\propto\left({dN\over dE}dE\right)\gamma^2B^2\propto(E^pdE)E^2B^2\\ 
+&\propto E^{2+p}B^2dE\\ \end{aligned}$$
+Thus we have:
+$${dP\over dE}\propto E^{2+p}B^2$$
+Now let's say that we have a one-to-one relationship between $E$ and $\omega$.
+That is, electrons of a specific energy $E$ are solely responsible for
+generating photons of frequency $\omega\sim\gamma^2\omega_{cyc}$.  Note also
+that $\omega\propto\gamma^2B\propto E^2B$, so $E\propto\left({\omega\over B}
+\right)^\hf$.  Therefore:
+$$\begin{aligned}{dP\over d\omega}&={dP\over dE}{dE\over d\omega}\\ 
+&\propto(E^{2+p}B^2)B^{-\hf}\omega^{-\hf}\\ 
+&\propto\left({\omega\over B}\right)^{2+p\over2}B^{3\over2}\omega^{-\hf}\\ \end{aligned}$$
+$$\boxed{{dP\over d\omega}\propto B^{1-p\over2}\omega^{1+p\over2}}$$
+Usually, $p<0$.  Note that our assumption of one-to-one correspondence was
+not necessary to get this power law dependence on $\omega$.  If hadn't made
+that assumption, we would have found that the sum of the contributions of
+electrons in nearby energies would have yielded the same result we got, except
+near the edges of $\omega$.  Also note that this expression relies on an
+influx of $e^-$ to replace old ones which cooled down.  If we cut off this
+influx, we'll see that since $t_{cool}\sim\inv{\gamma B^2}$, the $e^-$ emitting
+higher $\omega$ photons decay first, and so we see turn-offs from a power law
+distribution for increasingly low $\omega$ as time goes by.\par
+For measuring $p$, let's define $\alpha\equiv{1+p\over2}$.
+Observations of extended radio sources have measured $\alpha\approx-0.7
+\imply p=-2.4$.  In general, we find that $-0.75\le\alpha\le-0.5$, or
+$-3\le p\le -2$.  
+Now we've made an assumption of a constant magnetic field.
+Suppose we have an optically thin synchrotron emitting gas with a power law
+emissivity
+$j_{\nu_1}>j_{\nu_2}$ for $\nu_1<\nu_2$.  We will use observations through
+this thin gas to infer a ``minimum pressure'' or ``minimum energy density''.  
+The electron pressure (or electric energy density) is given by:
+$$\begin{aligned}P_e&\propto\int_{E_1\leftrightarrow\nu_1}^{E_2\leftrightarrow\nu_2}
+{{dN \over dE}dE\,E}\\ 
+&\propto E^{2+p}\eval{E_1}^{E_2}\\ \end{aligned}$$
+For $p\le-2$,
+$$P_e\propto E_1^{2+p}$$
+In reality, spectra might cut off outside of the range of our observations.
+To correct for this, we'll carry around a correction factor of $\left({E_{min}
+\over E_1}\right)^{2+p}$.  Measuring $j_\nu$, we get:
+$$\begin{aligned}j_\nu(\nu_1\leftrightarrow E_1)&\propto\left({dN\over dE}dE\right){P
+\eval{single\ e^-}\over\nu_1}\\ 
+&\propto\left({dN\over dE}dE\right){B^2\gamma^2\over\gamma^2 B}
+\propto{dN\over dE}dE{E_1^2B\over E_1^2}\\ 
+&\propto\overbrace{{dN\over dE}dE\,E_1}^{P_e}{E_1B\over E_1^2}\\ 
+&\propto P_e{B\over E_1}\propto P_eB\left({B\over\nu_1}\right)^\hf\\ \end{aligned}$$
+$$j_\nu\propto P_eP_{mag}^{3\over4}\nu_1^{-\hf}$$
+where $P_{mag}$ is the magnetic energy density.  
+Now since $P_{tot}=P_e+P_{mag}$:
+$$\boxed{P_{tot}={C\,j_\nu\over P_{mag}^{3\over4}\nu^{-\hf}}+P_{mag}}$$
+This expression has a minimum for a unique $P_{mag}$.  This $P_{mag}$ tells
+us the way energy is partitioned in the system between $P_e$ and $P_{mag}$.
+The minimum should occur when $P_e=P_{mag}$.
+
+\section*{ Lecture 16 }
+
+Recall that last time we derived for an optically thin synchrotron gas that:
+\def\pmag{{P_{mag}}}
+$$j_\nu(\nu_1)\propto P_eP_{mag}^{3\over4}\nu_1^{-\hf}$$
+$$\begin{aligned}P_{tot}&=P_e+P_{mag}\\ 
+&={Cj_\nu\over\pmag^{3\over4}\nu_1^{-\hf}}+\pmag\\ \end{aligned}$$
+Thus, the minimum total power occurs near the equipartition point between
+$\pmag$ and $P_e$.  This gives us:
+\def\jn{j_\nu}
+$${C\jn\over\pmag^{3\over4}\nu_1^{-\hf}}\sim\pmag$$
+$${B^2\over8\pi}=\pmag\sim(C\jn\nu_1^\hf)^{4\over7}$$
+
+\subsection*{ Synchrotron Self-Absorption}
+
+To discuss synchrotron self-absorption, we need to discuss what the spectrum
+of an optically {\it thick} medium of relativistic electrons looks like.
+If we take a bunch of $e^-$ spiraling around magnetic field lines with
+$\_E=\gamma m_ec^2$, then the energy of the photons emitted by these
+electrons is $h\nu\sim h\nu_{crit}\sim h\nu_{cyc}\gamma^2$.  If this gas
+were optically thin, we'd just see a sharply peaked spectrum around $\nu_{crit}$
+with $\nu\ll\nu_{crit}$ going as $\nu^{1\over3}$ and $\nu\gg\nu_{crit}$ going
+as $\nu^\hf e^{-{\nu\over\nu_{crit}}}$.  Now let's add more electrons to this
+gas.  For a while, the more electrons we add, the more emission we see.
+At some point, though, self-absorption starts making a difference, and we
+get less emission per electron added.\par
+Let's examine the 
+peak amplitude of emission (that is, $I_\nu$ at $\nu=\nu_{crit}$).  
+To do this,
+imagine we have an optically thick ball of blackbody (perfectly absorbing 
+and emitting) particles
+with a temperature carefully chosen so that $kT\sim\gamma m_e c^2$. Then:
+\def\nucrit{{\nu_{crit}}}
+$$I_\nu(\nu=\nucrit)=B_\nu(T\sim{\gamma m_ec^2\over k},\nu=\nucrit)$$
+Now we'd like to argue that this blackbody particle system is emissively 
+identical to
+the optically thick synchrotron gas.  To see why this is true, imagine we
+overlaid our sphere of blackbody particles on our sphere of synchrotron gas.
+Since all particles in it have the same energy, then energy cannot be
+transfered between the two system by collisions.  The only option for exchanging
+energy is through photons of energy $h\nucrit$.  However, this cannot create
+a net flow of energy because (I don't know).\par
+If $h\nucrit\ll\gamma m_ec^2$, then:
+$$\begin{aligned}I_\nu(\nucrit)^{\e,thick}
+&=B_\nu(T\sim{\gamma m_ec^2\over k},\nu=\nucrit)\\ 
+&={2kT\over\lambda_{crit}^2}={2\gamma m_ec^2\over\lambda_{crit}^2}\\ 
+&=2\gamma m_e\nucrit^2\\ \end{aligned}$$
+Since $\nucrit\sim\nu_{cyc}\gamma^2\propto B\gamma^2$, we have that
+$\gamma\sim\left({\nucrit\over B}\right)^\hf$.  Thus, for an optically
+thick gas:
+$$I_\nu\propto\nucrit^{5\over2}B^{-\hf}\propto\nu^{5\over2}B^{-\hf}$$
+It is important to remember that each $\gamma$ has a unique corresponding
+$\nucrit$.  Also note that optical thickness depends inversely on frequency,
+so if we plot $I_\nu$ vs. $\nu$, we get a power law $\nu^{(1+p)\over2}$ for
+high frequencies (low optical thickness), and a $\nu^{5\over2}$ dependence
+for low frequencies (high optical thickness).  There is also some $\nu_m$ where
+$I_\nu$ is maximal.
+
+\subsection*{ Compton Scattering}
+
+Compton scattering is the scattering of a photon off of an electron.  If
+the photon {\it loses} energy, this is called {\bf Compton Scattering}.  If
+the photon gains energy, this is called {\bf Inverse Compton Scattering}, or
+``Compton Up-Scattering''.  The ``comptonization'' of an electron gas is the
+gain in energy of an electron gas as the result of a photon gas.\par
+Some examples of applications of Compton scattering are:
+\begin{itemize}
+\item  Compton exchange keeps electrons in thermal equilibrium with
+photons at redshifts $z\ge10^3$.
+\item  The spectra of AGN and xray binaries are altered by Compton
+Scattering (e.g. radio emission to optical wavelengths).
+\item  CMB photons get upscattered by galaxy cluster plasma.  This is
+called the Sunyaev-Zeldovich effect.
+\end{itemize}
+The classic model for Compton scattering is where a photon of energy $E=h\nu$
+going in the $\^n$ direction scatters off of a stationary $e^-$.  After
+scattering, the photon leaves with a new energy $E_1$ in a new direction
+$\^n_1$ (at an angle $\phi$ to its original direction $\^n$), and the $e^-$
+now moves in direction $\^p$ with energy $E$ and momentum $p$.  Energy
+conservation requires that:
+$$E+m_ec^2=E_1+E$$
+and momentum conservation requires that:
+$${E\over c}\^n={E_1\over c}\^n+p\^p$$
+Squaring these two equations and subtracting them, we find that:
+$$\lambda_1-\lambda={h\over m_ec}(1-\cos\phi)\leftrightarrow
+E_1={E\over1+{E\over m_ec^2}(1-\cos\phi)}$$
+Comments:
+\begin{itemize}
+\item $\lambda_1-\lambda>0$: the shift here is tiny.  The maximum possible
+value is $\lambda_1-\lambda={2h\over m_ec}=0.04\AA$.  The momentum
+tends to be shared between the electron and photon, but no so much the energy.
+\item  Remember this is {\it scattering}, not absorption.  Photon \# is
+conserved.
+\item  Note that for $h\nu\ll m_ec^2$, $\sigma=\sigma_T$.  For 
+$h\nu\gg m_ec^2$, $\sigma\sim\sigma_T\left({m_ec^2\over h\nu}\right)$.  This
+additional term is called the Klein-Nishna correction.
+\item  The mean scattering angle is $\phi={\pi\over 2}$. 
+${d\sigma_T\over d\Omega}\propto1+\cos^2\phi$.  Beware that:
+$${d\sigma\over d\Omega}\eval{Klein-Nishna}\ne{d\sigma_T\over d\Omega}$$
+\end{itemize}
+What we've done so far was for a stationary electron.  For a moving electron,
+we need to consider the dependence on the angle at which the photon
+is coming in with respect to the direction of velocity ($\theta$).  To make
+this situation similar to the one we just considered, we need to be in the
+frame of the electron.  In this frame, the photons has a new energy as a
+result of time dilation:
+$$E^\prime=\gamma E(1-{v\over c}\cos\theta)$$
+The $v\over c$ term is just the classic Doppler shift of the photon.  Now
+suppose that the photon (which entered at angle $\theta^\prime$ in the 
+electron frame) rebounds at an angle $\theta_1^\prime$.  To relate this to
+our previous derivation, we want to find $\phi$.  So note that 
+$\theta_1^\prime-\phi^\prime=\theta^\prime$.  Thus, in the electron's frame:
+$$E_1^\prime={E^\prime\over1+{E^\prime\over m_ec^2}(1-\cos\phi^\prime)}$$
+Transforming this back into the lab frame:
+$$E_1=E_1^\prime\gamma(1+{v\over c}\cos\theta_1^\prime)$$
+This generally follows Rybicki \& Lightman.  However, it might help to know
+that in R\&L, 7.7b follows from 7.8a, which follows from 7.7a.\par
+Comments:
+\begin{itemize}
+\item  If $E^\prime\ll m_ec^2$, then:
+$$\begin{aligned}E_1&\approx E^\prime\gamma(1+{v\over c}\cos\theta_1^\prime)\\ 
+&\approx\gamma^2E(1+{v\over c}\cos\theta_1^\prime)(1-{v\over c}\cos\theta)\\ \end{aligned}$$
+In a ``typical'' collision, $\theta\sim\theta_1^\prime\sim{\pi\over2}$, so
+$E_1\sim\gamma^2E$.
+\item  If $E^\prime\gg m_ec^2$, then:
+$$\begin{aligned}E_1^\prime&={E^\prime\over1+{E^\prime\over m_ec^2}
+(1-\cos\phi^\prime)}\approx m_ec^2\\ 
+E_1&=E_1^\prime\gamma(1+{v\over c}\cos\theta_1^\prime)\\ 
+&\approx m_ec^2\gamma(1+{v\over c}\cos\theta_1^\prime)\approx\gamma m_ec^2\\ \end{aligned}$$
+This final term defines the maximum rebound of the photon.
+\end{itemize}
+
+\section*{ Lecture 17 }
+
+\subsection*{ Inverse Compton Scattering}
+
+Recall the following rules for photons bouncing off of relativistic electrons:
+$$\begin{aligned}E_1&\sim\gamma^2E\\ 
+max(E_1)&\sim\gamma m_ec^2\\ \end{aligned}$$
+We'd like next to discuss the behavior of a single $e^-$ swimming through a sea
+of photons.  We'd like to know how much power this $e^-$ is going to scatter
+by Compton-upscattering these photons.  To order of magnitude, the power
+scattered by a single relativistic ($\gamma\gg1$) electron should depend on the 
+cross-section for scattering, the speed of the electron ($c$), the \# density 
+of photons having various energies, and the energy these photons take from
+scattering off of the electron:
+$$\begin{aligned}P&\sim\sigma_Tc\int{\eta(E)dE\,E_1(E)}\\ 
+&\sim\sigma_Tc\int{\eta(E)dE\,\gamma^2E}\\ 
+&\sim\gamma^2c\sigma_T U_{ph}\\ \end{aligned}$$
+where $U_{ph}$ is the energy density of the photon field.  This looks very
+similar to the power radiated by the synchrotron magnetic field, which is
+$P_{synch}\sim U_Bc\sigma_T\gamma^2$.\par
+This was an order of magnitude derivation, but we can do better--we just need
+to be more careful about how much the photons end up with, versus how
+much the electron actually gave to the photons (they had energy to begin with).
+We made the assumption that the initial energy of the photons was negligible
+because the electron was relativistic.  However, what follows will be true
+for any $\gamma$.\par
+First, note that the energy bequeathed to the photon bath is given by 
+$P_{net}=P_{scat}-P_{incident}$:
+$$\begin{aligned}P_{inc}&=c\sigma_T\int{\eta(E)E\,dE}\\ 
+&=c\sigma_TU_{ph}\\ \end{aligned}$$
+The power scattered {\it out} by the electron should be equal to the 
+power radiated by the $e^-$ in its own rest frame, due to accelerations caused
+by $\ef^\prime$-fields of photons seen in its rest frame (recall that power
+is Lorentz-invariant quantity).  In the $e^-$'s rest frame, the $\bfield$'s of
+the photons don't produce accelerations (there's no velocity), so all we
+need to consider are the Lorentz-transformed $\ef$'s of the photons:
+$$P^\prime={2\over3}{e^2(a^\prime)^2\over c^3}
+={2\over3}{e^2\over c^3}\left({e\ef^\prime\over m_e}\right)^2
+={2\over3}{e^4\over m_e^2c^3}(\ef^\prime)^2$$
+Recall that the Lorentz-transformed $\ef$'s look like:
+$$\begin{aligned}E_x^\prime&=E_x\\ 
+E_y^\prime&=\gamma E_y-{\gamma v\over c}B_z\\ 
+E_z^\prime&=\gamma E_z+{\gamma v\over c}B_y\\ \end{aligned}$$
+for an electron moving in the $\^x$ direction.  Substituting these values
+into our equation for $P^\prime$:
+$$\begin{aligned}\mean{P^\prime}&={2\over3}{e^4\over m_e^2c^3}\left(\mean{E_x^2}+
+\gamma^2\mean{E_y^2}+\gamma^2\beta^2\mean{B_z^2}-\underbrace{2\gamma\beta
+\mean{E_yB_z}}_{=0}+\gamma^2\mean{E_z^2}+\gamma^2\beta^2\mean{B_y^2}
++\underbrace{2\gamma^2\beta\mean{E_zB_y}}_{=0}\right)\\ 
+&={2\over3}{e^4\mean{E_x^2}\over m_e^2c^3}\left(1+2\gamma^2+2\gamma^2\beta^2
+\right)\\ 
+&=\underbrace{{2\over3}{e^4\over m_e^2c^4}}_{=\sigma_T\over4\pi}
+{c\over3}\underbrace{3\mean{E_x^2}\over4\pi}_{=U_{ph}}
+4\pi(1+2\gamma^2+2\gamma^2\beta^2)\\ 
+&=\sigma_TcU_{ph}{1\over3}(2\gamma^2+2(\gamma^2-1)+1)\\ \end{aligned}$$
+Recall that $\gamma^2\beta^2=\gamma^2-1$, so $\mean{P^\prime}=\sigma_T
+cU_{ph}{1\over3}(4\gamma^2-1)$, and our net power scattered is:
+$$\boxed{P_{net}={4\over3}\sigma_TU_{ph}c\beta^2\gamma^2}$$
+This is an exact expression.  Note that if $\gamma\gg1$ then the average photon
+energy of Compton-upscattered radiation is:
+$$\begin{aligned}\mean{h\nu}_1&={P\over{U_{ph}\over\mean{h\nu}}\sigma_Tc}\\ 
+&=\mean{h\nu}{4\over3}\gamma^2\\ \end{aligned}$$
+Another note: Compare our expression for the Compton-upscattering radiation
+to the power radiated by a single electron undergoing synchrotron radiation:
+$$P_{sync}=2\sigma_TcU_B\beta^2\gamma^2\mean{\sin^2\alpha}$$
+The only difference (ignoring the $\sin^2\alpha$), is the exchange of
+$U_B$ for $U_{ph}$.\par
+
+\subsection*{ Synchrotron Self-Compton (SSC)}
+
+Electrons undergoing synchrotron radiation create a photon bath which
+other electrons will then interact with via inverse Compton scattering.  Recall
+that for original (unprocessed) synchrotron radiation, that $F_\nu$, between
+some minimum and maximum frequency cut-off, goes as $K\nu^\alpha$, and that
+the number of photons per $\gamma$ is ${dN\over d\gamma}=N_0\gamma^s$, where
+$\alpha={1+s\over2}$.  These frequency cut-offs were set by $\gamma_{min}^2
+\nu_{cyc}$ and $\gamma_{max}^2\nu_{cyc}$.  After this radiation is processed
+by SSC, approximately every photon is upscattered to a new energy
+${4\over3}\gamma^2\nu$.  We are assuming that the relationship between
+an incoming photon frequency and it's final frequency are related via a
+delta function.  Thus:
+\def\tn{{\tilde\nu}}
+$$F_{\nu,SSC}(\nu)=\tau\int_{\tn}{K\tn^\alpha d\tn\delta\left(\tn-
+{\nu\over\gamma^2}\right)\int_\gamma{N_0\gamma^sd\gamma}}$$
+Keep in mind that $N_0$ is normalized to so the integral comes out to 1
+(it just accounts for the 
+``shape'' of the energy distribution function). $\tau$ is what contains the actual
+\# density of $e^-$'s.  It is the fraction scattered,
+and is generally $\ll1$. $\nu\sim\tn\gamma^2$.\par
+For a fixed $\nu\sim\tn\gamma^2$, we find that $\gamma\sim\left({\nu\over
+\tn}\right)^\hf\propto\tn^{-\hf}$.
+
+\section*{ Lecture 18 }
+
+\def\numin{{\nu_{min}}}
+\def\numax{{\nu_{max}}}
+\def\gamin{\gamma_{min}}
+\def\gamax{\gamma_{max}}
+\def\gul{{min(\sqrt{\nu\over\numin},\gamax)}}
+\def\gll{{max(\sqrt{\nu\over\numax},\gamin)}}
+Recall in deriving the interaction of synchrotron radiation with
+synchrotron electrons, we derived the following formula for flux:
+$$F_{\nu,SSC}(\nu)=\tau\int_{\tn}{K\tn^\alpha d\tn\delta\left(\tn-
+{\nu\over\gamma^2}\right)\int_\gamma{N_0\gamma^sd\gamma}}$$
+Now the integral over $\gamma$ is along ``slant paths'' through
+the rectangle ($\gamin\to\gamax$, $\numin\to\numax$).
+Some of these slant paths will not stretch all the way to $\gamax$
+or $\gamin$ because of the boundaries imposed by $\numin$ and
+$\numax$.  So we need to be a little more precise about the bounds
+on the $\gamma$ integral:
+$$\begin{aligned}F_{\nu,SSC}(\nu)
+&\sim\tau\int_\numin^\numax{K\tn^\alpha\delta(\tn-{\nu\over\gamma^2})d\tn
+\int_\gll^\gul{N_0\gamma^sd\gamma}}\\ 
+&\sim\tau K\left({\nu\over\gamma^2}\right)^\alpha
+\int_\gll^\gul{N_0\gamma^sd\gamma}\\ 
+&\sim\tau K\nu^\alpha N_0
+\int_\gll^\gul{{\gamma^s\over\gamma^{2\alpha}}d\gamma}\\ \end{aligned}$$
+But since $\alpha={1+s\over2}$, the integrand is simply $\inv{\gamma}$,
+giving us:
+$$\boxed{F_{\nu,SSC}(\nu)\sim\tau k\nu^\alpha N_0\ln\left({\gul\over\gll}\right)}$$
+Recall that $N_0$ was normalized so that $\int{N_0\gamma^sd\gamma}=1$, so
+saying that $\gamax$ is just some multiple of $\gamin$, it must be that
+$$N_0\sim\gamin^{-1-s}$$
+Note for $\nu\sim\gamin^2\numin$, $F_\nu$ looks like (using the above 
+relationship):
+\def\gllogul{\left({\gul\over\gll}\right)}
+$$\begin{aligned}F_{\nu,SSC}&=\tau K\gamin^{2\alpha}\numin^\alpha N_0\ln\gllogul\\ 
+&=\tau K\numin^\alpha\gamin^{2\alpha}\gamin^{-1-s}\ln\gllogul\\ 
+&=\tau K \numin^\alpha\ln\gllogul\\ \end{aligned}$$
+
+\subsection*{ Compton Catastrophe}
+
+If you keep scattering the same electrons, as in Synchrotron Self-Compton,
+there is a danger, if things are dense enough, of a runaway amplification
+of radiation energy density, or a ``Compton Cooling Catastrophe''.  However,
+we've never seen anything with a brightness temperature of $10^{12}K$.  
+What sets this ``inverse Compton limit'' at this temperature?  Comparing,
+for a single electron,
+the luminosity of inverse Compton scattering to synchrotron scattering:
+$${L_{IC}\over L_{sync}}={{4\over3}\beta^2\gamma^2\sigma_TcU_{ph}\over
+{4\over3}\beta^2\gamma^2\sigma_TcU_B}={U_{ph}\over U_B}
+\begin{cases} >1&catastrophe\\ <1 &no\ catastrophe\end{cases}$$
+Now we're going to make an approximation that we are on the Rayleigh-Jeans
+side of the blackbody curve, so that:
+$$\begin{aligned}U_{ph}=U_{ph,sync}&\propto\nu_mI_\nu(\nu_m)\\ 
+&\propto\nu_m{2kT_B\over\lambda_m^2}\\ 
+&\propto\nu_m^3T_B\\ \end{aligned}$$
+where $\nu_m$ is the frequency of peak of synchrotron emission. 
+Now $U_B\propto B^2$ is pretty obvious:  
+$$\nu_m\sim\gamma_m^2\nu_{cyc}\propto\gamma_m^2B$$
+where this $\gamma_m$ is not $\gamax$.  Making the approximation that we
+are in the optically thick synchrotron spectrum, so that $\gamma m_ec^2\sim
+kT$, then we get $\nu_m\sim T_B^2B$.  We can say that the kinetic temperature
+is the brightness temperature because we are talking about the average kinetic
+energy of the electrons generating the synchrotron radiation with a particular
+brightness temperature (i.e. another frequency of synchrotron radiation will
+have another brightness temperature, and another set of electrons moving
+with a different amount of kinetic energy). Thus,
+$${U_{ph}\over U_B}=C{\nu_m^3T_B\over\nu_m^2}T_B^4
+=\left({\nu_m\over10^9Hz}\right)\left({T_B\over10^{12}K}\right)^5=1$$
+A way of think about this is that, in order to avoid having infinite energy
+in this gas of electrons, there has to be a limit on the brightness 
+temperature (which is determined by the density of electrons).  This is a
+self-regulating process--if the brightness temperature goes too high, an
+infinite energy demand is set up, knocking it back down.
+
+\subsection*{ The Sunyaev-Zeldovich Effect: Compton Y-Parameter}
+
+Consider a non-relativistic thermal bath of electrons at temperature $T_e$.
+The average kinetic energy of these electrons is ${3\over2}kT_e$.  Now
+suppose that there is also a bath of photons which all have
+energy $E=h\nu\ll kT_e$.  Putting this cold bath of photons in with
+the hot (but non-relativistic) electrons, we find that they get up-scattered.
+After first scattering, the mean shift in energy is:
+$$\begin{aligned}\Delta\_E&={P_{K,single\ e^-}\over n_{photons}\sigma_Tc}=
+{{4\over3}U_{ph}\gamma^2\beta^2\sigma_Tc\over n_{photons}\sigma_Tc}=
+{4\over3}\gamma^2\beta^2E\\ 
+{\Delta\_E\over E}&={4\over3}\gamma^2\beta^2={4\over3}{v^2\over c^2}=
+{4\over3}{3kT_e\over m_ec^2}={4kT_e\over m_ec^2}\\ \end{aligned}$$
+which is much the mean fractional change in photon energy after 1 scattering.
+
+\section*{ Lecture 19 }
+
+\subsection*{ More Sunyaev-Zeldovich Effect}
+
+Last time, we'd written down the mean energy of the upscattered photons:
+$$\Delta\_E={P_{Compton,single\ e^-}\over n_{photons}\sigma_Tc}$$
+The bottom term $n_{photons}\sigma_Tc$ is just the collision rate for
+photons. We used this to calculate:
+$${\Delta\_E\over E}={4kT_e\over m_ec^2}\ll1$$
+Thus, after a single scattering:
+$$\_E_i=E\left(1+{4kT_e\over m_ec^2}\right)$$
+So after $N$ scatterings:
+$$\_E_N=E\left(1+{4kT_e\over m_ec^2}\right)^N$$
+In the limit of $N\to\infty$:
+$$E_N=Ee^{4kT_eN\over m_ec^2}\equiv Ee^{4y}$$
+This is the definition of the Compton $y$ parameter: $y\equiv {kT_e\over m_e
+c^2}N$.\par
+Suppose we have a cloud of electrons that has radius $l$, and the optical
+depth out of the cloud $\tau_e\gg1$.  The mean number of collisions a photon 
+will undergo in getting out of the cloud is $N\sim\tau_e^2$.  This is because
+each time step between collisions is ${\lambda_{mfp}\over c}$, and the number
+of steps to get out is:
+$${Time\ to\ get\ out\over Each\ time\ step}\sim{{l^2\over c\lambda_{mfp}}
+\over {\lambda_{mfp}\over c}}\sim\left({l\over\lambda_{mfp}}\right)^2
+\sim\tau_e^2$$
+\def\ppt#1{{\partial #1\over\partial t}}
+The reason why the time to get out is $l^2\over c\lambda_{mfp}$, is because
+the diffusion equation gives us $\ppt{Q}=D\nabla^2Q$, which by dimensional
+analysis, says:
+$$\inv{T}\sim{D\over L^2}$$
+$D$ is the diffusivity (viscosity) of the medium.\par
+If $\tau_e\ll1$, $N_s\sim\tau$ because the intensity goes as $e^{-\tau}\approx
+1-\tau$.  Generally:
+$$\begin{aligned}N_s&\sim max(\tau_e,\tau_e^2)\\ 
+&\sim\tau_e(1+\tau_e)\\ \end{aligned}$$
+Thus, the Compton $y$ parameter is:
+$$y\approx {kT_e\over m_ec^2}\tau_e(1+\tau_e)$$
+\begin{itemize}
+\item We'll apply this to CMB photons traveling through an intra-cluster
+gas.  We'll say: $n_e\sim3\e{-3}cm^{-3}$, $\sigma_T\sim10^{-24}cm^2$, and 
+$l\sim10^6\cdot3\e{18}cm$.  This gives us $\tau_e\sim10^{-2}$.  Now 
+$kT_e$ should be a few $keV$, so $${kT_e\over m_ec^2}\sim10^{-2}$$
+The us the energy post-traversal of the cluster is related to the initial
+energy of the photons by:
+$$E_{post}=E_{init}e^{4y}=E_{init}(1+4\e{-4})$$
+Thus, we expect to see a shift in the frequency of peak flux when looking
+through a cluster vs. around one.  We can calculate the change in brightness
+temperature this causes by using:
+$$\begin{aligned}F_{\nu,before}&={2kT_{CMB}\over\lambda^2}\\ 
+F_{\nu,after}\left(\lambda={\lambda_0\over1+4y}\right)
+&={2kT_{CMB}\over\lambda^2}\\ 
+&={2kT_{CMB}^\prime\over\lambda_0^2}\\ \end{aligned}$$
+Solving for $T_{CMB}^\prime$:
+$$\begin{aligned}T_{CMB}^\prime&=T_{CMB}\left({\lambda\over\lambda_0}\right)^2\\ 
+&=T_{CMB}\left({1\over1+4y}\right)^2\approx T_{CMB}(1-8y)\\ \end{aligned}$$
+So the change in brightness temperature is $\Delta T_{CMB}\sim8yT_{CMB}\sim
+10mK$.  This is hard to detect from ground-based telescopes, but this is
+a much greater effect than the inherent anisotropies of the CMB (which we've
+detected), so space-based telescopes like WMAP, if they have the angular
+resolution, should have already detected this.  Yet they haven't.\par
+Now we've been a little sloppy.  We've said that every photon from the CMB
+underwent a small shift in energy, but for an optically thin cloud like the
+one we've been discussing, only a few photons are ever scattered.  We'll examine
+this on the Rayleigh-Jeans tail.\par
+For any $F_\nu$ incident upon our cloud, the $F_{\nu,after}$ which results
+from unscattered photons should be less (there are fewer photons).  Then the
+flux from the upscattered photons gets added back in.  We'll choose some
+frequency $\nu_0$ which scatters into $\tn=\nu_0\left(1+{4kT_e\over m_ec^2}
+\right)$, so that:
+$$\begin{aligned}F_{\nu,after}(\tn)
+&={2kT_{CMB}\over c^2}\tn^2-{2kT_{CMB}\over c^2}\tn^2\tau_e
++{2kT_{CMB}\over c^2}\nu_0^2\tau_e\\ 
+&={2kT_{CMB}\over c^2}
+{\tn^2\over\left(1+{4kT_e\tau_e\over m_ec^2}\right)^2}\\ \end{aligned}$$
+This matches what we estimated just by shifting, so we're okay.\par
+
+\item We'll examine another situation where we can use the SZ effect
+to measure $H_0$ in an x-ray cluster.  We'll say that $\theta_c$ is the 
+observed angular size of the cluster, and $F_x$ is the observed x-ray flux.
+We'll say there's some observed redshift (using optical data), which is 
+related to the recession velocity $v$.  The x-ray luminosity $L_x=
+F_x\cdot4\pi d^2$, and the recessional velocity is $v=Hd$.  Thus:
+$$L_x\propto F_xv^2H^{-2}$$
+We also know, from bremsstrahlung that $L_x\propto n_e^2r_c^3F(T_e)$, where
+$F(T_e)$ is some function of the temperature of the electrons, and $r_c$ is 
+the radius of the cluster.  Now we can express $r_c$ as:
+$$r_c\sim\theta_cd\sim\theta_c{v\over H}$$
+Setting our two expressions for the luminosity equal:
+$$\begin{aligned}F_xv^2H^{-2}&\propto n_e^2r_c^3F(T_e)\\ 
+&\propto n_e^2\theta_c^3{v^3\over H^3}F(T_e)\\ \end{aligned}$$
+which gives us that $n_e\propto H^\hf$.  Now SZ tells us that $y\propto T_en_e
+r_c\propto n_er_c\propto H^\hf\theta_c\cdot d{v\over H}$.  Thus:
+$$y\propto \inv{H^\hf}$$
+\end{itemize}
+
+\subsection*{ Zeeman Effect}
+
+The Zeeman Effect concerns the splitting of electronic levels in a magnetic
+field.  We've already talked a little bit about this in hyperfine 
+splitting, which was caused by magnetic fields intrinsic to an atom.  We find
+that a single line can split into $\sim3-27$ components, depending on the 
+number of combinations of $\vec L$ and $\vec S$ there are in the atom.  The
+strengths of these various lines depend on viewing geometry, and can be
+polarized.  The change in energy between previously degenerate states set up
+by an external $B$ field is:
+$$\begin{aligned}\Delta E&\sim\mu B\sim{e\hbar\over m_ec}B\\ 
+&\sim{hc\over\lambda_1}-{hc\over\lambda_2}\\ 
+&\sim{hc\over\lambda}{\Delta\lambda\over\lambda}\sim{e\hbar B\over m_ec}\\ \end{aligned}$$
+Thus the fractional change in wavelength is:
+$$\boxed{{\Delta\lambda\over\lambda}\sim\lambda{eB\over2\pi m_ec^2}}$$
+In practice, we find that the various split components of the original
+absorption lines are hard to resolve, and we see the effect expressed mostly
+as a broadening of the original line.
+
+\section*{ Lecture 20 }
+
+\subsection*{ Faraday Rotation}
+
+Faraday Rotation is the rotation of the axis of polarization of radiation
+while propagating through a magnetized plasma.  We'll derive this by examining
+the equation of motion of an $e^-$ in plasma.  A long time ago, we wrote the
+equation of motion of electrons in plasma when subjected to a plane $\ef$ wave:
+\def\vv{{\vec v}}
+$$m\vv=-e\ef-{e\over c}\vv\times\bfield$$
+We had thrown away the $\bfield$ dependency because we hadn't imposed 
+and $\bfield$ on the plasma, but this time, we'll examine what happens if we
+don't throw it away, but instead say that $\bfield=\bfield_0+\bfield_{rad}$,
+where $\bfield_0$ is an externally imposed field.  Then
+$$m\.\vv=-e\ef-{e\over c}\vv\times\bfield_0$$
+We'll just guess the solution:
+$$\ef=Re\left(E_0(\^x\mp i\^y)e^{i(k\mp z-\omega t)}\right)$$
+where the '-' of $\mp$ corresponds to a right-circularly-polarized wave, and
+'+' corresponds to left-circular-polarization.  For the magnetic field, if
+$\bfield_0=B_0\^z$, then we need to solve the equation:
+$$m\.\vv=-eE_0(\^x\mp i\^y)e^{i(k\mp z-\omega t)}
+-{eB_0\over c}(-v_x\^y+v_y\^x)$$
+This leaves us with equations for $\.v_x$ and $\.v_y$.  Instead of doing all
+the algebra, we'll just trust that the following is a solution:
+$$\boxed{\vv={-ie\ef\over m(\omega\pm\omega_{cyc})}}$$
+Recall that $\omega_{cyc}={eB_0\over mc}$.  Now we'll solve for the current
+in the plasma:
+\def\ocyc{\omega_{cyc}}
+$$\vec j=-n_ee\vv={-n_ee(-ie)\over m(\omega\pm\ocyc)}\ef\equiv\sigma\ef$$
+where $\sigma={in_ee^2\over m(\omega\pm\ocyc)}$ is the conductivity.  Now let's
+solve Maxwell's equations for a perturbing wave through the plasma 
+(this is very similar to what we did months ago...).  Note that in the following
+equation, $\bfield=\bfield_0+\bfield_{rad}$, but $\ppt{\bfield_0}=0$:
+\def\erad{{\ef_{rad}}}
+\def\brad{{\bfield_{rad}}}
+\def\jv{{\vec j}}
+\def\div{{\vec\nabla}}
+$$\begin{aligned}\div\times\erad&={-1\over c}\ppt{\bfield}\\ 
+\div\times\bfield&={4\pi\over c}\jv+\inv{c}\ppt{\ef}\\ \end{aligned}$$
+Note also that $\div\times\bfield_0=0$.  Now we can solve for the index of
+refraction:
+$$\begin{aligned}\eta^2=\left({ck_\mp\over\omega}\right)^2
+&=1-{4\pi\sigma\over i\omega}\\ 
+&=1-{4\pi in_ee^2\over i\omega m(\omega\pm\ocyc)}\\ 
+&=1-{\omega_p^2\over\omega(\omega\pm\ocyc)}\\ \end{aligned}$$
+Thus, $k_-\eval{\omega}\ne k_+\eval{\omega}$.  If we put a linearly polarized
+wave through a magnetized plasma, the left-circularly-polarized component will
+evolve more quickly than the right-circularly-polarized component, by a
+factor of $\Delta\phi$, so when the wave emerges from the plasma it will be
+fixed into a new phase where $\Delta\theta={\Delta\phi\over2}$.  If we wanted
+to solve for this in terms of a distance through the plasma, we'd write:
+$$\Delta\theta={\Delta\phi\over2}=\hf\int_0^d{(k_--k_+)ds}$$
+where $\left({ck_\mp\over\omega}\right)^2=1-{\omega_p^2\over\omega(\omega\pm
+\ocyc)}$.  We'll do two approximations of this equation:
+\begin{itemize}
+\item $\ocyc\ll\omega$.  Then $\ocyc=3MHz\left({B_0\over ??}\right)$.
+\item $\omega\gg\omega_p$.  Then:
+$$\begin{aligned}\left({ck_\mp\over\omega}\right)^2
+&=1-{\omega_p^2\over\omega^2}(1\mp{\ocyc \over\omega})\\ 
+k_\mp&={\omega\over c}
+\sqrt{1-{\omega_p^2\over\omega^2}(1\mp{\ocyc\over\omega})}\\ 
+&={\omega\over c}
+\left(1-{\omega_p\over2\omega^2}(1\mp{\ocyc\over\omega})\right)\\ 
+k_--k_+&={\omega\over c}{\omega_p^2\ocyc\over\omega^3}\\ 
+&={\omega_p^2\ocyc\over c\omega^2}\\ \end{aligned}$$
+\end{itemize}
+Getting back to $\Delta\theta$:
+$$\begin{aligned}\Delta\theta&=\hf\int_0^d{{\omega_p^2\ocyc\over c\omega^2}ds}\\ 
+&={2\pi e^3\over c^2m_e^2\omega^2}\underbrace{\int_0^d{n_eB_\|ds}}_{rotation\ 
+measure}\\ \end{aligned}$$
+In practice, if we want to figure out the effect of a magnetized plasma on
+radiation, we need to look at the phase change for two different frequencies 
+from a linearly polarized source:
+$$\Delta\theta\eval{\omega_1}-\Delta\theta\eval{\omega_2}
+={2\pi e^3\over c^2m_e^2}RM\left(\inv{\omega_1^2}-\inv{\omega_2^2}\right)$$
+where $RM$ is the rotation measure.
+Some sources of linearly polarized radiation are pulsars, AGN, and the
+galactic radio synchrotron from cosmic rays.  A magnetized plasma, if it
+has different rotation measures over different paths from a source to us, can
+depolarize a source which was originally polarized.  This is {\it Faraday
+De-Polarization}.
+
+\subsection*{ Evolution of 2-Stream Propagation}
+
+Rybicki \& Lightman, CH1, gives us the following 3-dimensional 
+integro-differential equation for the evolution of specific intensity through
+an adsorptive, scattering medium:
+\def\nabs{{\nu,abs}}
+\def\nscat{{\nu,scat}}
+\def\nemis{{\nu,emis}}
+$${dI_\nu\over ds}=-(K_\nabs+K_\nscat)\rho I_\nu+j_\nu$$
+where $j_\nu=j_\nscat+j_\nemis$, and $j_\nscat(\^s)$ is given by:
+$$j_\nscat(\^s)=\rho K_\nscat\times\int_{4\pi}{I_\nu(\^n)p(\^s,\^n)d\Omega}$$
+where $p(\^s,\^n)$ is proportional to the probability that $\^n$-photons get
+redirected to $\^s$-photons, and $\int_{4\pi}{p(\^s,\^n)d\Omega}=1$.  Finally,
+we have:
+$$j_\nemis\equiv S_\nemis(\^s)\rho K_\nabs$$
+So we have ourselves a 3-D Integro-differential equation.  If we are going to
+be able to actually solve this, we're going to have to make some assumptions.
+We'll make the following 4 idealizations:
+\begin{itemize}
+\item{(A)} We have isotropic scattering.  Then $p(\^s,\^n)=\inv{4\pi}$, and
+the mean intensity is given by:
+$$J_\nu\equiv\inv{4\pi}\int{I_\nu d\Omega}$$
+which gives us:
+$${dI_\nu\over\rho(K_\nabs+K_\nemis)ds}=-I_\nu+\~\omega_\nu J_\nu+(1-
+\~\omega_\nu)S_\nu(\^s)$$
+where $\~\omega_\nu\equiv{K_\nscat\over K_\nscat+K_\nabs}$ is the {\it
+single-scattering albedo}, and $0<\~\omega_\nu<1$.
+\item{(B)} $S_\nu(\^s)=B_\nu(T)$ (i.e. Local Thermal Equilibrium).
+\item{(C)} We have a plane-parallel atmosphere.  We'll say that parallel
+surfaces of constant temperature.  If $\^z$ is the direction straight up
+through the atmosphere, and $\theta$ is the angle of a vector from the $\^z$
+direction, the we define $\mu\equiv\cos\theta$.  Then $ds={dz\over\cos\theta}
+={dz\over\mu}$.  Note that the change in optical depth along $\^z$ is:
+$$d\tau_\nu=-(K_\nabs+K_\nemis)\rho\,dz$$
+\item{(D)} No scattering.  That is, $\~\omega_\nu=0$.  We'll relax this
+eventually (otherwise it would have been silly to assume A).  \par
+\end{itemize}
+So the final form of our equation is:
+$$\boxed{\mu{dI_\nu\over d\tau_\nu}=I_\nu-B_\nu(T(z))}$$
+We'll solve this by applying the {\it Eddington 2-stream Formalism}.
+We begin by taking a moment $\int{equation\,d\Omega}$ of 
+the above:
+\def\ddtau#1{{d#1\over d\tau_\nu}}
+$$\ddtau{}\int{\mu I_\nu(\mu)d\Omega}=\int{I_\nu d\Omega}-\int{B_\nu d\Omega}$$
+Using that $d\Omega=-2\pi d\mu$:
+$$\ddtau{}\int_1^{-1}{\mu I_\nu(-2\pi d\mu)}=4\pi J_\nu-4\pi B_\nu$$
+Using that $2\pi\int_{-1}^1{\mu I_\nu d\mu\equiv F_\nu}$
+(Rybicki \& Lightman 1.3b), we have:
+$$\ddtau{F_\nu}=4\pi(J_\nu-B_\nu)$$
+Now Eddington's 2-stream approximation was to say that for a point in our
+atmosphere, the only important components of the specific intensity are
+those from above and those from below.  That is, we need only consider
+the components:
+$$\begin{aligned}I_\nu^+(\tau_\nu)&=I_\nu(\tau_\nu,0<\mu<1)\\ 
+I_\nu^-(\tau_\nu)&=I_\nu(\tau_\nu,-1<\mu<0)\\ \end{aligned}$$
+
+\section*{ Lecture 21 }
+
+\subsection*{ Monochromatic Radiative Equilibrium}
+
+Last time we had the integro-differential equation:
+$$\mu{dI_\nu\over d\tau_\nu}=I_\nu-B_\nu(T(z))$$
+We got rid of the ``integro'' part, but then we did an integral over $d\Omega$
+to get the angle-averaged $I_\nu$, so we brought back our ``integro'' when we
+said:
+\def\inp{{I_\nu^+}}
+\def\inm{{I_\nu^-}}
+$${dF_\nu\over d\tau_\nu}=4\pi(J_\nu-B_\nu)$$
+Now recall our definitions of $\inp, \inm$:
+$$\begin{aligned}\inp(\tau_\nu)&=I_\nu(\tau_\nu,0<\mu<1)\\ 
+\inm(\tau_\nu)&=I_\nu(\tau_\nu,-1<\mu<0)\\ \end{aligned}$$
+Recall that $\mu\equiv\cos\theta$, but keep in mind that $\theta$ measures the
+angle of the {\it incoming flux intensity}, which is generally the opposite 
+direction
+from which we are looking.  Thus, $\inp$ is flux intensity coming from 
+{\it below}.\par Now the angle-averaged flux $J_\nu$ is given by:
+$$J_\nu=\int{I_\nu d\Omega}=\hf(\inp+\inm)$$
+Likewise, our flux is:
+$$F_\nu=\int{I_\nu\cos\theta d\Omega}
+=2\pi\int_0^{\pi\over2}{\inp\cos\theta\sin\theta d\theta} +
+2\pi\int_{\pi\over2}^{\pi}{\inm\cos\theta\sin\theta d\theta}
+=\pi(\inp-\inm)$$
+Now let's calculate our second moment, $\int{equation\cdot\mu d\Omega}$:
+$$\begin{aligned}LHS&=\ddtau{}\int{\mu^2I_\nu d\Omega}
+=\ddtau{}\left[2\pi\int_{-1}^0{\mu^2\inp d\mu}+2\pi\int_0^1{\mu^2\inm d\mu}
+\right]
+={2\pi\over3}\ddtau{}(\inp+\inm)\\ 
+&={4\pi\over2}\ddtau{}J_\nu\\ \end{aligned}$$
+The right-hand side of the equation is:
+$$RHS
+=\int{\mu I_\nu d\Omega}-\underbrace{\int{\mu B_\nu d\Omega}}_{0}
+=\int{\mu I_\nu d\Omega}
+=F_\nu$$
+where the last step was taken with the aid of Rybicki \& Lightman Eq. 1.3b. 
+So our full second moment equation is:
+$${4\pi\over3}\ddtau{}J_\nu=F_\nu$$
+Recall that our first moment equation was:
+$$\ddtau{F_\nu}=4\pi(J_\nu-B_\nu)$$
+We may rewrite this as:
+$$J_\nu=\inv{4\pi}\ddtau{F_\nu}+B_\nu$$
+So our first and second moment equations together give us:
+$$\boxed{{4\pi\over3}\ddtau{}
+\left[\inv{4\pi}\ddtau{F_\nu}+B_\nu\right]=F_\nu}$$
+Our third moment equation, because we are in {\bf Monochromatic Radiative
+Equilibrium} is:
+$$\ddtau{F_\nu}=0$$
+Thus, $F_\nu$ is constant.  Now $\ddtau{B_\nu}=F_\nu=constant$, so $B(T(z))$
+scales linearly with $\tau$.  Now $\tau=0$ corresponds the the top
+of the atmosphere, and we'd expect that the temperature there should be
+$0$, but this is incorrect.  Likewise $\tau_{max}$ corresponds to the
+full atmospheric depth, i.e. the ground.  We'd expect that the temperature
+there should just be the temperature of the ground $T_g$.  This is also
+incorrect.  This is because there is an interface of conductivity at the
+surface of the ground.  We'll call $T_1$ the temperature of the air at the
+base of the atmosphere, and try to see if get $B_\nu(T_1)$ in terms of 
+$B_\nu(T_g)$.  
+First, we need to get an expression for $J_\nu$ in terms of 
+and $F_\nu$.  Using that $J_\nu=\hf(\inp+\inm)$ and $F_\nu=\pi(\inp-\inm)$
+$$\boxed{J_\nu=\inm+{F_\nu\over2\pi}=\inp-{F_\nu\over2\pi}}$$
+Now since $\ddtau{F_\nu}=0=4\pi(J_\nu-B_\nu)$, $J_\nu=B_\nu$ everywhere.
+Specifically, in the atmosphere right above the ground, $J_\nu=B_\nu(T_1)$, so:
+$$J_\nu=\inp\eval{surface}-{F_\nu\over2\pi}\eval{surface}$$
+Now $\inp\eval{surface}=B_\nu(T_g)$, so:
+$$B_\nu(T_1)=B_\nu(T_g)-{F_\nu\over2\pi}$$
+So we have shown why $B_\nu(T_1)\ne B_\nu(T_g)$.  We should also discuss why,
+at the top of the atmosphere, $T_0\ne 0$.  For this, we'll write:
+$$\begin{aligned}J_\nu=B_\nu(T_0)
+&=\underbrace{\inm\eval{altitude}}_{0}+{F_\nu\over2\pi}\\ 
+B_\nu(T_0)&={F_\nu\over2\pi}\\ \end{aligned}$$
+Thus, $T_0\ne0$.  So we could solve for $F_\nu$ and find that it is a function
+of $\tau$, but solving it for the fairly contrived case of MRE (Monochromatic
+Radiative Equilibrium) doesn't give us anything very meaningful.  Instead we'll
+solve it for BRE (Bolometric Radiative Equilibrium).
+
+\subsection*{ Bolometric Radiative Equilibrium}
+
+Let's start again with our equation:
+$$\mu\ddtau{I_\nu}=I_\nu-B_\nu$$
+We can rewrite this in terms of atmospheric height $z$ (recall that as
+$z\to\infty$, $\tau\to0$, so:
+$$\mu{dI_\nu\over\rho\kappa_\nu dz}=-I_\nu+B_\nu$$
+Then the first moment of this equation is:
+$${\mu\over\rho}{d\over dz}\int{{I_\nu\over\kappa_\nu}d\nu}=-I+B$$
+where $I\equiv\int{I_\nu d\nu}$ and $B\equiv\int{B_\nu d\nu}$.  Now we'll make
+the (dubious) approximation that $\kappa_\nu=\kappa$ does not depend on
+frequency (``Grey atmosphere'').  This gives us:
+$${\mu\over\rho\kappa}{dI\over dz}=-I+B=-{dI\over d\tau}$$
+Now we make the assumption of Bolometric Radiative Equilibrium, so that:
+$${4\pi\over3}{dB\over d\tau}=F=constant$$
+Recall that $B=\int{B_\nu d\nu}={\sigma T^4\over\pi}$, so BRE is telling us:
+$${4\pi\over3}\ddtau{}\left({\sigma T^4\over\pi}\right)=F$$
+Or rewriting this:
+$$\boxed{\sigma T^4=\sigma T_b^4+{3F\over 4}\tau}$$
+At infinite altitude, $J\equiv\int{J_\nu d\nu}=B$, so using that:
+$$\begin{aligned}J&=I^-+{F\over2\pi}\\ 
+&=I^+-{F\over2\pi}\\ \end{aligned}$$
+we have:
+$$J=B=\underbrace{I^-\eval{altitude}}_{0}+{F\over2\pi}$$
+Therefore:
+$$F=2\pi B\eval{altitude}=2\pi{\sigma T_0^4\over\pi}=2\sigma T_0^4$$
+Thus, our BRE equation gives us:
+$$\boxed{\sigma T^4=\sigma T_0^4\left(1+{3\over2}\tau\right)}$$
+Saying $F=2\sigma T_0^4\equiv\sigma T_e^4$, where $T_e$ is an ``effective
+temperature'', then:
+$$T_0=\inv{\root 4\of{2}}T_e$$
+This is apparently a classical result.  Let's do an example by calculating
+the effective temperature of the Earth. $F\eval{earth}$ is given by:
+$$4\pi R_\oplus^2F=(1-\~\omega_{eff}){L_\odot\over4\pi d^2}\pi R^2$$
+$\~\omega_{eff}$ is a measure of how much of the sun's energy we get.  We'll
+say that, since it's cloudy about a third of the time, $\~\omega\sim0.3$.
+Plugging in the numbers, we find that $T_e=258K$, so $T_0=217K$.  This is
+indeed about the mid-latitude temperature of air in the troposphere.  Now
+temperature scales with optical depth by:
+$$\begin{aligned}T^4(\tau)&=T_0^4\left(1+{3\over2}\tau\right)\\ 
+T&=T_0\tau^{1\over4}\\ \end{aligned}$$
+This is an expression of the greenhouse effect.
+
+\section*{ Lecture 22 }
+
+\subsection*{ Radiative Diffusion}
+
+Recall that we had, using Bolometric Radiative Equilibrium, an equation which
+described the greenhouse effect:
+$$\sigma T^4=\sigma T_0^4\left[1+{3\over2}\tau\right]$$
+Now we want to talk about the effects of the diffusion of photons.  For this,
+we have the general diffusion equation:
+$$F=-D\nabla n$$
+For photons, $F$ is the energy flux, $D$ is $\lambda_{mfp}\cdot c$, 
+and $n\sim{\sigma\over c}T^4$ is the number density of photons.  Then:
+$$F\sim\underbrace{\lambda_{mfp}\over L}_{1\over\tau}c{\sigma\over c}T^4
+\sim{\sigma T^4\over\tau}$$
+Recall that $F\equiv\sigma T_e^4$, so:
+$$T^4\sim T_e^4\tau$$
+This says that as we go deeper into the atmosphere, the temperature increases,
+but slowly (as the fourth root).  
+
+\subsection*{ Reintroducing the Scattering Term}
+
+A while ago, we had the equation:
+$$\mu{dI_\nu\over d\tau_\nu}=I_\nu-\~\omega_\nu J_\nu-(1-\~\omega_\nu)B_\nu$$
+and we decided to simplify our lives, we had set the scattering term
+$\~\omega_\nu=0$.  Now we'd like to solve the compliment problem: we'll set
+$B_\nu=0$ and look at the equation for pure scattering:
+$$\mu{dI_\nu\over d\tau_\nu}=I_\nu-\~\omega_\nu J_\nu$$
+The first thing we'll do to simplify our integro-differential equation is to
+say that scattering preserves frequency (which it does, except for Compton
+scattering).  Then we have:
+\def\wt{{\~\omega}}
+$$\mu\ddtau{I_T}=I_T-{\wt\over4\pi}\int{I_Td\Omega}$$
+where we say the total intensity $I_T(\tau,\mu)=I_*(\tau,\mu)+I(\tau,\mu)$.
+$I_*$ is the incident (never scattered) intensity, and $I$ is the diffuse
+(scattered at least once) intensity.  Our equation for the incident component
+is:
+$$\mu\ddtau{I_*}=I_*$$
+This is a familiar equation with a familiar solution:
+$$I_*=I_*(\tau=0)e^{\tau\over\mu}$$
+You'd expect that $I_*$ should decrease due to scattering, so why is the
+exponent positive in this equation?  Remember by our convention, that
+$\mu$ points toward the direction of incoming flux, so a positive $\mu$ 
+corresponds to looking upward in the atmosphere, in which direction the
+intensity of unscattered light should increase.  To make our equation look
+like the solution in Chamberlain, we define:
+$$I_*(\tau=0)\equiv\pi\mathfrak{F}\delta(\mu+\mu_0)\delta(\phi-\phi_0)$$
+$$\boxed{I_*=\pi\mathfrak{F}\delta(\mu+\mu_0)\delta(\phi-\phi_0)}$$
+where $\mu_0$ is the angle the incident intensity makes with the plane of
+the atmosphere, and $\phi$ measures ``right ascension''.\par
+Now the whole diffusion equation looks like:
+$$\begin{aligned}\mu\ddtau{I}&=I-{\wt\over4\pi}\int{I_*+I)d\Omega}\\ 
+&=I-{\wt\over4\pi}\int{Id\Omega}-{\wt\over4\pi}\int{I_*d\Omega}\\ 
+&=I-{\wt\over4\pi}\int{I\overbrace{d\Omega}^{d\phi d\mu}}-{\wt\over4\pi}\pi
+\mathfrak{F} e^{-\tau\over\mu_0}\\ 
+&=I-{\wt\over4\pi}2\pi\int_{-1}^1{Id\mu}-{\wt\over4}\mathfrak{F} e^{-\tau\over\mu_0}\\ 
+\end{aligned}$$
+The key to solving this equation is to get rid of that integral.  To do this,
+we'll do a math trick by turning the integral into a sum:
+$$\int_{-1}^1{Id\mu}=\sum_{j=1}^n{a_jI(\mu_j)}$$
+In general, for some polynomial of order $(2m-1)$, $f(x)=c_0+c_1x+\dots+c_{
+2m-1}x^{2m-1}$:
+$$\int_{-1}^1{f(x)dx}=\sum_{j=1}^n{a_jf(x_j)}$$
+If we want to get an exact answer, each individual term in the polynomial had
+better give exact equality:
+$$\int_{-1}^1{c_\ell x^\ell dx}=a_1c_\ell x_1^\ell+a_2c_\ell x_2^\ell+\dots
++a_nc_\ell x_n^\ell$$
+which is an equation in $2n$ unknowns.  Overall, we have $2m$ equations, so
+to get perfect equality for a $(2m-1)^{th}$ order polynomial, we must
+demand that we have $n=m$ sample points.  For a given $n$, we then need
+the coefficients $a_i[i=1,\dots,n]$, $x_i[i=1,\dots,n]$.  Luckily, values for
+these are tabulated in books, and in Numerical Recipes.  We'll work out a 
+simple case for $n=2$:
+\def\intmoo#1{\int_{-1}^1{#1}}
+$$\begin{aligned}\int_{-1}^1{Id\mu}&=a_1I(\mu_1)+a_2I(\mu_2)\\ 
+\intmoo{\mu^0d\mu}&=2=a_1\mu_1^0+a_2\mu_2^0\\ 
+\intmoo{\mu^1d\mu}&=0=a_1\mu_1^1+a_2\mu_2^1\\ 
+\intmoo{\mu^2d\mu}&={2\over3}=a_1\mu_1^2+a_2\mu_2^2\\ 
+\intmoo{\mu^3d\mu}&=0=a_1\mu_1^3+a_2\mu_2^3\\ \end{aligned}$$
+If we stare at these equations for a while, maybe we'll see that the answer
+is $a_1=a_2=1$, and:
+$$\begin{matrix}\mu_1=+{1\over\sqrt{3}},&\mu_2=-{1\over\sqrt{3}}\end{matrix}$$
+Getting back to our original equation, we now have:
+\def\aiaio{\left[a_1I(\mu_1)+a_2I(\mu_2)\right]}
+$$\begin{aligned}\mu\ddtau{I}
+&=I-{\wt\over2}\intmoo{Id\mu}-{\wt\mathfrak{F}\over4}e^{-\tau\over\mu_0}\\ 
+(n=2)\,\imply\,\mu\ddtau{I(\mu)}&=I-{\wt\over2}\aiaio
+-{\wt\over4}\mathfrak{F} e^{-\tau\over\mu_0}\\ \end{aligned}$$
+where $\mu$ is the only remaining parameter we need to solve for:
+$$\begin{aligned}\mu_1\ddtau{I(\mu_1)}&=I(\mu_1)-{\wt\over2}\aiaio-{\wt\over4}\mathfrak{F}
+e^{-\tau\over\mu_0}\\ 
+\mu_2\ddtau{I(\mu_2)}&=I(\mu_2)-{\wt\over2}\aiaio-{\wt\over4}\mathfrak{F}
+e^{-\tau\over\mu_0}\\ \end{aligned}$$
+So we have two coupled, linear, differential equations for $I(\mu_1),I(\mu_2)$.
+To cut to the chase, these have homogeneous solutions:
+$$\begin{aligned}I_{1,hmg}&=
+{\mathfrak{L}\over1-\mu_1k}e^{k\tau}+{\mathfrak{L}\over1+\mu_1k}e^{-k\tau}\\ 
+I_{2,hmg}&={\mathfrak{L}\over1+\mu_1k}e^{k\tau}+{\mathfrak{L}\over1-\mu_1k}e^{-k\tau}\\ \end{aligned}$$
+where $k=\sqrt{1-\wt\over\mu_1^2}$, and $\mathfrak{L}$ is just a number.  Compare this
+to 4.1.17 in the handout, where the only difference is that they pull out 
+$\wt\mathfrak{F}\over4$ in
+the coefficient.  There is also an inhomogeneous solution, which we can figure
+out by guessing that it looks like the final terms in the coupled differential
+equations, with some coefficients we need to solve for:
+$$\begin{matrix} I_{1,part}={\wt\mathfrak{F}\over4}e^{-\tau\over\mu_0}h_1,&
+I_{2,part}={\wt\mathfrak{F}\over4}e^{-\tau\over\mu_0}h_2\end{matrix}$$
+Solving for $h_1, h_2$:
+$$\begin{matrix} h_1={1-{\mu_1\over\mu_0}\over1-\wt-{\mu_1^2\over\mu_0^2}},&
+h_2={1+{\mu_1\over\mu_0}\over1-\wt-{\mu_1^2\over\mu_0^2}}\end{matrix}$$
+
+\section*{ Lecture 23 }
+
+Recall that we were solving the following equation for $I$:
+$$\mu\ddtau{I(\mu,\tau)}=I(\mu,\tau)-{\wt\over2}\left[I_1(\mu_1,\tau)+
+I_2(\mu_2,\tau)\right]-{\wt\over4}\mathfrak{F}e^{-{\tau\over\mu_0}}$$
+We then broke $I$ into two components measuring the upward and downward directed
+components of the specific intensity:
+$$\begin{aligned}\mu_1\ddtau{I(\mu_1)}&=I(\mu_1)-{\wt\over2}\aiaio-{\wt\over4}\mathfrak{F}
+e^{-\tau\over\mu_0}\\ 
+\mu_2\ddtau{I(\mu_2)}&=I(\mu_2)-{\wt\over2}\aiaio-{\wt\over4}\mathfrak{F}
+e^{-\tau\over\mu_0}\\ \end{aligned}$$
+The final solution is a sum of exponentials:
+$$\begin{aligned}I(\mu_1,\tau)&\equiv I_1=I(\mu_1=\inv{\sqrt{3}},\tau)\\ 
+&=I_{1,hmg}+I_{1,part}\\ 
+I(\mu_2,\tau)&\equiv I_2=I(\mu_2=1\inv{\sqrt{3}},\tau)\\ 
+&=I_{2,hmg}+I_{2,part}\\ \end{aligned}$$
+and last time we solved for the homogeneous component.  All that remains to
+be done at this point is to fit the boundary conditions.
+
+\subsection*{ Fitting Boundary Conditions }
+
+The first condition is that $I_2$, which measures the intensity directed toward
+the ground, should vanish at $\tau=0=$the surface of the atmosphere (we are
+only considering reflected light here):
+$$I_2(\mu_2,\tau=0)=0$$
+The second condition is that at the ground the intensity directed upward out
+of the ground should be equal to whatever is reflected from the downward
+directed intensity.  Thus:
+$$I_1(\tau=\tau_{max},\mu_1>0)=I_2(\tau-\tau_{max},\mu_2<0)\Lambda$$
+where $\Lambda$ is the ground albedo.  There is another component we should
+examine.  First, let's define:
+$$I_*(\tau,\mu)=\pi\mathfrak{F}\delta(\mu+\mu_0)\delta(\phi-\phi_0)e^{\tau\over\mu}$$
+Then we'll examine the total flux (specific intensity integrated over solid
+angle, weighted by $\mu$) directed into the ground:
+\def\taum{{\tau_{max}}}
+$$\begin{aligned}F_{in,*}
+&=\int{\pi\mathfrak{F}\delta(\mu+\mu_0)\delta(\phi-\phi_0)e^{\taum\over\mu}\mu
+\,\underbrace{d\mu d\phi}_{d\Omega}}\\ 
+&=-\pi\mathfrak{F}e^{-{\taum\over\mu}}\mu_0\\ \end{aligned}$$
+Since the flux out of the ground is just the reflected portion of the incoming
+flux:
+$$\begin{aligned}F_{out,*}&=\Lambda F_{in,*}\\ 
+F_{out,*}&\equiv\int{I_{1,*}\mu d\Omega}\\ 
+&=I_{1,*}\int{\mu d\Omega}=I_{1,*}\pi\\ \end{aligned}$$
+$$\boxed{I_{1,*}=\lambda\mathfrak{F}\mu_0e^{-{\taum\over\mu_0}}}$$
+Therefore, the full second boundary condition reads:
+$$\boxed{I_1(\tau=\taum,\mu_1>0)=\Lambda I_2(\tau=\taum,\mu_2<0)
++\Lambda\mathfrak{F}e^{-{\taum\over\mu_0}}\mu_0}$$
+These two boundary conditions together give us answers to the two right-hand 
+components of our original equation:
+$$\mu\ddtau{I(\mu,\tau)}=I(\mu,\tau)-{\wt\over2}\left[I_1(\mu_1,\tau)+
+I_2(\mu_2,\tau)\right]-{\wt\over4}\mathfrak{F}e^{-{\tau\over\mu_0}}$$
+So the equation had just become the equation of radiative transfer:
+$$\mu\ddtau{I}=I-S$$
+and now we know the source function $S$.
+
+\subsection*{ Effective Albedo of the Atmosphere }
+
+Using 4.1.29 in the handout, we have that an atmosphere of optical depth
+$\tau=\taum$, with ground albedo $\Lambda$ is identical to an infinite 
+atmosphere ($\tau\to\infty$) if $\xi=0$.  In order for this to be the case:
+$$\xi={\sqrt{1-\wt}(1+\Lambda)-(1-\Lambda)
+\over\sqrt{1-\wt}(1+\Lambda)+(1-\Lambda)}=0$$
+$$\boxed{\Lambda={1-\sqrt{1-\wt}\over1+\sqrt{1-\wt}}}$$
+where $\Lambda$ here is the effective, macroscopic albedo of a semi-infinite
+atmosphere.\par
+We can get this same result by solving the diffusion equation, this time with
+an absorption modifier:
+$$\ppt{n}=\underbrace{D\nabla^2n}_{scattering\atop term}
+-\underbrace{nn_d\sigma_ac}_{absorption\atop modifier}$$
+where $n$ is the \# density of photons (which don't change in frequency), 
+$\sigma_a$ is the cross-section for
+absorption, $n_d$ is the \# density of the ``dust'' (any absorbing/scattering
+particle), and $D$ is the diffusivity, $D=\lambda_{mfp}c$.  We have to be
+careful that $\lambda_{mfp}$ contain both aspects of absorption and scattering:
+$$\lambda_{mfp}=\inv{n_d(\sigma_a+\sigma_s)}$$
+We have a steady-state solution to this diffusion equation.  In 1-D, this 
+equation looks like:
+$$\ppt{n}=0=D{\partial^2n\over\partial z^2}-n(n_d\sigma_ac)$$
+We'll guess that $n=Ae^{z\over z_0}$ is a solution.  Doing some algebra, we
+can show that:
+$$z_0=\inv{n_d[\sigma_a(\sigma_a+\sigma_s)]^\hf}$$
+where we are assuming $z=0$ is the top of the atmosphere, where $\tau=0$, and
+that $z<0$ as we move down through the atmosphere.  Now we'll break our
+solution into two components, evaluated at the surface of the atmosphere:
+$$\begin{aligned}n&=Ae^{z\over z_0}\\ 
+n(0)&=(n_i+n_e)e^{0\over z_0}\\ \end{aligned}$$
+where $n_i$ are the incident photons from space, and $n_e$ are the escaping
+photons from below.  Then the diffusion equation (this time written in terms
+of flux) tells us:
+$$\begin{aligned}F&=-D\nabla n=c(n_e-n_i)\\ 
+{-DAe^{z\over z_0}\over z_0}\eval{z\sim0}&=c(n_e-n_i)\\ \end{aligned}$$
+We are saying $z\sim0$, and not $z=0$, because we have to be careful about
+using the diffusion equation at low optical depth, which we have at the surface
+of the atmosphere.  Ignoring the subtleties inherent in the assumption, we'll
+say that $e^{z\over z_0}\sim1$, giving us:
+$$\boxed{{-D\over z_0}(n_i+n_e)}$$
+Now we use the definition $\Lambda\equiv{n_e\over n_i}\eval{z=0}$ to get our
+previous equation.  First, note that:
+$$n_e={\left(\sqrt{\sigma_a+\sigma_s\over\sigma_a}-1\right)\over
+\left(\sqrt{\sigma_a+\sigma_s\over\sigma_a}+1\right)}n_i
+={\left(\sqrt{\inv{1-\wt}}-1\right)\over\left(\sqrt{\inv{1-\wt}}+1\right)}n_i$$
+where we used that $1-\wt={\sigma_a\over\sigma_a+\sigma+s}$.  Using this
+result, we can solve for $\Lambda$:
+$$\Lambda={n_e\over n_i}={1-\sqrt{1-\wt}\over1+\sqrt{1-\wt}}$$
+
+\subsection*{ Quick Reality Check }
+
+We can use the fact that 
+$$F_{out}\eval{surface}=\int{I_1\eval{surface}\mu\,d\Omega}$$
+to independently find the macroscopic albedo:
+$$\Lambda={F_{out}\eval{surface}\over F_{in}\eval{surface}}$$
+Doing this by hand, using the test case of looking at reflected flux directed
+straight up ($\mu_0=1$), from perfectly reflective particles $\wt=1$, with
+$\mu_1=\hf$ (an approximation of a quadrature gaussian integral), we get:
+$$\begin{aligned}F_{out}\eval{surface}&={3\pi\over2}\ln2\mathfrak{F}\\ 
+F_{in}\eval{surface}&=\pi\mathfrak{F}\\ \end{aligned}$$
+Numerically, we find $\Lambda=1.03$.  We were, of course, shooting for an
+answer of $1$, so this hand-calculation gives us an indication that all of
+the various assumptions we made have introduced a couple \% error in our
+final calculations.
+
+\section*{ Lecture 24 }
+
+\subsection*{ Cosmic Masers }
+
+$OH$ and $H_20$ masers can occur in dusty, star-forming regions which are cold
+enough for these molecules to form.  The the dust's black-body radiation in
+the infrared band creates is absorbed by these molecules and a population
+inversion is established.  When maser emission is caused by via stimulated
+emission, these clouds can get very bright (brightness temperatures $\sim
+10^{14}K$).  Temperatures this high cannot be thermal, so we know a maser
+when we see one. \par
+Generally, masers are useful for tracing the galaxy's magnetic field (emission
+lines are Zeeman split), and for following disks of gas and dust around stars
+in star-forming regions.  In order to detect them, we need clouds which are
+moving uniformly together, and have velocity coherence both $\perp, \|$ to
+our line-of-sight through a disk of rotation gas.  
+In general, the intensity we observe depends on the
+path length through the masing cloud, so we like long path lengths with the
+same velocity.
+
+\subsection*{ How masers Work }
+
+Consider a molecule with two rotational energy levels.  Observing a homogeneous
+slab of this molecule, the intensity we receive is given by the familiar:
+$$I_\nu=S_\nu(1-e^{-\tau_\nu})$$
+where $S_\nu={j_\nu\over\alpha_\nu}$.  $j_\nu$ and $\alpha_\nu$ are given by:
+$$\begin{aligned}j_\nu&=\overbrace{n_2\ato}^{per time}\overbrace{h\nu}^{per E}
+\overbrace{\phi(\nu)}^{per\ Hz}\overbrace{\inv{4\pi}}^{per steradian}\\ 
+\alpha_\nu&={h\nu\over4\pi}\phi(\nu)[\overbrace{n_1\bot}^{abs}-\overbrace{
+n_2\bto}^{stim\atop emis}]\\ \end{aligned}$$
+Thus, our source function looks like:
+$$S_\nu={n_2\ato\phi(\nu)h\nu\inv{4\pi}\over{h\nu\over4\pi}\phi(\nu)[n_1\bot-
+n2\bto]}$$
+Then since $g_1\bot=g_2\bto$ and ${\ato\over\bto}={2h\nu^3\over c^2}$, we have:
+$$S_\nu={2h\nu^3\over c^2}\inv{{n_1g_2\over g_1n_2}-1}$$
+A population is said to be inverted when $n_1g_2<g_1n_2$ (not $n_1<n_2$).
+$n_1\over g_1$ is an expression for the population per degenerate sub-level in
+energy level 1.  If ${n_1\over g_1}<{n_2\over g_2}$, then $S_\nu<0$, and we
+have a maser.  Expressed in terms of the excitation temperature (${n_2\over n_1}
+={g_2\over g_1}e^{-{h\nu\over kT_{ex}}}$), we have:
+$$S_\nu={2h\nu^3\over c^2}\inv{e^{h\nu\over kT_{ex}}-1}$$
+which is less than 0 when $T_{ex}<0$.  We can express the optical depth of
+this slab to maser radiation as:
+$$\tau_\nu=\alpha_\mu L
+={h\nu\over4\pi}\phi(\nu)\bto\left[{n_1g_2\over g_1}-n_2\right]
+={h\nu\over4\pi}\phi(\nu)\bto n_2\left[{n_1g_2\over g_1n_2}-1\right]$$
+If ${n_2\over g_2}>{n_1\over g_1}$, then $\tau_\nu<0$.  Now you might think
+we're talking nonsense with a negative source function and a negative optical
+depth, but we're not.  Recall that the intensity is:
+$$I_\nu=S_\nu(1-e^{-\tau})$$
+If $\tau\to-\infty$, then $I_\nu\to-S_\nu e^{\tau_\nu}$, so $I_\nu\gg1$. 
+On the other hand, if $\tau<0$ and $|\tau|\ll1$, then $I_\nu\to S_\nu\tau_\nu$,
+which is the product of two negatives = positive.  This should be convincing
+you that $I_\nu$ is always positive, and therefore, actually manifested.
+
+\subsection*{ Maser Species }
+
+$OH$ mases at around 18 cm, and is found around AGB (asymptotic-giant-branch)
+stars in star-forming regions and around the galactic nucleus.  AGB's are
+important because they have lots of dust.  The two masing transitions are
+from $1667\to1612MHz$ and $1720\to1665MHz$.\par
+$H_2O$ mases at $1.35 cm$ in a transition to its ground rotational state.  Note
+that an order-of-magnitude calculation of $\Delta E={\hbar\over 2I}$ for $H_2O$
+gives us an estimate of $\sim 1 mm$, which is incorrect.  The correct 
+transitional energy is caused by a slight degeneracy in water molecules.\par
+$SiO$ mases at $3.4 mm$ in its ground vibrational state, and is typically
+found in star-forming regions and around AGB stars.\par
+Other molecules mase, and there is even potential for detecting atomic lasers 
+around massive stars ($L\sim10^5 L_\odot$).  Hydrogen transitions from $10\to9$
+have been observed (at $55\mu m$), and Stielnitski 1996 claims to have observed
+a population inversion in atomic H.
+
+\section*{ Lecture 25 }
+
+\subsection*{ Saturated vs. Unsaturated masers }
+
+There are two modes of operation for masers.  For unsaturated masers, the gain
+is exponential with the path length, and for saturated ones, the gain only
+grows linearly with path length.  The masers we find in the cosmos are typically
+saturated.  The following is working toward understanding why there are two
+modes in masers.  We begin with the expression for specific intensity from
+emissivity:
+$$\begin{aligned}{dI_\nu\over dz}&=j_\nu-\alpha_\nu I_\nu\\ 
+&={h\nu\over4\pi}\phi(\nu)n_2A_{21}-{h\nu\over4\pi}
+\phi(\nu)[n_1\bot-n_2\bto]I_\nu\\ \end{aligned}$$
+In principle, the line-profile function governing spontaneous emission and the
+line-profile governing stimulated emission might not have to be the same, but
+evidence seems to suggest they are.  Let's assume they are, and rewrite this:
+$$\begin{aligned}{dI_\nu\over dz}&={h\nu\over4\pi}\phi(\nu){n_2\ato\over g_2}\cdot g_2
+-{h\nu\over4\pi}\phi(\nu)g_2\bto\left[{n_1\over g_1}-{n_2\over g_2}\right]
+\end{aligned}$$
+Defining $N_1\equiv{n_1\over g_1}$, $N_2\equiv{n_2\over g_2}$, $A\equiv
+\ato g_2$, and $B=\bto g_2$, our equation looks like:
+$${dI_\nu\over dz}={h\nu\over4\pi}\phi(\nu)[N_2A+B(N_2-N_1)I_\nu]$$
+Now we'll integrate over frequency.  $\phi(\nu)$ is a sharply peaked function,
+so we'll treat it as a $\delta$-function.  Then substituting
+$I\equiv\int{\phi(\nu)I_\nu d\nu}$, we have:
+$${\int{I_\nu d\nu}\over\Delta\nu}\equiv\int{I_\nu\phi(\nu)d\nu}$$
+which is true by definition of $\Delta\nu$: $\int{I_\nu d\nu}=I\Delta\nu$.
+So now we have:
+$${dI\over dz}={h\nu\over4\pi\Delta\nu}[(N_2-N_1)BI+N_2A]$$
+This is an equation with three unknowns.  To close this system, we'll use the
+equations of statistical equilibrium, which say:
+$${dN_2\over dt}=-N_2BJ+N_1BJ-N_2A+R_2(N-N_1-N_2)-\Gamma_2N_2$$
+where $J\equiv\int{I_\nu\phi(\nu)d\nu}$, and $J_\nu=\inv{4\pi}\int{I_\nu
+d\Omega}$.  $R_2$ is the ``pumping rate''.  It describes the rate at which
+molecules not in state 1 or 2 (counted by $N-N_1-N_2$) are radiatively or 
+collisionally
+knocked into state 2. $\Gamma_2$ is the loss rate of molecules in state 2 into
+any state other than state 1.  In the above equation, we've neglected two
+terms: collisional excitation $1\to2$ and $2\to1$.  These are crucial terms,
+being tightly related to local thermal equilibrium.  However, we will neglect
+them to simplify analysis.  We also have a similar equation for state 1:
+$${dN_1\over dt}=N_2BJ-N_1BJ+N_2A+R_1(N-N_1-N_2)-\Gamma_1N_1$$
+We'll further simply matters by setting the loss-rates for the two populations
+equal to each other ($\Gamma_1=\Gamma_2=\Gamma$).  Now let's solve for the 
+steady-state solution (${dN\over dt}=0$).
+$${d(N_2-N_1)\over dt}=-(N_2-N_1)2BJ-2N_2A+(R_2-R_1)(N-N_{12})-\Gamma(N_2-N_1)$$
+where $N_{12}=N_1+N_2$.
+Two terms in this equation are acting to reduce the population inversion of
+state 2 with respect to state 1: $(N_1-N_1)2BJ$ and $\Gamma(N_2-N_1)$.  In the
+{\it unsaturated regime} where $BJ\ll\Gamma$, stimulated emission is a minor
+perturbation to the inverse.  In this case we can solve the system of equations:
+$$\begin{aligned}{d\Delta N\over dt}={d(N_2-N_1)\over dt}&=-2N_2A+(R_2-R_1)(N-N_{12})
+-\Gamma\Delta N=0\\ 
+{dN_{12}\over dt}&=(R_2+R_1)(N-N_{12})-\Gamma(N_1+N_2)=0\\ \end{aligned}$$
+Then solving for $N-N_{12}$:
+$$N-N_{12}={\Gamma(N_1+N_2)\over R_1+R_2}={\Gamma N_{12}\over R_1+R_2}$$
+Substituting this into the difference equation, which reads:
+$$-2N_2A={R_2-R_1\over R_1+R_2}\Gamma N_{12}-\Gamma\Delta N=0$$
+the using $N_2={N_{12}+\Delta N\over2}$ (this is just an identity), we get:
+$$\underbrace{\left(1+{\Gamma\over A}\right)}_{\equiv2\beta}\Delta N
+=N_{12}\left[\underbrace{{R_2-R_1\over R_1+R_2}{\Gamma\over A}}_{\equiv
+\inv{\alpha}}-1\right]$$
+Thus:
+$$\Delta N={N_{12}\over2\beta}\left[\inv{\alpha}-1\right]={N_{12}(1-\alpha)\over
+1\alpha\beta}$$
+Now we'll define $S\equiv{\alpha\beta\over1-\alpha}$.  $S$ is meant to connote
+the source function here.  The reason we might expect $S$ to be related to
+the source function is that $S_\nu\propto{N_2\over N_2-N_1}\propto{N_2\over
+\Delta N}$, so $\Delta N\propto {N_{12}\over2S}$.  This is why we use an $S$
+here.  Getting back to our original equation, we have:
+$${4\pi\Delta\nu\over h\nu A}{dI\over dz}=\Delta N\underbrace{BI\over A}_{
+\equiv\mathfrak{I}}+N_2$$
+Using our newly defined $S$, this becomes:
+$${4\pi\Delta\nu\over h\nu B}{d\mathfrak{I}\over dz}={N_{12}\over2S}\mathfrak{I}+
+\hf(N_{12}+\Delta N)$$
+Finally, defining an unsaturated gain length $L\equiv{4\pi\Delta\nu\over Bh\nu}
+{2S\over N_{12}}$, we have:
+$$L=\mathfrak{I}+S+\hf$$
+Then using $ds={dz\over L}$, we have:
+$${d\mathfrak{I}\over ds}=\mathfrak{I}+\hf+S$$
+To order of magnitude:
+$$\begin{aligned}\mathfrak{I}&\equiv{B\over A}I={B\over A}B_\nu(T_{bright})\\ 
+&={c^2\over2h\nu^3}{2h\nu^3\over c^2}\inv{e^{h\nu\over kT_{bright}}-1}\\ 
+&=\inv{e^{h\nu\over kT_{bright}}-1}\\ \end{aligned}$$
+Now since $1\ll{kT_{bright}\over h\nu}$ (typical maser wavelengths are in
+mm and $T_{bright}$ is typically several K), we can throw away our $\hf$ in
+our equation for ${d\mathfrak{I}\over ds}$:
+$${d\mathfrak{I}\over ds}=\mathfrak{I}+S\imply
+\int{d\mathfrak{I}\over\mathfrak{I}+S}=\int{ds}\imply
+\mathfrak{I}+S=De^s$$
+Choosing $\mathfrak{I}=0, s=0$ (we're assuming there is no background source), then
+$D=S$, so:
+$$\boxed{\mathfrak{I}=S(e^s-1)}$$
+If $s\ll1$, we have $\mathfrak{I}=Ss$ from spontaneous emission, and this is the 
+saturated case.  If $s\gg1$, the $\mathfrak{I}=Se^s$ from stimulated emission, and
+this is the unsaturated case.  Earlier we threw away the $BJ$ term, but we
+could have done all of this including that term, and the algebra would have
+been the same.  If we do this, we ge the answer:
+$$\boxed{{d\mathfrak{I}\over ds}={\beta(\mathfrak{I}+\hf)\over\beta+\mathfrak{J}}+S}$$
+where $\mathfrak{J}$ is the non-dimensionalized, integrated flux, 
+$\mathfrak{J}={BJ\over A}$.
+
+\section*{ Lecture 26 }
+
+\subsection*{ The Saturated Mode }
+
+Recall our masing equation:
+$${d\mathfrak{I}\over ds}={\beta(\mathfrak{I}+\hf)\over\beta+\mathfrak{J}}+S$$
+In the unsaturated case, ${\beta\over\beta+\mathfrak{J}}\to1\iff\beta\gg\mathfrak{J}$.
+This is equivalent to saying:
+$$\hf\left(1+{\Gamma\over A}\right)\gg{BJ\over A}$$
+And if $\Gamma\gg A$, then:
+$$A+\Gamma\gg BJ\iff\Gamma\gg BJ$$
+In the saturated case, then $\beta\ll\mathfrak{J}$.  In this case:
+$${d\mathfrak{I}\over ds}={\beta\mathfrak{I}\over\mathfrak{J}}+S={4\pi\beta\mathfrak{I}\over
+\int{\mathfrak{I}ds}}+S$$
+where we used that $\mathfrak{J}\sim\inv{4\pi}\int{\mathfrak{I}d\Omega}$.  If we consider
+a single beam of photons through a cloud, then $\int{\mathfrak{I}d\Omega}\approx
+\mathfrak{I}\Delta\Omega$, so:
+$$\boxed{
+\begin{aligned}{d\mathfrak{I}\over ds}&={4\pi\beta\mathfrak{I}\over\mathfrak{I}\Delta\Omega}+S\\ 
+&={4\pi\beta\over\Delta\Omega}+S\\ \end{aligned}}$$
+
+\subsection*{ How We Get Population Inversions }
+
+There is another dichotomy in masers: ones which are excited radiatively and
+those which are excited collisionally.  We'll discuss a cloud of molecules
+which have 3 energy states which are populated by {\it simple collisional
+pumping}.  To simplify our lives, we'll say that energy levels 3 and 2 can
+talk to each other via photon emission/absorption, as can 2 and 1, but we'll
+say that 1 and 3 cannot talk radiatively (say, because of parity violation, and
+note that they can still talk collisionally).  2 and 1 will be
+our masing levels.  Then the rate of change of the population of energy state
+1 is given by (sources - sinks):
+$${dn_1\over dt}=n_2\ato+n_2C_{21}+n_3C_{31}+n_2\bto J_{21}-n_1\bot J_{12}
+-n_1C_{12}-n_1C_{13}$$
+Then $J_{12}=J_{21}$, and because of local collisional thermal equilibrium,
+$C_{12}=C_{21}{g_2\over g_1}e^{-{E_{21}\over kT}}$.  Similarly,
+$C_{13}=C_{31}{g_3\over g_1}e^{-{E_{21}\over kT}}$.  So dividing by $g$, and
+defining $N_1\equiv{n_1\over g_1}$, we have:
+$$\begin{aligned}{dN_1\over dt}=&\underbrace{n_2\over g_2}_{N_2}\underbrace{
+{\ato\over g_1}g_2}_{\ato}+\underbrace{n_2\over g_2}_{N_2}\underbrace{
+{C_{21}\over g_1}g_2}_{\equiv C}+\underbrace{n_2\over g_3}_{N_3}\underbrace{
+{C_{31}\over g_1}g_3}_{\equiv C}+\underbrace{n_2\over g_2}_{N_2}\underbrace{
+{\bto\over g_1}g_2}_{\bto}J_{21}\\
+&-N_1\underbrace{\bto}_{\bto{g_2\over g_1}\equiv
+\bto}-N_1\underbrace{C_{21}{g_2\over g_1}}_{\equiv C}e^{-{E_{21}\over kt}}-
+N_1\underbrace{C_{31}{g_3\over g_1}}_{\equiv C}e^{-{E_{31}\over kT}}\\
+\end{aligned}$$
+Phew.  Notice that we set $C_{21}=C_{31}$.  This is just to make our lives
+easier.  We can do the same for $dN_2\over dt$, but omitting $B_{23}$, because
+we're deciding not to have absorptions from $2\to3$ and no stimulated emission
+from $3\to2$.  Then our total population is $N=N_1+N_2+N_3$.  Without being
+careful, instinct tells us that in steady state, we'll have a population
+inversion ${N_2\over N_1}>1$ if $C\ll A_{32}$.  This
+instinct is correct, but let's do this carefully.  First we'll make some
+assumptions:
+\begin{itemize}\item $\ato\ll C$.  For $H_2O$: 
+$$\ato\sim10^8s^{-1}\left({1216\AA\over1.35cm}\right)^3
+\sim10^8\e{-15}s^{-1}
+\sim10^{-7}s^{-1}\left({\mu\over ea_0}\right)^2$$
+where $\mu$ is our way of accommodating the fact that the dipole moment for
+$H_2O$ might not be the same as for the fine structure of hydrogen.  It turns
+out the answer is $\ato\sim2\e{-9}s^{-1}$.\par
+Estimating C:
+$$C\sim n_{H_2}\sigma v_{rel}\sim n_{H_2}\e{-15}\cdot(3{km\over s})
+\sim n_{H_2}\cdot3\e{-10}$$
+which is $\gg10^{-7}s^{-1}\left({\mu\over ea_0}\right)^2$ when
+$n_{H_2}\gg10^3cm^{-3}\left({\mu\over ea_0}\right)^2$.  
+\item Next we'll assume $E_{21}\ll kT$.  Define ${E_{21}\over kT}\equiv\delta
+\ll1$.\end{itemize}
+Now we have a 2-step:
+\begin{itemize}\item Step 1: Since $1\to3$ are not linked by radiation,
+$${N_3\over N_1}\approx e^{-{E_{31}\over kT}}\equiv\theta\le1$$
+\item Step 2: Radiative decays from $3\to2$.  To get an inversion, we'll
+argue that the sources into 2 are larger than the sinks out of 2 (this is 
+a little weird because we're solving our steady-state equations, but whatever):
+$$N_3A_{32}+N_3C+N_1Ce^{-{E_{21}\over kT}}>N_2Ce^{-{E_{32}\over kT}}+N_2C$$
+We can rewrite this as:
+$$\begin{aligned}
+\underbrace{N_2\over N_1}_{=\theta}{A_{32}\over C}&>\left[{N_2\over N_1}
+\underbrace{e^{-{E_{32}\over kT}}}_{E_{32}=E_{32}-E_{12}}-{N_3\over N_2}\right]
++\left[{N_2\over N_1}-e^{-{E_{21}\over kT}}\right]\\ 
+{A_{32}\theta\over C}&>\left[\underbrace{N_2\over N_1}_{1}\theta(1+\delta)-
+\theta\right]+\left[\underbrace{N_2\over N_1}_{1}-(1-\delta)\right]\\ 
+&=\theta\delta+\delta=\delta(\theta+1)\\ \end{aligned}$$
+Thus, the $\delta$ really helps get masing started.  
+\end{itemize}
+Now one last thing: we'd
+chosen to ignore stimulated radiative transfer between energy states 3 and 2.
+In general, this process
+will tend to reduce the population inversion.  However, for optically thick
+clouds $\tau\gg1$, photons only have a $P\sim\inv{\tau}$ probability of escaping,
+so we can describe this by ``diluting'' the $A_{32}$ term by $\inv{\tau}$.
+
+\end{document}
