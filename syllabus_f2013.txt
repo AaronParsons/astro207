@@ -1,0 +1,228 @@
+An introduction to the basic physics of astronomy and astrophysics at the graduate level. Principles of energy transfer by radiation. Elements of classical and quantum theory of photon emission; bremsstrahlung, synchrotron radiation. Compton scattering, plasma effects, atomic and molecular electromagnetic transitions. With applications to current research into astrophysical phenomena.
+
+These are a collection of lectures covering topics in an introductory graduate astrophysics course on radiative processes.  The subject matter is loosely drawn from [http://adsabs.harvard.edu/abs/1981PEPI...25..432L Radiatve Processes in Astrophysics] by Rybicki & Lightman.
+
+At the end of the semester, each student will develop one new lecture on a subject of their choice to add to this website.
+
+=== Class Code Repository ===
+[http://github.com/AaronParsons/astro207 http://github.com/AaronParsons/astro207]
+
+=== Useful External References ===
+* Rybicki and Lightman,  [http://books.google.com/books?id=eswe2StAspsC&printsec=frontcover&dq=radiative+processes+in+astrophysics&hl=en&sa=X&ei=wkcGT-6HMISTiQKo3IQa&ved=0CDgQ6AEwAA#v=onepage&q=radiative%20processes%20in%20astrophysics&f=false'' '''Radiative Processes in Astrophysics'''] (course reference)
+* Mihalas and Mihalas, [http://books.google.com/books?id=f75C_GN9KZwC&printsec=frontcover&source=gbs_ge_summary_r&cad=0#v=onepage&q&f=false '''Foundations of Radiation Hydrodynamics''']
+* Osterbrock and Ferland, [http://books.google.com/books?id=6GIXMFpET4cC&printsec=frontcover&dq=osterbrock&hl=en&sa=X&ei=OUgGT8-0MuOZiAKOmoUS&ved=0CDEQ6AEwAA#v=onepage&q=osterbrock&f=false '''Astrophysics of Gaseous Nebulae and Active Galactic Nuclei''']
+* Shu, '[http://books.google.com/books/about/The_Physics_of_Astrophysics_Radiation.html?id=BxE1AQAAIAAJ, '''The Physics of Astrophysics, Volume I: Radiation''']
+* Longair, [http://books.google.com/books?id=KGe3FVbDNk4C&printsec=frontcover&dq=longair+high+energy+astrophysics&hl=en&ei=2m4QT5GgEuTWiALvkdWjDQ&sa=X&oi=book_result&ct=book-thumbnail&resnum=1&ved=0CDQQ6wEwAA#v=onepage&q=longair%20high%20energy%20astrophysics&f=false, '''High Energy Astrophysics''']
+* Mihalas, [http://www.nhn.ou.edu/~baron/ast4303/index.html '''Stellar Atmospheres''']
+* Rutten, [http://ntc0.lbl.gov/~kasen/references/rutten_stellar_atmospheres.pdf  '''Radiative Transfer in Stellar Atmospheres''']
+* Eddie Baron's [http://www.nhn.ou.edu/~baron/grk_lectures/index.html GRK Lectures on Radiation Transport]
+* Tony Readhead's [http://www.astro.caltech.edu/~ycao/ay121/Ay121/notes.html Notes]
+
+== Topics by Date ==
+
+====(Th, Aug. 28) electromagnetic waves (RL 2.1-2.3; Grif 8.1)====
+* Class Mechanics
+** Syllabus
+** References
+*** Rybicki & Lightman
+*** This Website
+*** [[Creating Short Topical Presentations]]
+** Projects/Programming
+*** [[Python Installation and Basic Programming]]
+*** [[Revision Control]] (class repository)
+** Getting accounts / setting up environments
+* [https://github.com/AaronParsons/astro207/blob/master/quiz01.pdf Quiz 1]
+* Topics
+** [[Maxwell Equations]] for E&M Waves
+** [[Fourier Transform]]
+** [[Electromagnetic Plane Waves]]
+** [[Central Limit Theorem]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps01.pdf PS01 assigned]
+
+====(Tu, Sep. 2) radiative quantities (RL 1.1-1.3; Mil 1.1-1.3)====
+* PS01 due
+* Topics
+** [[Units of radiation]]
+** photon distribution function
+** [[Specific Intensity]]
+** energy density
+* [https://github.com/AaronParsons/astro207/blob/master/ps02.pdf PS02 part 1 assigned]
+
+====(Th, Sep. 4) radiative transport (RL 1.4; Mil 2.1-2.2)====
+* Quiz 2 on:
+** [[Radiative Transfer Equation]]
+** [[Optical Depth]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps02.pdf PS02 part 2 assigned]
+
+====(Tu, Sep. 9) '''thermodynamic equilibrium''' (RL 1.5)  ====
+* PS02 due
+* Topics
+** Boltzmann distribution
+** [[Black-Body Radiation]]
+** [[Brightness Temperature]]
+** Kirchoff's Law
+** [[Local Thermodynamic Equilibrium]] 
+** [[Maxwellian velocity distribution]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps03.pdf PS03 part 1 assigned]
+
+====(Th, Sep. 11) radiative equilibrium. (RL 1.7-1.8; Mil 2.3-2.5)====
+* Quiz 3 on:
+** [[Detailed Balance]]
+** [[Radiative Equilibrium]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps03.pdf PS03 part 2 assigned]
+
+==== (Tu, Sep. 16) Einstein coefficients====
+* PS03 due
+* Topics:
+** [[Einstein Coefficients]]
+** Atomic Emission/Absorption
+** Effective Absorption Cross-Sections
+* [https://github.com/AaronParsons/astro207/blob/master/ps04.pdf PS04 part 1 assigned]
+
+====(Th, Sep. 18) semi-classical hydrogen ====
+* Quiz on:
+** [[Classical Bohr Atom]] 
+* [https://github.com/AaronParsons/astro207/blob/master/ps04.pdf PS04 part 2 assigned]
+
+==== (Tu, Sep. 23) radiation from accelerating charges (RL 3.3-3.4)====
+* PS04 due
+* Topics
+** estimating Einstein coefficients
+** lamor formula
+** radiative dipole transitions
+** photoexcitation cross-section
+* [https://github.com/AaronParsons/astro207/blob/master/ps05.pdf PS05 part 1 assigned]
+
+====(Th, Sep. 25) collisional excitations ====
+* Quiz on:
+** [[Collisional Excitations]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps05.pdf PS05 part 2 assigned]
+
+==== (Tu, Sep. 30) bound-free transitions ====
+* PS05 due
+* Topics
+** photoionization
+** Saha Equation
+* [https://github.com/AaronParsons/astro207/blob/master/ps06.pdf PS06 part 1 assigned]
+
+====(Th, Oct. 2) LTE and non-LTE ====
+* Quiz on:
+** [[Milne Relation]]
+** [[Coulomb Focusing]]
+** On-the-spot Approximation
+* Topics
+** statistical equilibrium
+** photoionization equilibrium
+** collisional ionization equilibrium
+* [https://github.com/AaronParsons/astro207/blob/master/ps06.pdf PS06 part 2 assigned]
+
+==== (Tu, Oct. 7) plasma effects====
+* PS06 due
+* Topics
+** [[Plasma Frequency]]
+** dispersion measure
+** polarization
+** Faraday rotation (RL 8.1-8.2)
+* [https://github.com/AaronParsons/astro207/blob/master/ps07.pdf PS07 part 1 assigned]
+* PS07 data file: [https://github.com/AaronParsons/astro207/blob/master/pulsar.dat pulsar.dat]
+
+==== (Th, Oct. 9) free-free emission====
+* Topics
+** [[Thermal Bremsstrahlung]] (RL 5.1-5.3)
+** Kramer's Opacity
+** larmor radius/frequency
+** cyclotron lines
+* [https://github.com/AaronParsons/astro207/blob/master/ps07.pdf PS07 part 2 assigned]
+* PS07 data file: [https://github.com/AaronParsons/astro207/blob/master/pulsar.dat pulsar.dat]
+
+==== (Tu, Oct. 14) compton scattering ====
+* PS07 due
+* Topics
+** Thomson cross-section
+** [[Compton Scattering]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps08.pdf PS08 assigned]
+
+==== (Th, Oct. 16) Inverse Compton scattering====
+* Quiz on:
+** [[Inverse Compton Scattering]]
+** [[SZ Effect]] (RL 7.1-7.5)
+* [https://github.com/AaronParsons/astro207/blob/master/ps08.pdf PS08 assigned]
+
+====(Tu, Oct. 21) relativistic transformations====
+* PS08 due
+* Topics:
+** [[Lorentz transformations]]
+** [[Doppler shift]]
+** radiation from relativistic charges (RL 4.1, 4.2, 4.8; Grif 10.1)
+** synchrotron power pattern
+** synchrotron polarization
+* [https://github.com/AaronParsons/astro207/blob/master/ps09.pdf PS09 part 1 assigned]
+
+==== (Th, Oct. 23) synchrotron radiation ====
+* Topics
+** [[Introduction to Synchrotron Radiation and Relativistic Beaming]]
+** [[Synchrotron Frequency]]
+** [[Synchrotron Power]]
+** [[Single Electron Power Spectrum]]
+** [[Synchrotron Spectrum]] (RL 6.1-6.8)
+** [[Effect of Cooling Time on Synchrotron Spectra]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps09.pdf PS09 part 2 assigned]
+
+====(Tu, Oct. 28) self-absorption ====
+* PS09 due
+* Topics
+** synchrotron self-absorption
+** synchrotron self-compton
+** compton catastrophe
+* [https://github.com/AaronParsons/astro207/blob/master/ps10.pdf PS10 part 1 assigned]
+
+==== (Th, Oct. 30) dust and grains====
+* Quiz on:
+** absorptive/scattering cross-sections
+** dust formation/sublimation
+** [[Frequency Redistribution in Non-Coherent Scattering]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps10.pdf PS10 part 2 assigned]
+
+====(Tu, Nov. 4) molecular lines ====
+* Topics
+** rotational transitions
+** vibrational transitions
+** H2 & CO
+* [https://github.com/AaronParsons/astro207/blob/master/ps11.pdf PS11 part 1 assigned]
+
+====(Th, Nov. 6) spectral line broadening====
+* Topics
+** [[Line Profile Functions]]
+** [[Natural Broadening]]
+** [[Doppler Broadening]]
+** [[Voigt Profile]]
+** [[Collisional Broadening]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps11.pdf PS11 part 2 assigned]
+
+==== (Th, Nov. 13) radiative diffusion ====
+* Topics:
+** zeeman splitting
+** radiative diffusion
+** bolometric radiative equilibrium
+** greenhouse effect
+
+==== (Tu, Nov. 18) high-redshift 21cm radiation====
+* Topics
+** [[21cm Transition]]
+** [[Wouthuysen Field effect]]
+* [https://github.com/AaronParsons/astro207/blob/master/ps12.pdf PS12 assigned]
+
+==== (Th, Nov. 20) masers ====
+* PS due
+* Topics
+** [[Masers]]
+
+==== (Tu, Dec. 2) Radiative Transfer Codes/Review 1 ====
+** [[Radiative Transfer Codes]]
+* Topics
+** TBD
+
+==== (Th, Dec. 4) Review 2 ====
+* Topics
+** TBD
+
