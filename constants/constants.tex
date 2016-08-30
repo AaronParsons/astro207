@@ -1,0 +1,473 @@
+\documentclass[10pt]{article}
+\def\:{\ddot}
+\def\.{\dot}
+\def\^{\hat}
+\def\_{\bar}
+\def\hf{\frac12}
+\def\imply{\Rightarrow}
+\def\inv#1{{1\over #1}}
+\def\ddt#1{{d #1 \over dt}}
+\def\ddx#1{{d #1 \over dx}}
+\def\dtdtt#1{{d^2 #1 \over dt^2}}
+\def\ppt#1{{\partial #1 \over \partial t}}
+\def\ppy#1{{\partial #1 \over \partial y}}
+\def\ppx#1{{\partial #1 \over \partial x}}
+\def\ptptt#1{{\partial^2 #1\over \partial t^2}}
+\def\ptpxt#1{{\partial^2 #1\over \partial x^2}}
+\def\ppxi#1{{\partial #1\over \partial x_i}}
+\def\ppvi#1{{\partial #1\over \partial v_i}}
+\def\ddz#1{{d#1\over dz}}
+\def\ddr#1{{d#1\over dr}}
+\def\ddtau#1{{d#1\over d\tau_\nu}}
+\def\dtdxt#1{{d #1 \over dx^2} }
+\def\mean#1{\left\langle #1\right\rangle}
+\def\abs#1{\left| #1\right|}
+\def\eval#1{\bigg|_{#1}}
+\def\e#1{\cdot10^{#1}}
+\def\efield{\vec E}
+\def\bfield{{\vec B}}
+\def\bra#1{\langle #1|}
+\def\ket#1{|#1\rangle}
+\def\xp{{x^{\prime}}}
+\def\yp{{y^{\prime}}}
+\def\zp{{z^{\prime}}}
+\def\tp{{t^{\prime}}}
+\def\vv{{\vec v}}
+\def\~{\tilde}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+\begin{document}
+%---------------------------------------------------------------
+\section*{Physical Constants}
+
+\begin{table}[h!]\begin{tabular}{|rlrl|}
+\hline
+speed of light, c &
+$=3\e{10}{cm\over s}$ & 
+$e^-$ charge, e &
+$=5\e{-10}esu$ \\
+
+$e^-$ mass, $m_e$ &
+$=10^{-27}g$ & 
+Planck const., $\hbar$ &
+$=10^{-27}{erg\cdot s}$ \\
+
+Boltzmann const., k &
+$=1.4\e{-16}{erg\over K}$ &
+grav. const., G &
+$=7\e{-8}{erg\cdot cm \over g^2}$ \\
+
+Avogadro's Number, $N_0$ &
+$=6\e{23}\inv{mol} $& 
+ideal gas const., R &
+$=2{cal\over mol\cdot K}$ \\
+
+vaccuum permeability, $\mu_0$ &
+$=4\pi\e{-7}{N\over amp^2} $& 
+vaccuum permittivity, $\epsilon_0$ &
+$=9\e{-12}{C^2\over N\cdot m^2}$ \\
+
+vaccuum resistivity &
+$=\sqrt{\mu_0\over \epsilon_0}=377 ohms$ &
+$1 ohm^{-1}$ &
+$=9\e{11} {cm\over s}$ \\
+
+Stefan-Boltzmann const., $\sigma$ &
+$=6\e{-5}{erg\over s\cdot cm^2\cdot k^4}$ &
+&
+\\
+
+\hline
+
+classical $e^-$ radius, $r_e$ & 
+$={e^2\over m_ec^2}=3\e{-13}cm$ &
+Compton wavelength, $\lambda_c$ &
+$={\hbar\over m_e c}=4\e{-11}cm$ \\
+
+Bohr radius, $a_0$ &
+$={\hbar^2\over m_ee^2}=5\e{-9}cm$ &
+Rydberg energy, $Ryd$ &
+$={Xe^2\over 2a_0}=13.6 Z^2\ eV$ \\
+
+fine structure const., $\alpha$ &
+$={e^2\over \hbar c}=\inv{137}$ &
+Bohr magneton, $\mu_B$ &
+$={e\hbar\over 2m_{e,p}c}{erg\over gauss}$ \\
+
+$e^-$ rest mass, $m_ec^2$ &
+$=0.5 MeV$ &
+Einstein $A|_{Ly\alpha}$ &
+$=5\e8 \inv{s}$ \\
+
+visible photon energy &
+$= 2 eV$ &
+$kT_{room}$ &
+$=0.025 eV$ \\
+
+black body luminosity &
+$=6\e{-12} {W\over K^4 cm^2}$ &
+1 W at $5550\AA$ &
+$=680$ lumens \\
+
+$m_{nucleon}$ &
+$=2000 m_e$ &
+$m_{kaon}$ &
+$=1000 m_e$ \\
+$m_{pion}$ &
+$=270 m_e$ &
+$m_{muon}$ &
+$=200 m_e$ \\
+
+radius of atomic nucleus &
+$=A^\frac13\e{-13}cm$ &
+1 eV &
+$=1.6\e{-12} erg$ \\
+
+&
+&
+Thomson Cross., $\sigma_T$ &
+$=\frac83 \pi r_e^2=7\e{-25}{cm^2}$ \\
+
+\hline
+scale height of atmosphere &
+$=8 km$ &
+atm. pressure, $P_{atm}$ &
+$=10^6{dynes\over cm^2}=15psi$ \\
+
+$\rho_{air}$ &
+$=10^{-3}{g\over cm^3}$ &
+$n_{air}$ at STP &
+$=3\e{19}\inv{cm^3}$ \\
+
+sound speed at STP, $c_s$ &
+$\sim v_{molec}=4\e{4}{cm\over s}$ &
+$\lambda_{mfp}$ at STP &
+$=7\e{-6} cm$ \\
+
+\hline
+
+specific heat (solid or liquid) &
+$=0.5 {cal\over cm^3 K}$ &
+expansion (solid/liquid) &
+$\le 2\e{-5}\inv{K}$ \\
+
+heat conduction (insulator) &
+$=10^{-2}{cal\over s\cdot cm\cdot K}$ &
+heat conduction (metal) &
+$=1\left(\rho_{Cu}\over\rho_{metal}\right){cal\over s\cdot cm\cdot K}$ \\
+
+combustion heat (food/fuel) &
+$=7 {kcal\over g}$ &
+vaporization heat &
+$=10^4 {cal\over mol}$ \\
+
+elastic modulii (solids) &
+$=10^{11}\to10^{12}{dynes\over cm^2}$ &
+tensile strength (solids) &
+$=10^8\to 10^{10}{dyne\over cm^2}$ \\
+
+surface tension $H_2O$, $\gamma$ &
+$=50{dyne\over cm}={erg\over cm^2}$ &
+diffusion rate of $H_2O$ &
+$=10^{-5}{cm^2\over s}$ \\
+
+diffusion rate in air &
+$=0.2 {cm^2\over s}$ &
+viscosity of $H_20$, $\mu=\rho\nu$ &
+$=10^{-2}$ \\
+
+viscosity of air, $\mu_{air}$ &
+$=2\e{-4}{dyne\cdot s\over cm^2}$ &
+1 cal &
+$=4 W\cdot s=4\e{7} erg$ \\ 
+
+resistivity of Cu at usual T &
+$=2\e{-6}$ &
+resistivity of pure $H_2O$ &
+$=2\e{7}$ \\
+
+resistivity of sea water &
+$=25 ohm\cdot cm$ &
+grav. acceleration, g &
+$=10^3{cm\over s^2}$ \\
+
+
+1 Newton &
+$=10^5 dynes $& 
+1 lb &
+$=4.4 N$ \\
+
+1 Debye &
+$=10^{-18} cgs$ &
+&
+\\
+
+\hline
+
+1 parsec &
+$=3\e{18} cm$ &
+1 mag &
+$=-4dB$ \\
+
+absolute magnitude $M_{abs}$ &
+$=M_{app}$ at 10 pc &
+apparent mag. of sun &
+$=5$ \\
+
+earth magnetic field at pole &
+$=0.5 gauss$ &
+mass of earth, $M_e$ &
+$=6\e{27} g$ \\
+
+radius of earth $R_e$ &
+$=6\e{8} cm$ &
+mass of sun $M_\odot$ &
+$=2\e{33} g$ \\
+
+radius of sun, $R_\odot$ &
+$=8\e{10} cm$ &
+luminosity of sun, $L_\odot$ &
+$=4\e{33}{erg\over s}$ \\
+
+flux from sun at earth &
+$=1{kW\over m^2}$ &
+starlight energy density &
+$=10^{-12}{erg\over cm^3}$ \\
+
+distance to moon &
+$=4\e{10} cm$ &
+distance to sun &
+$=1 AU=1.5\e{13} cm$ \\
+
+distance to galactic center &
+$=7 kpc$ &
+mass of galaxy &
+$=10^{11} M_\odot$ \\
+
+radius of galaxy cluster&
+$=2 Mpc$ &
+radius of universe &
+$=3000 Mpc$ \\
+
+critical density, $\rho_{cr}$&
+$={3H_0^2\over 8\pi G}=2h^2\e{-29}{g\over cm^3}$ &
+Hubble const., $H_0=100h$ &
+$=72{km\over s\ Mpc}=\inv{10^{10}yrs}$ \\
+
+baryon density $\Omega_B$ &
+$={\rho_B\over\rho_{cr}}=.02$ &
+radiation density $\Omega_R$ &
+$=10^{-3}$ \\
+
+dark energy density $\Omega_\Lambda$ &
+$=.7$ &
+magnetic field of galaxy &
+$=5\mu G$\\
+
+\hline
+\end{tabular}\end{table}
+
+%---------------------------------------------------------------
+\pagebreak
+\section*{Radiation Equations}
+
+\begin{table}[h!]\begin{tabular}{|l|l|}
+
+\hline
+Maxwell's Equations & 
+$\vec\nabla \times \vec E=-\inv{c}\ppt{B}$ \\
+& $\vec\nabla \times \vec B=\inv{c}\ppt{E} + {4\pi\over c} J$ \\
+& $\vec\nabla \cdot\vec E=4\pi\rho$ \\
+& $\vec\nabla \cdot\vec B=0$ \\
+
+\hline
+Planck Function &
+$B_\nu={2h\nu^3\over c^2}\inv{\left(e^{h\nu\over kT}-1\right)}$ \\
+
+Wein Tail & 
+\multirow{2}{*}{$B_\nu\approx{2h\nu^3\over c^2}e^{-{h\nu\over kT}}$} \\
+($h\nu\gg kT$) & \\
+
+Rayleigh-Jeans Tail &
+\multirow{2}{*}{$B_\nu\approx{2kT\over\lambda^2}$} \\
+($h\nu\ll kT$) & \\
+
+\hline
+Power Radiated by Accelerated Charge &
+$P=\frac23 {(e\ddot x)^2\over c^3}$ \\
+
+\hline
+Einstein A &
+\multirow{2}{*}{$A_{21}\sim{2d^2\omega_0^3\over 3\hbar c^3}$} \\
+(d = electric dipole moment) & \\
+
+\hline
+Einstein A of 21cm &
+\multirow{2}{*}{$A_{21}\big|_{21cm}
+\sim\alpha^2\left({1216\AA\over 21cm}\right)^3\sim3\e{-15} \inv{s}$} \\
+(using $\mu_e={eh\over m_ec}\sim\alpha d$ for d) & \\
+
+\hline
+Electronic Cross-Section at Line Center &
+$\sigma\sim{B_{12}\phi(\nu)h\nu\over 4\pi}\sim
+{\lambda^2\over8\pi}{A_{21}\over\Delta\nu}$ \\
+
+\hline
+Einstein Relations &
+\multirow{2}{*}{$n_1 B_{12}\bar J=n_2A_{21}+n_2B_{21}\bar J$} \\
+$\left(\bar J\equiv\int_0^\infty{J_\nu\phi(\nu)d\nu}\right)$ & \\
+
+\hline
+Emissivity &
+$j_\nu=\inv{4\pi}n_2 A_{21}h\nu\phi(\nu)$ \\
+
+\hline
+Absorption &
+$\alpha_\nu={h\nu\over 4\pi}\phi(\nu)(n_1B_{12}-n_2B_{21})=n\sigma$ \\
+
+\hline
+Opacity &
+$\kappa_{\nu}={\alpha_\nu\over \rho}$ \\
+
+\hline
+Fundamental Equation of & 
+\multirow{2}{*}{${dI_\nu\over ds}=j_\nu-\alpha_\nu I_\nu$} \\
+Radiative Transfer & \\
+
+\hline
+Integrated Intensity & 
+\multirow{2}{*}{$I_\nu(\tau_\nu)=I_\nu(0)e^{-\tau_\nu}+
+e^{-\tau_\nu}\int{S_\nu(\tau^\prime_\nu)
+e^{-\tau^\prime_\nu}d\tau^\prime_\nu}$} \\
+$\left(S_\nu\equiv{j_\nu\over\alpha_\nu}\right)$,
+$(\tau=n\sigma s=N\sigma)$ & \\
+
+\hline
+Energy State Populations & 
+\multirow{2}{*}{${n_2\over n_2}={g_2\over g_1}e^{-{h\nu_0\over kT}}$} \\
+in Thermal Equilibrium & \\
+
+\hline
+Fine Structure & 
+\multirow{2}{*}{$\Delta E\sim Z^4\alpha^2\cdot Ryd$} \\
+Transition Energies & \\
+
+\hline
+Hyperfine & 
+\multirow{2}{*}{$\Delta E\sim \Delta E_{fine}{m_e\over m_p}$} \\
+Transition Energies & \\
+
+\hline
+Maxwellian Velocity Distribution &
+$f(v)=4\pi\left({m_r\over 2\pi kT}\right)^\frac32 v^2 e^{-{mv^2\over 2kT}}$ \\
+
+\hline
+Excitation Rate & 
+$\begin{aligned}R_{ex}&=n_An_B\sigma_{12}
+\int{f(v_{rel})v_{rel}dv}\\
+&=n_An_B\mean{\sigma_{12}v}= n_An_Bq_{12}\end{aligned}$ \\
+($q_{12}$ = collisional rate coefficient) & \\
+
+\hline
+Mie Theory & 
+$\sigma_{abs}=\pi a^2Q_{abs}=\pi a^2\left[-4\left(
+{2\pi a\over\lambda}\right) Im\left({m^2-1\over m^2+2}\right)\right]$ \\
+($m$ = complex index of refraction) & 
+$\sigma_{scat}=\pi a^2Q_{scat}=\pi a^2\left[\frac83\left({2\pi a\over\lambda}
+\right)^4 Re\left(\left[{m^2-1\over m^2+2}\right]^2\right)\right]$ \\
+
+\hline
+Collisional Cross-Section & 
+\multirow{2}{*}{$\sigma_{12}=
+{\pi \hbar^2\over m_e^2v^2}\left({\Omega(1,2)\over g_1}\right)$}\\
+($\Omega$ of order 1, 0 below energy threshold) & \\
+
+\hline
+Milne Relation &
+${\sigma_{fb}(v)\over\sigma_{bf}(\nu)}={g_0\over g_+}\left({h\nu\over m_ecv}
+\right)^2$ \\
+
+\hline
+Saha Equation & 
+\multirow{2}{*}{${n_+n_e\over n_0}=\left(
+{2\pi m_ekT\over h^2}\right)^\frac32{2g_+\over g_0} e^{-{\chi\over kT}}$} \\
+(ionization/recombination equilibrium) & \\
+
+\hline
+\end{tabular}\end{table}
+%---------------------------------------------------------------
+\pagebreak
+\begin{table}[h!]\begin{tabular}{|l|l|}
+
+\hline
+Bremsstrahlung & 
+\multirow{2}{*}{$j_{\nu,ff}={16\over 3\sqrt{2\pi}}{Z^2e^6\over 
+m_e^\frac32 c^3(kT)^\hf} n_e n_{ions} e^{-{h\nu\over kT}}$} \\
+(Free-Free Emission) & \\
+
+\hline
+Inverse Bremsstrahlung &
+$\alpha_{\nu,ff}\equiv{j_{\nu,ff}\over B_\nu}$ \\
+
+\hline
+Cyclotron Frequency &
+$\omega_{cyc}={eB\over m_e c}$ \\
+
+\hline
+Synchrotron Frequency &
+$\omega_{sync}=\frac32\gamma^2\omega_{cyc}\sin\alpha$ \\
+
+\hline
+Synchrotron Power ($\sigma_T={8\pi\over 3}r_0^2$, ${e^2\over r_0}=m_ec^2$) &
+$P=2\sigma_T cU_B\sin^2\alpha\gamma^2$ \\
+
+\hline
+Synchrotron Spectrum ($p\sim-2.5$) &
+${dP\over d\omega}\propto B^{1-p\over 2}\omega^{1+p\over 2}$ \\
+
+\hline
+Synchrotron Self-Absorption &
+$I_\nu(\nu_{crit})=B_\nu(T\sim{\gamma m_ec^2\over k},\nu_{crit})$ \\
+
+\hline
+Compton Scattering & 
+\multirow{3}{*}{$\Delta\lambda=\lambda_c(1-\cos\theta)$} \\
+($e^-$ gaining energy from photons) & \\
+$\left(\lambda_c\equiv {h\over m_e c}\right)$ & \\
+
+\hline
+Inverse Compton Scattering & 
+\multirow{2}{*}{$P_{lost}=\sigma_T cU_{ph}\gamma^2$} \\
+(electrons losing energy to photons) & \\
+
+\hline
+Zeeman Splitting &
+$\Delta E\sim \mu_{Bohr} B$ \\
+
+\hline
+Dispersion relation & 
+\multirow{2}{*}{$\eta^2=1+{\omega_p^2\over\omega^2}$} \\
+$\left(\omega_p^2\equiv{4\pi ne^2\over m_e}\right)$,
+$\left(\eta\equiv{ck\over\omega}\right)$ & \\
+
+\hline
+Dispersion Measure &
+\multirow{2}{*}{${dt\over d\omega}={4\pi e^2\over m_ec\omega^3}DM$} \\
+($DM=\int{n_e ds}$) & \\
+
+\hline
+Faraday Rotation & 
+\multirow{2}{*}{$\Delta\theta={2\pi e^3\over c^2m_e^2\omega^2}RM$} \\
+($RM=\int{n_eB_\|ds}$) & \\
+
+\hline
+Emission Measure &
+$EM=\int{n_e^2 ds}$ \\
+
+\hline
+\end{tabular}\end{table}
+
+\end{document}
