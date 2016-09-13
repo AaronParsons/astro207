@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 3}
+
+
+\def\Tex{{T_{\rm ex}}}
+\section{Hyperfine Emission from Neutral Hydrogen}
+\vspace{-8pt}
+
+Neutral hydrogen in the electronic ground state can be in one of two hyperfine
+states. Denote the number density of atoms in the ground hyperfine level
+(singlet state) as $n_0$, and the number density of atoms in the excited hyperfine
+level (triplet state) as $n_1$. DEFINE the excitation temperature, $\Tex$, of the
+transition as
+\begin{equation}
+\frac{n_1}{n_0}=\frac{g_1}{g_0}e^{-h\nu/k\Tex}.
+\end{equation}
+Here, $h\nu=hc/\lambda$ is the mean energy difference between the levels, and
+$g_0=1$ and $g_1=3$ are the statistical weights of the levels. The excitation
+temperature is merely another way of expressing the ratio of ground state to
+excited state populations. By definition, if a gas is in local thermodynamic
+equilibrium (LTE) at some gas kinetic temperature $T$, then $\Tex = T$; the level
+populations are distributed in Boltzmann fashion at the local temperature $T$.
+Some people refer to the excitation temperature for the $\lambda = 21$ cm transition as
+the {\it spin temperature}. But use of the term ``excitation temperature" is general
+to any line transition; it is simply a measure of how excited an atom is.
+
+\def\Ts{{T_*}}
+\subsection{}
+\vspace{-8pt}
+Define $\Ts=h\nu/k$ and compute its value.
+It is likely that $\Tex\gg\Ts$. For the remainder of this problem, work in the $\Ts/\Tex\ll1$
+limit.
+
+\subsection{}
+\vspace{-8pt}
+Write down the absorption coefficient, $\alpha_\nu$ (units of per length), for
+this transition. Express your answer in terms of $\phi(\nu)$(the line profile
+function), $A_{21}$ (Einstein A coefficient), $\lambda$, whatever densities you need, and
+$\Ts/\Tex$. Do not forget the correction for stimulated emission.
+
+\subsection{}
+\vspace{-8pt}
+Write down the volume emissivity, $j_\nu$ (units of erg s$^{-1}$ cm$^{-3}$ Hz$^{-1}$ sr$^{-1}$), for
+this transition. Use whatever quantities defined above that you need.
+
+\subsection{}
+\vspace{-8pt}
+Write down the source function, $S_\nu$, for this transition.
+
+\subsection{}
+\vspace{-8pt}
+Write down the specific intensity, $I_\nu$, of a cloud of HI that is optically
+thin along the line-of-sight (l-o-s). Take the l-o-s dimension of the cloud to
+be $L$, and give the answer only to leading order in $\tau\ll1$, where $\tau$ is the
+optical depth at an arbitrary wavelength.
+
+Does your answer depend on $\Tex$?  If someone gives you a spectrum of the 21-cm
+line that appears in emission and tells you that the line was emitted from an
+optically thin cloud, what physical quantities can you infer from the spectrum?
+
+\subsection{}
+\vspace{-8pt}
+Write down the optical depth of the cloud. Does your answer depend on $\Tex$?
+
+\subsection{} % XXX might want to cover line profiles before doing this one
+\vspace{-8pt}
+For what column densities is a could of HI marginally optically
+thick? Use a gas density of $n=1~{\rm cm}^{-3}$, a gas temperature of $T = 100$ K, and an
+excitation temperature $\Tex = T$ . Assume the line is only thermally broadened (i.e.
+$\Delta\nu$ is the typical Doppler shift from the thermal motion of atoms, as per the quiz).
+
+
+\def\He{{^3{\rm He}^+}}
+\section{Hyperfine $\He$}
+\vspace{-8pt}
+
+Observations of the hyperfine transition in $\He$ are used to probe the $\He/H$ abundance
+in the galaxy.  This abundance reflects the primordial yield from big bang nucleosynthesis
+and galactic chemical evolution.
+
+\subsection{}
+\vspace{-8pt}
+Estimate, using the scaling relations presented in class and whatever facts you
+remember, the wavelength of the ground-state electronic (i.e. Ly-$\alpha$ equivalent) transition of $\He$.
+
+\subsection{}
+\vspace{-8pt}
+Estimate, using the scaling relations presented in class and whatever facts you
+remember, the wavelength of the ground-state hyperfine transition of $\He$.  Compare
+to the true answer of 3.46 cm.
+
+\subsection{}
+\vspace{-8pt}
+Estimate $A_{21}$ for the ground-state electronic (Ly-$\alpha$-like) and hyperfine (21cm-like) transitions of $\He$.
+
+\section{Rotating Magnetic Dipole}
+\vspace{-8pt}
+
+Rybicki \& Lightman Problem 3.1.
+
+A pulsar is convetionally believed to be a rotating neutron star.  Such
+a star is likely to have a strong magnetic field, $B_0$, since it traps
+lines of force during its collapse.  If the magnetic axis of the neutron
+star does not line up with the rotation axis, there will be magnetic dipole
+radiation from the time-changing magnetic dipole, $m(t)$.  Assume that the mass
+and radius of the neutron star ar $M$ and $R$, respectively; that the angle
+between the magnetic and rotation axes is $\alpha$; and that the rotational
+angular velocity is $\omega$.
+
+\vspace{-8pt}
+\subsection{}
+\vspace{-8pt}
+Find an expression for the radiated power $P$ in terms of $\omega$,
+$R$, $B_0$, and $\alpha$.
+
+\vspace{-8pt}
+\subsection{}
+\vspace{-8pt}
+Assuming that the rotational energy of the pulsar is the ultimate source
+of the radiated power, find an expression for the slow-down timescale,
+$\tau$, of the pulsar.
+
+\vspace{-8pt}
+\subsection{}
+\vspace{-8pt}
+For $M=1 M_\odot$, $R=10^6$ cm, $B_0=10^{12}$ gauss, $\alpha=90^\circ$,
+find $P$ and $\tau$ for $\omega=10^4$ s$^{-1}$, $10^3$ s$^{-1}$,
+$10^2$ s$^{-1}$.  The highest rate $\omega=10^4$ s$^{-1}$ is believed
+to be typical of newly formed pulsars.
+
+Hint: The Larmor power formula gives the power radiated by an accelerating
+electric dipole moment. This problem is similar except that it concerns an
+accelerating magnetic dipole moment.
+
+\end{document}
