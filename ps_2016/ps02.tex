@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 2}
+
+
+\section{Blackbody Flux}
+
+Derive the blackbody flux formula
+\begin{equation}
+F=\sigma T^4
+\end{equation}
+from the Planck function for specific intensity,
+\begin{equation}
+B_\nu=\frac{2h\nu^3}{c^2}\frac{1}{e^\frac{h\nu}{kT} - 1}
+\end{equation}
+You may use the integral $\int_0^\infty{\frac{dx}{x^5(e^{1/x}-1)}}=\pi^4/15$.
+Those who know what they have to do can stop reading here. Those who need a bit of help should read on.
+
+Imagine a perfectly flat, blackbody patch at the center of a sphere of radius
+$R$. The patch has tiny surface area $dA$ and is lying flat at $r = 0$ in the $\theta=\pi/2$
+plane (in spherical coordinates, where $r$, $\theta$, $\phi$ are the radius, polar angle, and
+azimuth). Only one side of the patch is warm; the other side is at absolute
+zero. Assume that the warm side radiates as a perfect thermal blackbody.
+
+A thermal blackbody emits radiation isotropically --- i.e., with no preference for
+direction. In other words, imagine each point on the patch beaming out a tiny,
+uniform, hemispherical dome of rays (like an umbrella). It is a hemispherical
+dome and not a full sphere because only one side of the patch is warm. Note
+that the Planck blackbody function has no variable inside it that specifies
+direction of emission; the direction of emission doesn't matter for purely
+thermal emission. The only variables that need to be specified for the Planck
+function are $T$ and $\nu$.
+
+Despite the isotropic nature of the emission, because the patch is
+geometrically flat, has definite area, and emits only on one side of itself, a
+detector glued to the inside of the sphere at $r = R$ detects different amounts
+of radiation depending on where it is placed. For example, if the detector is
+glued on the half of the sphere that can’t see the bright side of the patch,
+the detector detects nothing. If the detector is glued to the sphere directly
+above the patch, the detector picks up the most number of photons, because it
+sees the full face-on area of the patch (namely, $dA$). If the detector is glued
+at an angle to the pole, then it sees less than area dA. If it is glued in the
+plane of the patch, it sees nothing but a infinitesimally thin line segment.
+
+This problem asks you to place detectors everywhere on the inside of the sphere
+and sum up the radiation collected; this operation is equivalent to
+``integrating the Planck function over all solid angles into which the radiation
+is beamed."
+
+Calculate the total luminosity (in units of energy/time) emitted by the patch
+of area dA. You must integrate the Planck function over the entire emitting
+area (which is maximally $dA$ but in general will be less, depending on the
+viewing geometry), over all solid angles into which the radiation is beamed,
+and over all frequencies. Think about placing tiny detectors all over the
+inside of the sphere and asking how much energy/time each of the detectors
+receives.
+
+Then divide the luminosity by $dA$ to calculate the total flux (in units of
+energy/time/area) emitted by the patch. You should recover the usual blackbody
+flux formula, $\sigma T^4$. By definition, $\sigma T^4$ is the total amount of
+energy radiated per time per unit area of a blackbody surface, radiated into
+all solid angles and over all frequencies.
+
+\section{Flat Disks}
+
+This problem forms the foundation for understanding the spectral energy distributions of
+circumstellar disks, e.g., those surrounding pre-main-sequence stars and AGN.
+
+Consider a perfectly flat, blackbody disk encircling a blackbody star. The star
+has radius $R_*$ and effective temperature $T_*$. The disk begins at a stellocentric
+radius far from the star, i.e. the inner disk radisu $r_i\gg R_*$.  
+The disk extends to infinity.
+
+Calculate the temperature of the disk, $T(r)$, as a function of radius, $r$. Make
+whatever approximations you deem necessary in light of the fact that $r_i\gg R_*$. Be
+sure you get the scaling of $T$ with $r$ correctly. It is less important that you
+get the numerical coefficient correctly.
+
+This disk is PERFECTLY flat. Do not consider individual particles in the disk.
+
+Also, neglect radial transport of energy. Each annulus is independent of
+neighboring annuli. This is a fine approximation for thin disks since they
+transport more radiation vertically than radially (the temperature gradient is
+steeper vertically than radially).
+
+
+\end{document}

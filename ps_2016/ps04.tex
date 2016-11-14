@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\def\e{{\rm e}}
+
+\begin{document}
+\pagestyle{empty}
+\parindent=0pt
+
+\section*{\centering Problem Set 4}
+
+\section{Comparing CO and H$_2$}
+
+Clouds of molecular hydrogen (as H$_2$ is often called) are where the gas
+in our galaxy cools down enough to form stars.  As you might imagine, if your
+job is to understand star formation, this is where you'd look.  In contrast
+to the hydrogen clouds traced by the 21cm line, these are colder ($T\sim 10$ K)
+and more dense ($n\sim100$ cm$^{-3}$).
+
+Cooling H$_2$ turns out to be difficult.  In this problem, we examine why.
+
+\subsection{}
+\vspace{-8pt}
+Estimate the energies and frequencies of the first H$_2$ rotational and vibrational transitions.
+
+\subsection{}
+\vspace{-8pt}
+Estimate Einstein A coefficients for these two transitions, using that H$_2$ is a symmetric molecule
+(e.g. quadrupole radiator).
+
+\subsection{}
+\vspace{-8pt}
+Assuming that collisions are setting population statistics for excited/de-excited states to a temperature
+of 10 K and assuming these clouds are optically thin, which transition (vibrational or rotational) contributes
+the most to cooling this gas?  To order of magnitude long would it take to cool to 5K?
+
+\subsection{}
+\vspace{-8pt}
+Now suppose there is some CO sprinkled in with the H$_2$.  A typical CO/H$_2$ ratio in the Milky Way
+is $6\e-5$.  Using the $J=1\rightarrow0$ transition of CO that we examined in class and assuming
+collisions set the population statistics, how does the presence of CO change the cooling time you
+derived above?
+
+
+\section{Good Rovibrations}
+\vspace{-8pt}
+
+\begin{figure}
+\includegraphics{Vib_rot_CO.png}
+\caption{The vibration-rotation line spectrum of CO.}
+\label{fig:co}
+\end{figure}
+
+Let's see if we can get a simulation to reproduce the rovibrational spectrum of CO pictured in
+Figure \ref{fig:co}.
+In order to get some of the answers below, it's assumed that you'll be doing some coding to work out
+the numerical details.
+
+\subsection{}
+\vspace{-8pt}
+First, use the center wavenumber to estimate which vibrational transition we are talking about for CO.
+Assume we end in the $n=0$ state.
+
+\subsection{}
+\vspace{-8pt}
+Using that each rotational transition is a $\Delta J=\pm1$ transition and using the spin degeneracy
+of each $J$ state ($g=2J+1$), identify the state $J$ at which $E_J\sim kT$.  What does this imply $T$ is?
+Don't forget that the total energy is the sum of the vibrational and rotational energies.
+
+\subsection{}
+\vspace{-8pt}
+Estimate the Einstein A coefficients for this $\Delta n$ transitions as a function of $J$.  Is the
+variation sufficient that it needs to be included in predictions of line strength?
+
+\subsection{}
+\vspace{-8pt}
+Now let's cook up the full simulation.  For this, determine the moment of inertia $I$ for CO as
+a function of $n$ (the vibrational level) and $J$ (the rotational level), as we worked out on our
+quiz.  Then populate the $n$ and $J$ states according to Boltzmann statistics, using the $T$ you found above.
+Finally, use the population of each state and (depending on your answer above) the transition strength
+to determine the relative intensity of each transition as a function of frequency.  Plot it and compare to
+Figure \ref{fig:co}.
+
+\subsection{}
+Are there remaining discrepancies?  What effects haven't you included that would improve your simulation?
+
+\end{document}

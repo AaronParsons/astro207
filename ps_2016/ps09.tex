@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\def\Te{{T_e}}
+\def\Tp{{T_p}}
+\def\tep{{t_{ep}}}
+\def\trec{{t_{rec}}}
+\begin{document}
+\pagestyle{empty}
+%\parindent=0pt
+
+\section*{\centering Problem Set 9}
+
+\section{Powering Radio Lobes}
+
+\begin{figure}[!ht]\centering
+\includegraphics[height=3in]{cygnus_a.png}
+\caption{
+Radio image of Cygnus A, showing the extended lobes powered by narrow jets from
+the central supermassive black hole. The lobes are about 30 kpc in radius,
+and the emission is strongest at the front regions which are presumably
+interacting most strongly with the ambient medium.
+}\label{fig:cygnus_a}
+\end{figure}
+
+The galaxy Cygnus A is one of the most powerful radio sources in the sky.
+Striking radio images (Figure \ref{fig:cygnus_a}) reveal a pair of immense lobes of emission,
+which sit about $\sim$100 kpc outside the central galaxy. It is thought that these
+lobes are powered by a super-massive black hole (SMBH) at the galactic center.
+The SMBH somehow produces narrow, bipolar, relativistic jets, which propagate
+to the outskirts of the galaxy, interact with the ambient medium, and form
+shocks. The radio luminosity is the result of synchrotron emission from
+relativistic electrons produced in those shocks.
+
+\begin{figure}[!ht]\centering
+\includegraphics[height=3in]{baars_et_al.png}
+\caption{
+Radio spectrum of Cygnus A (and other objects) from Baars et al. (1977)
+}\label{fig:baars_et_al}
+\end{figure}
+
+Figure \ref{fig:baars_et_al} shows the observed radio spectrum of Cyg A, which
+resembles what we might expect from synchrotron emission --- broad-band, roughly
+power-law, clearly non-thermal. The observed flux increases down to a frequency
+of at least 10 MHz, where the value is
+$F_\nu\approx10^4 Jy$.  In this region, one can reasonably fit a power law to
+the spectrum and write the specific luminosity
+\begin{equation}
+L_\nu=4\pi d^2F_\nu=5\times 10^{36}\left(\frac{\nu}{10~{\rm MHz}}\right)^{-0.8} {\rm erg~s}^{-1}{\rm Hz}^{-1}
+\label{eq:cyg_luminosity}
+\end{equation}
+where we have taken the distance to Cyg A to be $d\approx230~{\rm Mpc}$.  Integrating over
+equation \ref{eq:cyg_luminosity} over the observed range $10^7$ to $10^{11}$ Hz gives a luminosity
+of $L\sim10^{-45}{\rm erg~s}^{-1}$ (about 1000 times the energy radiated by a supernova at peak).
+
+What are the energetics and magnetic field strengths involved in these luminous
+radio lobes, and can a SMBH really provide the necessary oomph? The total
+energy\footnote{We are going to ignore the energy in protons, since there is no 
+easy way to measure them directly. But presumably there is as much or more 
+energy in protons than electrons}
+in the lobes can be written
+\begin{equation}
+E=(U_e+U_B)\times 2V
+\end{equation}
+where $U_e$,$U_B$ are the electron and magnetic field energy densities, respectively,
+and $V$ is the volume of a lobe\footnote{The lobes each have a radius of around 30 kpc. 
+We have included a factor of 2 in the equation since there are two of them.}
+As it turns out, we do not have enough information to directly determine these energy densities, but 
+we can follow the famous arguments of Geoffery Burbidge to derive a lower limit. The implied 
+energies, we will find, are massive --- the equivalent of a billion supernova explosions or more.
+As usual, we’ll take the electron number density to be described by a power law distribution in 
+Lorentz factor
+\begin{equation}
+n~d\gamma=C\gamma^p~d\gamma
+\label{eq:gamma_plaw}
+\end{equation}
+where $C$ is some constant, and the power law cuts off at some lower value, $\gamma_{\rm min}$.
+
+\subsection{}
+Infer the value of $p$ from the observations.
+
+\subsection{}
+Integrate equation \ref{eq:gamma_plaw} to get an expression for the energy density of
+electrons, $U_e$, in terms of $C$ and $\gamma_{\rm min}$.
+
+What should we use for $\gamma_{\rm min}$ and $C$?  It looks like the observed spectrum
+might be peaking at $v_m\approx 10~{\rm MHz}$.  We can therefore associate\footnote{
+This may or may not be correct; the data are getting a little sketchy around 10 MHz,
+owing to the growing opacity of the ionosphere at these frequencies.  It could also
+be that the turnover is real, but due to synchrotron self-absorption, not
+the minimum Lorentz factor.  If the $\nu_m$ is, in fact, smaller than 10 MHz, this would
+imply an even smaller $\gamma_{\rm min}$, and hence even more energy.  Thus, what
+follows is at least a lower limit to the energy.}
+10 MHz with the critical frequency of electrons with Lorentz factor $\gamma_{\rm min}$.  To
+determine the constant $C$, we can use the observed specific luminosity at the frequency
+$\nu_m=10~{\rm MHz}$.  From synchrotron theory, we know that the specific luminosity
+(ergs s$^{-1}$ Hz$^{-1}$) from a power-law distribution of electrons is
+\begin{equation}
+L_\nu\approx\frac{2C}3\frac{U_B\sigma_Tc}{\nu_{cyc}}\left(\frac{\nu}{\nu_{cyc}}\right)^\frac{1+p}2\times V
+\end{equation}
+
+\subsection{}
+Show that the energy density of electrons can be written
+\begin{equation}
+U_e=A\frac{L_m\nu_m^\frac12}{V}B^{-\frac32}
+\label{eq:e_energy_density}
+\end{equation}
+where $L_m$ is the observed specific luminosity at $\nu_m$, and $A$ is some
+combination of numerical factors and fundamental constants.
+
+To proceed, we need to know the magnetic field strength. Unfortunately, there
+is no easy way to measure this directly. What is typically done instead is to
+make a minimum energy argument. The magnetic energy density increases with $B$,
+whereas equation \ref{eq:e_energy_density} shows that $U_e$ grows as $B$ decreases. 
+Thus, there must be some
+value of $B$ that minimizes the total energy. This value will at least
+give us a lower limit to the necessary energetics.
+
+\subsection{}
+
+Show that the total energy is minimized when $U_B=\frac34 U_e$ --- that is, when $U_e$ and
+$U_b$ are roughly equal. For this reason, the minimum energy argument is often
+also called an equipartition argument.
+
+\subsection{}
+Adopting the equipartition argument above, what is (numerically) the magnetic
+field strength in the emitting regions? What is the minimum Lorentz factor,
+$\gamma_{\rm min}$?
+
+\subsection{}
+What is the total energy in the radio lobes? How does this compare to the typical energy of a supernova?
+
+\subsection{}
+How much mass mass would a black hole have to eat in order to create this
+energy? Assume that the rest mass energy of the accreted material is
+processed into jet energy with 10\% efficiency. Does the SMBH hypothesis hold
+together? --- i.e., is your estimate for the swallowed mass consistent with SMBH
+masses?
+
+\subsection*{}
+
+Comment: We have provided no physical justification for why this system should
+generate magnetic fields with $U_B\approx U_e$. We have only shown that equipartiation
+is the optimal configuration for radiating efficiently. However, if the
+magnetic field is produced by turbulent motions in the plasma, which also play
+a role in accelerating the high energy particles, perhaps there is some
+rationale for thinking that we may reach something close to equipartition. This
+conjecture can now be tested by detailed particle-in-cell simulations, which
+follow the motions of individual particles in a plasma while simultaneously
+solving Maxwell's equations to determine the fields they generate. In the
+absence of any better information, people often simply assume an equipartition
+$B$-field in order to carry out synchrotron analyses. Note that we have also
+neglected here the energy in relativistic protons, which could exceed that in
+electrons and magnetic fields.
+
+\end{document}
